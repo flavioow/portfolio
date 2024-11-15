@@ -1,0 +1,29 @@
+ABOUT PROJECT
+ - name: Flavi.oow
+ - type: Portfolio
+ - description: This is a little demonstration of who I am
+ - fonts: Courier, Cormorand Garamond
+ - license: MIT License
+
+DEVELOPMENT
+ - authors: Flávio Henrique
+ - languages: Html, Css, TypeScript
+ - framework: Node.js, Next.js
+ - package manager: Bun
+ - libs: i18next, Framer Motion, React Three Fiber, Context API, TailwindCSS
+ - tools: Visual Studio Code, Git
+
+DESIGN
+ - authors: Flávio Henrique
+ - tools: Figma, Canva, Real Time Colors, Google Fonts
+
+CONTENT DESCRIPTIONS
+ - authors: Flávio Henrique
+ - interest: Technology
+
+CONTACT
+ - owner: Flávio Henrique Perusin de souza
+ - birthdate: 28/04/2008 (DD/MM/YYYY)
+ - email: flaviohps28@gmail.com
+ - linkedin: https://www.linkedin.com/in/fl%C3%A1vio-henrique-perusin-de-souza-a51321315
+ - Github: https://github.com/flavioow

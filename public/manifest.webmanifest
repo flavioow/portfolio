@@ -1,0 +1,36 @@
+{
+    "short_name": "Flavi.oow",
+    "name": "Flavi.oow",
+    "description": "This is a little demonstration who I am",
+    "start_url": ".",
+    "scope": ".",
+    "id": "/",
+    "theme_color": "#D7B15F",
+    "background_color": "#F9F8F2",
+    "lang": "en",
+    "orientation": "portrait",
+    "display": "standalone",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "favicons/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "favicons/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "display_override": ["window-controls-overlay", "standalone"],
+    "categories": ["portfolio", "personal", "flávio henrique", "webdesigner"],
+    "protocol_handlers": [
+        {
+            "protocol": "web+portfolio",
+            "url": "/?url=%s"
+        }
+    ]
+}
