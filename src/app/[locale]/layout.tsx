@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import "./cursors.css"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
 
 export const metadata: Metadata = {
     title: "Flavi.oow",
@@ -35,16 +37,20 @@ export const metadata: Metadata = {
     ],
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
+    const messages = await getMessages()
+
     return (
-        <html lang="en">
-            <body>
-                {children}
-            </body>
-        </html>
+        <NextIntlClientProvider messages={messages}>
+            <html lang="en">
+                <body>
+                    {children}
+                </body>
+            </html>
+        </NextIntlClientProvider>
     )
 }
