@@ -1,21 +1,80 @@
+@import url("https://use.typekit.net/xyr3fuc.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --text: #392f19;
+    --background: #f9f8f2;
+    --primary: #d7b15f;
+    --secondary: #e5da99;
+    --accent: #8bbe84;
+
+    --courier: "courier-std", monospace;
+    --garamond: "cormorant-garamond", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+.dark {
+    --text: #e6dcc6;
+    --background: #0e0d06;
+    --primary: #9f7928;
+    --secondary: #655a1a;
+    --accent: #487c41;
+}
+
+@layer base {
+    body {
+        color: var(--text);
+        background: var(--background);
+        font-family: var(--courier);
     }
-}
 
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    }
+
+    html {font-size: 100%;}
+
+    h1 {
+        font-size: 4.210rem;
+    }
+
+    h2 {
+        font-size: 3.158rem;
+        color: color-mix(in srgb, var(--text) 90%, var(--primary));
+    }
+
+    h3 {
+        font-size: 2.369rem;
+        color: color-mix(in srgb, var(--text) 85%, var(--primary));
+    }
+
+    h4 {
+        font-size: 2.369rem;
+        font-family: var(--garamond);
+        color: color-mix(in srgb, var(--text) 80%, var(--primary));
+    }
+
+    h5 {
+        font-size: 1.777rem;
+        font-family: var(--garamond);
+        color: color-mix(in srgb, var(--text) 75%, var(--primary));
+    }
+
+    p {
+        font-size: 1.333rem;
+        color: color-mix(in srgb, var(--text) 75%, var(--primary));
+        font-family: var(--garamond);
+    }
+
+    small {
+        font-size: 1.000rem;
+        font-family: var(--garamond);
+        color: color-mix(in srgb, var(--text) 75%, var(--primary));
+    }
+
+    ::selection {
+        background-color: color-mix(in srgb, var(--primary) 40%, var(--background));
+    }
 }
