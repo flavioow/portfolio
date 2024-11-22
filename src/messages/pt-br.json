@@ -1,7 +1,14 @@
 {
-  "Homepage": {
-    "title": "Flavi.oow",
-    "content": "Lorem ipsum dolor sit amet em Português :D",
-    "example": "Link de exemplo"
-  }
+    "#Homepage": {
+        "about": {
+            "slogan": "Frontend Júnior & Designer",
+            "description": "Sou o Flávio Henrique, um jovem apaixonado por design e desenvolvimento com foco em UIs elegantes e usabilidade. Tenho 16 anos e me especializei em criar experiências visuais impactantes e funcionais, com habilidades em HTML, CSS, JavaScript e UX/UI design. Gosto de simplificar processos e otimizar a performance, trazendo inovação e eficiência a cada projeto."
+        }
+    },
+    "Navbar": {
+        "about": "Sobre mim",
+        "skills": "Habilidades",
+        "projects": "Projetos",
+        "contact": "Contato"
+    }
 }

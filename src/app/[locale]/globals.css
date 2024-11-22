@@ -5,22 +5,31 @@
 @tailwind utilities;
 
 :root {
-    --text: #392f19;
-    --background: #f9f8f2;
-    --primary: #d7b15f;
-    --secondary: #e5da99;
-    --accent: #8bbe84;
-
+    --text: 57 47 25;
+    /* #392f19 */
+    --background: 249 248 242;
+    /* #f9f8f2 */
+    --primary: 215 177 95;
+    /* #d7b15f */
+    --secondary: 229 218 153;
+    /* #e5da99 */
+    --accent: 139 190 132;
+    /* #8bbe84 */
     --courier: "courier-std", monospace;
     --garamond: "cormorant-garamond", serif;
 }
 
 .dark {
-    --text: #e6dcc6;
-    --background: #0e0d06;
-    --primary: #9f7928;
-    --secondary: #655a1a;
-    --accent: #487c41;
+    --text: 230 220 198;
+    /* #e6dcc6 */
+    --background: 14 13 6;
+    /* #0e0d06 */
+    --primary: 159 121 40;
+    /* #9f7928 */
+    --secondary: 101 90 26;
+    /* #655a1a */
+    --accent: 72 124 65;
+    /* #487c41 */
 }
 
 @layer base {
@@ -30,11 +39,17 @@
         font-family: var(--courier);
     }
 
-    h1, h2, h3, h4, h5 {
-    font-weight: 700;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-weight: 700;
     }
 
-    html {font-size: 100%;}
+    html {
+        font-size: 100%;
+    }
 
     h1 {
         font-size: 4.210rem;
@@ -42,39 +57,49 @@
 
     h2 {
         font-size: 3.158rem;
-        color: color-mix(in srgb, var(--text) 90%, var(--primary));
+        color: color-mix(in srgb, rgb(var(--text)) 90%, rgb(var(--primary)));
     }
 
     h3 {
         font-size: 2.369rem;
-        color: color-mix(in srgb, var(--text) 85%, var(--primary));
+        color: color-mix(in srgb, rgb(var(--text)) 85%, rgb(var(--primary)));
     }
 
     h4 {
         font-size: 2.369rem;
+        color: color-mix(in srgb, rgb(var(--text)) 80%, rgb(var(--primary)));
         font-family: var(--garamond);
-        color: color-mix(in srgb, var(--text) 80%, var(--primary));
     }
 
     h5 {
         font-size: 1.777rem;
+        color: color-mix(in srgb, rgb(var(--text)) 75%, rgb(var(--primary)));
         font-family: var(--garamond);
-        color: color-mix(in srgb, var(--text) 75%, var(--primary));
     }
 
     p {
         font-size: 1.333rem;
-        color: color-mix(in srgb, var(--text) 75%, var(--primary));
+        color: color-mix(in srgb, rgb(var(--text)) 75%, rgb(var(--primary)));
         font-family: var(--garamond);
     }
 
     small {
         font-size: 1.000rem;
+        color: color-mix(in srgb, rgb(var(--text)) 75%, rgb(var(--primary)));
         font-family: var(--garamond);
-        color: color-mix(in srgb, var(--text) 75%, var(--primary));
     }
 
     ::selection {
-        background-color: color-mix(in srgb, var(--primary) 40%, var(--background));
+        background-color: color-mix(in srgb, rgb(var(--primary)) 40%, rgb(var(--background)));
+    }
+
+    a {
+        transition: all .4s ease-in-out;
+
+        &:hover {
+            color: color-mix(in srgb, rgb(var(--text)) 40%, rgb(var(--accent)));
+            text-decoration: underline;
+            transition: all .2s ease-in-out;
+        }
     }
 }
