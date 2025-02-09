@@ -2,6 +2,12 @@
 
 @tailwind base;
 @tailwind components;
+@font-face {
+    font-family: "Calligraffitti";
+    src: url("/fonts/Calligraffitti-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 @tailwind utilities;
 
 :root {
@@ -45,6 +51,7 @@
     h4,
     h5 {
         font-weight: 700;
+        width: fit-content;
     }
 
     html {
@@ -81,16 +88,22 @@
         font-size: 1.333rem;
         color: color-mix(in srgb, rgb(var(--text)) 75%, rgb(var(--primary)));
         font-family: var(--garamond);
+        width: fit-content;
     }
 
     small {
         font-size: 1.000rem;
         color: color-mix(in srgb, rgb(var(--text)) 75%, rgb(var(--primary)));
         font-family: var(--garamond);
+        width: fit-content;
     }
 
     ::selection {
-        background-color: color-mix(in srgb, rgb(var(--primary)) 40%, rgb(var(--background)));
+        background-color: color-mix(
+            in srgb,
+            rgb(var(--primary)) 40%,
+            rgb(var(--background))
+        );
     }
 
     a {

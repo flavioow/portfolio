@@ -15,6 +15,9 @@ export default {
                 secondary: "rgb(var(--secondary) / <alpha-value>)",
                 accent: "rgb(var(--accent) / <alpha-value>)",
             },
+            fontFamily: {
+                calligraffitti: ["Calligraffitti"],
+            },
         },
     },
     plugins: [],
