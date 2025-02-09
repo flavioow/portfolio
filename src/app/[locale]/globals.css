@@ -40,8 +40,8 @@
 
 @layer base {
     body {
-        color: var(--text);
-        background: var(--background);
+        color: color-mix(in srgb, rgb(var(--text)) 100%, rgb(var(--primary)));
+        background: color-mix(in srgb, rgb(var(--background)) 100%, rgb(var(--primary)));
         font-family: var(--courier);
     }
 
@@ -60,6 +60,7 @@
 
     h1 {
         font-size: 4.210rem;
+        color: color-mix(in srgb, rgb(var(--text)) 100%, rgb(var(--primary)));
     }
 
     h2 {

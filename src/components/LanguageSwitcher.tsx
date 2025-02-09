@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
 
     return (
         <div className="relative">
-            <select onChange={(e) => changeLanguage(e.target.value as "en" | "pt-br")} className="p-2 bg-transparent">
+            <select onChange={(e) => changeLanguage(e.target.value as "en" | "pt-br")} className="p-2 bg-transparent text-text dark:text-text">
                 <option value="en">🇺🇸</option>
                 <option value="pt-br">🇧🇷</option>
             </select>
