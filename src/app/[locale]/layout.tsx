@@ -35,6 +35,26 @@ export const metadata: Metadata = {
             sizes: "180x180",
         },
     ],
+    openGraph: {
+        title: "Flavi.oow",
+        description: "This is a little demonstration of who I am",
+        images: [
+            {
+                url: "https://flavioow.vercel.app/assets/opengraph.png",
+                width: 1200,
+                height: 630,
+                alt: "Preview",
+            },
+        ],
+        type: "website",
+        url: "https://flavioow.vercel.app/",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Flavi.oow",
+        description: "This is a little demonstration of who I am",
+        images: ["https://flavioow.vercel.app/assets/opengraph.png"]
+    }
 }
 
 export default async function RootLayout({
