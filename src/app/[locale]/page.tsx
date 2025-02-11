@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar"
 import Image from "next/image"
+import { Link } from "@/navigation"
 import { getTranslations } from "next-intl/server"
 
 export default async function Home() {
@@ -8,8 +9,8 @@ export default async function Home() {
     return (
         <div>
             <Navbar />
-            <header className="m-8 grid grid-cols-[250px_minmax(300px,750px)] gap-12 justify-center">
-                <div className="relative w-[250px] h-[600px]">
+            <header id="about" className="m-8 grid grid-cols-[250px_minmax(300px,850px)] gap-12 justify-center">
+                <div className="relative w-[250px] h-[600px] z-10">
                     <Image
                         src="/assets/profile-low.png"
                         alt="Loading..."
@@ -26,18 +27,23 @@ export default async function Home() {
                     />
                 </div>
 
-                <div>
-                    <h1>
-                        Flávi.<span className="font-calligraffitti">oow</span>
-                    </h1>
-                    <h2>{t("about.slogan")}</h2>
-                    <p>{t("about.description")}</p>
-                    <button type="button">
-                        <p>CV</p>
-                    </button>
-                    <button type="button">
-                        <p>GitHub</p>
-                    </button>
+                <div className="grid justify-between h-full pt-32">
+                    <div>
+                        <h1>
+                            Flávi.<span className="font-calligraffitti">oow</span>
+                        </h1>
+                        <h2>{t("about.slogan")}</h2>
+                        <p className="text-justify">{t("about.description")}</p>
+                    </div>
+
+                    <div className="flex gap-8 h-fit">
+                        <Link href="#" className="px-12 py-4 border-b-4 border-text hover:no-underline">
+                            <p>CV</p>
+                        </Link>
+                        <Link href="https://github.com/flavioow" target="_blank" className="px-12 py-4 border-b-4 border-text hover:no-underline">
+                            <p>GitHub</p>
+                        </Link>
+                    </div>
                 </div>
             </header>
         </div>
