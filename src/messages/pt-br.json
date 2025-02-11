@@ -1,8 +1,8 @@
 {
     "#Homepage": {
         "about": {
-            "slogan": "Frontend Júnior & Designer",
-            "description": "Sou o Flávio Henrique, um jovem apaixonado por design e desenvolvimento com foco em UIs elegantes e usabilidade. Tenho 16 anos e me especializei em criar experiências visuais impactantes e funcionais, com habilidades em HTML, CSS, JavaScript e UX/UI design. Gosto de simplificar processos e otimizar a performance, trazendo inovação e eficiência a cada projeto."
+            "slogan": "Front-end Júnior & Designer",
+            "description": "Sou Flávio Henrique, designer e desenvolvedor apaixonado por criar interfaces elegantes, intuitivas e de alto desempenho. Com 16 anos, tenho habilidades sólidas em front-end, transformando ideias em experiências visuais impactantes. Meu foco? Simplificar, otimizar e inovar."
         }
     },
     "Navbar": {
