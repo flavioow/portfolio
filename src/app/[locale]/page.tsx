@@ -37,7 +37,7 @@ export default async function Home() {
                     </div>
 
                     <div className="flex gap-8 h-fit">
-                        <Link href="#" className="px-12 py-4 border-b-4 border-text hover:no-underline">
+                        <Link href="https://flavioow.vercel.app/assets/cv.pdf" target="_blank" className="px-12 py-4 border-b-4 border-text hover:no-underline">
                             <p>CV</p>
                         </Link>
                         <Link href="https://github.com/flavioow" target="_blank" className="px-12 py-4 border-b-4 border-text hover:no-underline">
