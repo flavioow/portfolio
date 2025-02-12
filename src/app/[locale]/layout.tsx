@@ -53,8 +53,8 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Flavi.oow",
         description: "This is a little demonstration of who I am",
-        images: ["https://flavioow.vercel.app/assets/opengraph.png"]
-    }
+        images: ["https://flavioow.vercel.app/assets/opengraph.png"],
+    },
 }
 
 export default async function RootLayout({

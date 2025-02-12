@@ -1,28 +1,22 @@
-import { Link } from "@/navigation"
-import { getTranslations } from "next-intl/server"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
+import NavLinks from "@/components/NavLinks"
 import ThemeSwitcher from "@/components/ThemeSwitcher"
+import { getTranslations } from "next-intl/server"
 
 export default async function Navbar() {
     const t = await getTranslations("Navbar")
 
+    const labels = {
+        about: t("about"),
+        skills: t("skills"),
+        projects: t("projects"),
+        contact: t("contact"),
+    }
+
     return (
         <nav className="bg-background dark:bg-background/90 bg-opacity-50 dark:bg-opacity-50 backdrop-blur-md w-full px-20 py-4 sticky top-0 z-20">
             <div className="flex justify-center items-center relative">
-                <ul className="links flex justify-center items-center gap-6 text-text dark:text-text">
-                    <li id="about">
-                        <Link href="#about" className="p-2">{t("about")}</Link>
-                    </li>
-                    <li id="skills">
-                        <Link href="#" className="p-2">{t("skills")}</Link>
-                    </li>
-                    <li id="projects">
-                        <Link href="#" className="p-2">{t("projects")}</Link>
-                    </li>
-                    <li id="contact">
-                        <Link href="#" className="p-2">{t("contact")}</Link>
-                    </li>
-                </ul>
+                <NavLinks labels={labels} />
 
                 <div className="side-buttons absolute right-0 flex gap-6">
                     <LanguageSwitcher />

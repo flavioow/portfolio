@@ -39,9 +39,18 @@
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+    }
+
     body {
         color: color-mix(in srgb, rgb(var(--text)) 100%, rgb(var(--primary)));
-        background: color-mix(in srgb, rgb(var(--background)) 100%, rgb(var(--primary)));
+        background: color-mix(
+            in srgb,
+            rgb(var(--background)) 100%,
+            rgb(var(--primary))
+        );
         font-family: var(--courier);
     }
 
