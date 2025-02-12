@@ -1,7 +1,7 @@
 "use client"
 
-import { button } from "framer-motion/m"
 import { useEffect, useState } from "react"
+import { Sun, Moon } from "lucide-react"
 
 export default function ThemeSwitcher() {
     const [theme, setTheme] = useState<"light" | "dark">("light")
@@ -26,8 +26,15 @@ export default function ThemeSwitcher() {
     }
 
     return (
-        <button type="button" onClick={toggleTheme}>
-            {theme === "dark" ? "☀️" : "🌙"}
+        <button
+            type="button"
+            onClick={toggleTheme}
+        >
+            {theme === "dark" ? (
+                <Sun size={20} className="text-yellow-500" />
+            ) : (
+                <Moon size={20} className="text-gray-500" />
+            )}
         </button>
     )
 }

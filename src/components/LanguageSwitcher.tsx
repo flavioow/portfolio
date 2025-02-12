@@ -29,8 +29,8 @@ export default function LanguageSwitcher() {
                     changeLanguage(e.target.value as "en" | "pt-br")
                 }
                 className="p-2 bg-transparent text-text dark:text-text">
-                <option value="en">🇺🇸</option>
-                <option value="pt-br">🇧🇷</option>
+                <option value="en">English</option>
+                <option value="pt-br">Português</option>
             </select>
         </div>
     )
