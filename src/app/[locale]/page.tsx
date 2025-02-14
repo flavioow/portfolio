@@ -18,7 +18,7 @@ export default async function Home() {
                         alt="Loading..."
                         fill
                         priority
-                        className="object-cover blur-sm"
+                        className="object-cover blur-xs"
                     />
                     <Image
                         src="/assets/profile-high.png"

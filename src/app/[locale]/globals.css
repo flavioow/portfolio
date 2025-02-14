@@ -1,16 +1,48 @@
-@import url("https://use.typekit.net/xyr3fuc.css");
+@import url('https://use.typekit.net/xyr3fuc.css') layer(base);
 
-@tailwind base;
-@tailwind components;
-@font-face {
-    font-family: "Calligraffitti";
-    src: url("/fonts/Calligraffitti-Regular.ttf") format("truetype");
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-text: rgb(var(--text));
+  --color-background: rgb(var(--background));
+  --color-primary: rgb(var(--primary));
+  --color-secondary: rgb(var(--secondary));
+  --color-accent: rgb(var(--accent));
+
+  --font-calligraffitti: Calligraffitti;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer components {
+  @font-face {
+    font-family: 'Calligraffitti';
+    src: url('/fonts/Calligraffitti-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+  }
 }
-@tailwind utilities;
 
-:root {
+@layer utilities {
+  :root {
     --text: 57 47 25;
     /* #392f19 */
     --background: 249 248 242;
@@ -21,11 +53,11 @@
     /* #e5da99 */
     --accent: 139 190 132;
     /* #8bbe84 */
-    --courier: "courier-std", monospace;
-    --garamond: "cormorant-garamond", serif;
-}
+    --courier: 'courier-std', monospace;
+    --garamond: 'cormorant-garamond', serif;
+  }
 
-.dark {
+  .dark {
     --text: 230 220 198;
     /* #e6dcc6 */
     --background: 14 13 6;
@@ -36,6 +68,7 @@
     /* #655a1a */
     --accent: 72 124 65;
     /* #487c41 */
+  }
 }
 
 @layer base {
