@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar"
+import { InfiniteScroll } from "@/components/InfiniteScroll"
 import { Link } from "@/navigation"
 import { getTranslations } from "next-intl/server"
+import { Code } from "lucide-react"
 import Image from "next/image"
 
 export default async function Home() {
@@ -55,6 +57,18 @@ export default async function Home() {
                     </div>
                 </div>
             </header>
+            <InfiniteScroll.Root>
+                <InfiniteScroll.Item icon={Code} text="HTML" />
+                <InfiniteScroll.Item icon={Code} text="CSS" />
+                <InfiniteScroll.Item icon={Code} text="JavaScript" />
+                <InfiniteScroll.Item icon={Code} text="TypeScript" />
+                <InfiniteScroll.Item icon={Code} text="Python" />
+                <InfiniteScroll.Item icon={Code} text="Node.js" />
+                <InfiniteScroll.Item icon={Code} text="React" />
+                <InfiniteScroll.Item icon={Code} text="Next.js" />
+                <InfiniteScroll.Item icon={Code} text="TailwindCSS" />
+                <InfiniteScroll.Item icon={Code} text="BiomeJS" />
+            </InfiniteScroll.Root>
         </div>
     )
 }
