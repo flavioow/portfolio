@@ -1,10 +1,10 @@
 import type { LucideIcon } from "lucide-react"
 
-interface InfiniteScrollItemProps {
+export interface InfiniteScrollItemProps {
     icon: LucideIcon
     text: string
-    index: number
-    totalItems: number
+    index?: number
+    totalItems?: number
 }
 
 const InfiniteScrollItem: React.FC<InfiniteScrollItemProps> = ({ icon: Icon, text, index, totalItems }) => {

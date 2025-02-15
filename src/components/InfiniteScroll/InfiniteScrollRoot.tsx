@@ -1,18 +1,22 @@
-import React from "react"
-import type { ReactNode } from "react"
-import InfiniteScrollItem from "./InfiniteScrollItem"
+import React, { Children, cloneElement, isValidElement } from "react"
+import type { ReactNode, ReactElement } from "react"
+import type { InfiniteScrollItemProps } from "./InfiniteScrollItem"
 
 interface InfiniteScrollRootProps {
     children: ReactNode
 }
 
 export default function InfiniteScrollRoot({ children }: InfiniteScrollRootProps) {
-    const totalItems = React.Children.count(children)
+    const validChildren = Children.toArray(children).filter(
+        (child) => isValidElement<InfiniteScrollItemProps>(child)
+    ) as ReactElement<InfiniteScrollItemProps>[]
+
+    const totalItems = validChildren.length
 
     return (
         <div className="w-full bg-primary/25 overflow-hidden py-16 relative whitespace-nowrap flex align-middle">
-            {React.Children.map(children, (child, index) =>
-                React.cloneElement(child as React.ReactElement, {
+            {validChildren.map((child, index) =>
+                cloneElement(child, {
                     index: index + 1,
                     totalItems: totalItems,
                 })
