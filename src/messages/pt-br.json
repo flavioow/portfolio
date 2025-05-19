@@ -11,7 +11,9 @@
         "skills": "Habilidades",
         "projects": "Projetos",
         "contact": "Contato",
-        "theme": "Trocar Tema",
-        "lang": "Português"
+        "light-theme": "Trocar para tema claro",
+        "dark-theme": "Trocar para tema escuro",
+        "lang": "Português",
+        "switch-lang": "Trocar Idioma"
     }
 }

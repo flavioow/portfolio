@@ -3,7 +3,8 @@ import ThemeSwitcherButton from "./ThemeSwitcherButton"
 
 export default async function ThemeSwitcher() {
   const t = await getTranslations("Navbar")
-  const tooltipText = t("theme")
+  const lightThemeText = t("light-theme")
+  const darkThemeText = t("dark-theme")
 
-  return <ThemeSwitcherButton tooltipText={tooltipText} />
+  return <ThemeSwitcherButton lightThemeText={lightThemeText} darkThemeText={darkThemeText} />
 }

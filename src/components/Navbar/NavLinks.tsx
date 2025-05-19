@@ -33,31 +33,31 @@ export default function NavLinks({ labels }: NavLinksProps) {
                 </Button>
             </li>
             <li id="nav-skills">
-                <Button variant="ghost">
-                    <a
-                        href="#skills"
-                        onClick={(e) => scrollToSection(e, "skills")}>
-                        {labels.skills}
-                    </a>
-                </Button>
+                <a
+                    href="#skills"
+                    onClick={(e) => scrollToSection(e, "skills")}>
+                    <Button variant="ghost">
+                            {labels.skills}
+                    </Button>
+                </a>
             </li>
             <li id="nav-projects">
-                <Button variant="ghost">
-                    <a
-                        href="#projects"
-                        onClick={(e) => scrollToSection(e, "projects")}>
+                <a
+                    href="#projects"
+                    onClick={(e) => scrollToSection(e, "projects")}>
+                    <Button variant="ghost">
                         {labels.projects}
-                    </a>
-                </Button>
+                    </Button>
+                </a>
             </li>
             <li id="nav-contact">
-                <Button variant="ghost">
-                    <a
-                        href="#contact"
-                        onClick={(e) => scrollToSection(e, "contact")}>
+                <a
+                    href="#contact"
+                    onClick={(e) => scrollToSection(e, "contact")}>
+                    <Button variant="ghost">
                         {labels.contact}
-                    </a>
-                </Button>
+                    </Button>
+                </a>
             </li>
         </ul>
     )

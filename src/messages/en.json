@@ -11,7 +11,9 @@
         "skills": "Skills",
         "projects": "Projects",
         "contact": "Contact",
-        "theme": "Switch Theme",
-        "lang": "English"
+        "light-theme": "Switch to light theme",
+        "dark-theme": "Switch to dark theme",
+        "lang": "English",
+        "switch-lang": "Switch Lang"
     }
 }

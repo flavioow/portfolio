@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar/Navbar"
 import { InfiniteScroll } from "@/components/InfiniteScroll"
 import { Link } from "@/navigation"
 import { getTranslations } from "next-intl/server"
-import { Code, Download, Github } from "lucide-react"
+import { Download, Github } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
@@ -45,22 +45,23 @@ export default async function Home() {
                                 <h2>{t("about.slogan")}</h2>
                                 <p className="text-justify">{t("about.description")}</p>
                                 <div className="flex gap-2 mt-4">
-                                    <Button variant="default">
-                                        <Download />
-                                        <Link
-                                            href="https://flavioow.vercel.app/assets/cv.pdf"
-                                            target="_blank">
+                                    <Link
+                                        href="https://flavioow.vercel.app/assets/cv.pdf"
+                                        target="_blank">
+                                        <Button variant="default">
+                                            <Download />
                                             {t("about.cv")}
-                                        </Link>
-                                    </Button>
-                                    <Button variant="ghost">
-                                        <Github />
-                                        <Link
-                                            href="https://github.com/flavioow"
-                                            target="_blank">
+                                        </Button>
+                                    </Link>
+
+                                    <Link
+                                        href="https://github.com/flavioow"
+                                        target="_blank">
+                                        <Button variant="ghost">
+                                            <Github />
                                             GitHub
-                                        </Link>
-                                    </Button>
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

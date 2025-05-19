@@ -11,10 +11,11 @@ import {
 } from "@/components/ui/tooltip"
 
 type Props = {
-  tooltipText: string
+    lightThemeText: string
+    darkThemeText: string
 }
 
-export default function ThemeSwitcherButton({ tooltipText }: Props) {
+export default function ThemeSwitcherButton({ lightThemeText, darkThemeText }: Props) {
   const [theme, setTheme] = useState<"light" | "dark">("light")
 
   useEffect(() => {
@@ -38,12 +39,12 @@ export default function ThemeSwitcherButton({ tooltipText }: Props) {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
+          <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={theme === "dark" ? lightThemeText : darkThemeText}>
             {theme === "dark" ? <Sun /> : <Moon />}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p className="text-primary-foreground">{tooltipText}</p>
+          <p className="text-primary-foreground">{theme === "dark" ? lightThemeText : darkThemeText}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

@@ -11,9 +11,10 @@ import {
 
 type Props = {
     placeholderText: string
+    switchLangText: string
 }
 
-export default function LanguageSwitcherSelect({ placeholderText }: Props) {
+export default function LanguageSwitcherSelect({ placeholderText, switchLangText }: Props) {
     const router = useRouter()
     const pathname = usePathname()
 
@@ -32,7 +33,7 @@ export default function LanguageSwitcherSelect({ placeholderText }: Props) {
     return (
         <div className="relative">
             <Select onValueChange={(value) => changeLanguage(value as "en" | "pt-br")}>
-                <SelectTrigger>
+                <SelectTrigger aria-label={switchLangText}>
                     <SelectValue placeholder={placeholderText} />
                 </SelectTrigger>
                 <SelectContent>
