@@ -1,8 +1,11 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import "./cursors.css"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
     title: "Flavi.oow",
@@ -67,7 +70,7 @@ export default async function RootLayout({
     return (
         <NextIntlClientProvider messages={messages}>
             <html lang="en">
-                <body>{children}</body>
+                <body className={inter.className}>{children}</body>
             </html>
         </NextIntlClientProvider>
     )

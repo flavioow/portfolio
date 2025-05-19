@@ -1,14 +1,16 @@
 import React, { Children, cloneElement, isValidElement } from "react"
-import type { ReactNode, ReactElement } from "react"
+import type { ReactElement, ReactNode } from "react"
 import type { InfiniteScrollItemProps } from "./InfiniteScrollItem"
 
 interface InfiniteScrollRootProps {
     children: ReactNode
 }
 
-export default function InfiniteScrollRoot({ children }: InfiniteScrollRootProps) {
-    const validChildren = Children.toArray(children).filter(
-        (child) => isValidElement<InfiniteScrollItemProps>(child)
+export default function InfiniteScrollRoot({
+    children,
+}: InfiniteScrollRootProps) {
+    const validChildren = Children.toArray(children).filter((child) =>
+        isValidElement<InfiniteScrollItemProps>(child),
     ) as ReactElement<InfiniteScrollItemProps>[]
 
     const totalItems = validChildren.length
@@ -19,7 +21,7 @@ export default function InfiniteScrollRoot({ children }: InfiniteScrollRootProps
                 cloneElement(child, {
                     index: index + 1,
                     totalItems: totalItems,
-                })
+                }),
             )}
         </div>
     )

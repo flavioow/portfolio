@@ -2,13 +2,16 @@
     "#Homepage": {
         "about": {
             "slogan": "Junior Front-end & Designer",
-            "description": "I'm Flávio Henrique, a designer and developer passionate about creating elegant, intuitive, and high-performance interfaces. At 16, I have solid front-end skills, turning ideas into impactful visual experiences. My focus? Simplify, optimize, and innovate."
+            "description": "I'm Flávio Henrique, a designer and developer passionate about creating elegant, intuitive, and high-performance interfaces. At 16, I have solid front-end skills, turning ideas into impactful visual experiences. My focus? Simplify, optimize, and innovate.",
+            "cv": "CV"
         }
     },
     "Navbar": {
         "about": "About",
         "skills": "Skills",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "theme": "Switch Theme",
+        "lang": "English"
     }
 }

@@ -1,9 +1,10 @@
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/Navbar/Navbar"
 import { InfiniteScroll } from "@/components/InfiniteScroll"
 import { Link } from "@/navigation"
 import { getTranslations } from "next-intl/server"
-import { Code } from "lucide-react"
+import { Code, Download, Github } from "lucide-react"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 export default async function Home() {
     const t = await getTranslations("#Homepage")
@@ -11,64 +12,63 @@ export default async function Home() {
     return (
         <div>
             <Navbar />
-            <header
-                id="about"
-                className="m-8 grid grid-cols-[250px_minmax(300px,850px)] gap-12 justify-center">
-                <div className="relative w-[250px] h-[600px] z-10">
-                    <Image
-                        src="/assets/profile-low.png"
-                        alt="Loading..."
-                        fill
-                        priority
-                        className="object-cover blur-xs"
-                    />
-                    <Image
-                        src="/assets/profile-high.png"
-                        alt="Profile picture"
-                        fill
-                        loading="lazy"
-                        className="object-cover transition-opacity duration-1000 ease-in-out"
-                    />
-                </div>
 
-                <div className="grid justify-between h-full pt-32">
-                    <div>
-                        <h1>
-                            Flávi.
-                            <span className="font-calligraffitti">oow</span>
-                        </h1>
-                        <h2>{t("about.slogan")}</h2>
-                        <p className="text-justify">{t("about.description")}</p>
-                    </div>
+            <section className="relative border-grid border-b overflow-hidden" id="about">
+                <div className="container-wrapper">
+                    <div className="container lg:max-h-[600px] h-[75dvh] lg:h-[60dvh] relative lg:grid lg:grid-cols-[auto_minmax(400px,1fr)] gap-8 lg:justify-center">
 
-                    <div className="flex gap-8 h-fit">
-                        <Link
-                            href="https://flavioow.vercel.app/assets/cv.pdf"
-                            target="_blank"
-                            className="px-12 py-4 border-b-4 border-text hover:no-underline">
-                            <p>CV</p>
-                        </Link>
-                        <Link
-                            href="https://github.com/flavioow"
-                            target="_blank"
-                            className="px-12 py-4 border-b-4 border-text hover:no-underline">
-                            <p>GitHub</p>
-                        </Link>
+                        <div className="absolute -z-1 lg:static aspect-2/3 lg:max-h-[600px] h-[75dvh] lg:h-[60dvh]">
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src="/assets/profile-low.webp"
+                                    alt="Loading..."
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                />
+                                <Image
+                                    src="/assets/profile-high.webp"
+                                    alt="Profile picture"
+                                    fill
+                                    loading="lazy"
+                                    className="object-cover transition-opacity duration-1000 ease-in-out"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col justify-end lg:justify-center h-full">
+                            <div className="flex flex-col justify-end lg:justify-center p-4 lg:p-0 mb-8 lg:m-0 rounded-lg lg:rounded-none bg-gray-50/75 dark:bg-gray-950/75 lg:bg-transparent backdrop-blur-xs lg:backdrop-filter-none border border-dashed lg:border-none">
+                                <h1 className="font-courier">
+                                    Flávi.
+                                    <span className="font-calligraffitti">oow</span>
+                                </h1>
+                                <h2>{t("about.slogan")}</h2>
+                                <p className="text-justify">{t("about.description")}</p>
+                                <div className="flex gap-2 mt-4">
+                                    <Button variant="default">
+                                        <Download />
+                                        <Link
+                                            href="https://flavioow.vercel.app/assets/cv.pdf"
+                                            target="_blank">
+                                            {t("about.cv")}
+                                        </Link>
+                                    </Button>
+                                    <Button variant="ghost">
+                                        <Github />
+                                        <Link
+                                            href="https://github.com/flavioow"
+                                            target="_blank">
+                                            GitHub
+                                        </Link>
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </header>
-            <InfiniteScroll.Root>
-                <InfiniteScroll.Item icon={Code} text="HTML" />
-                <InfiniteScroll.Item icon={Code} text="CSS" />
-                <InfiniteScroll.Item icon={Code} text="JavaScript" />
-                <InfiniteScroll.Item icon={Code} text="TypeScript" />
-                <InfiniteScroll.Item icon={Code} text="Python" />
-                <InfiniteScroll.Item icon={Code} text="Node.js" />
-                <InfiniteScroll.Item icon={Code} text="React" />
-                <InfiniteScroll.Item icon={Code} text="Next.js" />
-                <InfiniteScroll.Item icon={Code} text="TailwindCSS" />
-                <InfiniteScroll.Item icon={Code} text="BiomeJS" />
-            </InfiniteScroll.Root>
+            </section>
+
         </div>
     )
 }
