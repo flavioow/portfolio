@@ -18,7 +18,7 @@ export default async function Navbar() {
             <div className="container-wrapper">
                 <div className="container flex justify-between lg:justify-center items-center relative h-14 w-full">
                     <NavLinks labels={labels} />
-                    <div className="static lg:absolute lg:right-0 flex gap-2 mr-8">
+                    <div className="static lg:absolute lg:right-0 flex gap-2 lg:mr-8">
                         <LanguageSwitcher />
                         <ThemeSwitcher />
                     </div>
