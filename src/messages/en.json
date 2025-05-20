@@ -4,6 +4,15 @@
             "slogan": "Junior Front-end & Designer",
             "description": "I'm Flávio Henrique, a designer and developer with a passion for creating elegant, intuitive and efficient interfaces. With front-end experience, I strive to transform ideas into striking visual experiences.",
             "cv": "CV"
+        },
+        "skills": {
+            "title": "Skills",
+            "responsive": {
+                "title": "Responsive development",
+                "first-paragraph": "In a scenario dominated by mobile traffic, having interfaces that adapt well to any screen size is no longer a differential - it's essential.",
+                "second-paragraph": "I have experience in developing layouts that maintain aesthetics and usability on both mobile and desktop, ensuring fluid and accessible navigation on any device.",
+                "link": "of internet access is via mobile"
+            }
         }
     },
     "Navbar": {

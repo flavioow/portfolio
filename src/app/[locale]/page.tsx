@@ -86,7 +86,7 @@ export default async function Home() {
                 <div className="border-grid border-b" id="skills">
                     <div className="container-wrapper">
                         <div className="container py-3 lg:py-6">
-                            <h2>Habilidades</h2>
+                            <h2>{t("skills.title")}</h2>
 
                             <div className="flex gap-8 mt-4 flex-wrap">
                                 <Icon icon="devicon-plain:html5-wordmark" className="size-[3rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out" aria-label="html" />
@@ -113,16 +113,16 @@ export default async function Home() {
                         <div className="container flex lg:grid flex-col-reverse py-2 lg:py-4 lg:grid-cols-2 gap-2 lg:justify-between">
                             <div className="flex flex-col justify-between">
                                 <div>
-                                    <h3 className="font-courier">Desenvolvimento responsivo</h3>
-                                    <p className="my-2">Num cenário domindado pelo tráfego mobile, possuir interfaces que se adaptam bem a qualquer tamanho de tela deixou de ser diferencial - é essencial.</p>
-                                    <p className="my-2">Tenho experiência em desenvolver layouts que mantêm a estética e usabilidade e tanto no mobile quanto no desktop, garantindo uma navegação fluida e acessível em qualquer dispositivo.</p>
+                                    <h3 className="font-courier">{t("skills.responsive.title")}</h3>
+                                    <p className="my-2">{t("skills.responsive.first-paragraph")}</p>
+                                    <p className="my-2">{t("skills.responsive.second-paragraph")}</p>
                                 </div>
 
                                 <div className="flex justify-between flex-wrap items-end">
                                     <div className="w-1/4 flex flex-col justify-center">
-                                        <p className="text-primary text-2xl font-bold text-center">69,4%</p>
+                                        <p className="text-primary text-2xl font-bold text-center">69.4%</p>
                                         <a href="https://datareportal.com/reports/digital-2024-global-overview-report" target="_blank" rel="noopener noreferrer">
-                                            <small className="text-primary underline text-center">dos acessos à internet são via mobile ↗</small>
+                                            <small className="text-primary underline text-center">{t("skills.responsive.link")} ↗</small>
                                         </a>
                                     </div>
                                     <div className="flex gap-4">
