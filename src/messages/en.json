@@ -6,6 +6,7 @@
             "cv": "CV"
         },
         "skills": {
+            "subtitle": "Now that you know me, take a look at my",
             "title": "Skills",
             "where": "But where do I apply my knowledge?",
             "responsive": {

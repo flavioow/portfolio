@@ -6,6 +6,7 @@
             "cv": "Currículo"
         },
         "skills": {
+            "subtitle": "Agora que você já me conhece, de uma olhada nas minhas",
             "title": "Habilidades",
             "where": "Mas onde eu aplico meus conhecimentos?",
             "responsive": {
