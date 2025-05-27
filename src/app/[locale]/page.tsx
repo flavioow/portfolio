@@ -97,7 +97,7 @@ export default async function Home() {
                 <div className="border-grid border-b bg-primary" id="skills">
                     <div className="container-wrapper">
                         <div className="container py-3 lg:py-6">
-                            <p className="text-gray-100 font-bold">Agora que você já me conhece, de uma olhada nas minhas</p>
+                            <p className="text-gray-100 font-bold">{t("skills.subtitle")}</p>
                             <h2 className="text-gray-100">{t("skills.title")}</h2>
 
                             <div className="flex gap-8 mt-4 flex-wrap">
