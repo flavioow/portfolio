@@ -212,6 +212,7 @@
         @apply bg-background text-foreground;
         scroll-behavior: smooth;
         font-weight: 400;
+        scroll-padding-top: 3.5rem;
     }
 
     h1,

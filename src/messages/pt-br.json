@@ -7,11 +7,18 @@
         },
         "skills": {
             "title": "Habilidades",
+            "where": "Mas onde eu aplico meus conhecimentos?",
             "responsive": {
                 "title": "Desenvolvimento responsivo",
                 "first-paragraph": "Num cenário domindado pelo tráfego mobile, possuir interfaces que se adaptam bem a qualquer tamanho de tela deixou de ser diferencial - é essencial.",
                 "second-paragraph": "Tenho experiência em desenvolver layouts que mantêm a estética e usabilidade e tanto no mobile quanto no desktop, garantindo uma navegação fluida e acessível em qualquer dispositivo.",
                 "link": "dos acessos à internet são via mobile"
+            },
+            "planning": {
+                "title": "Planejamento e escalabilidade",
+                "first-paragraph": "Organização, padronização e previsibilidade são essenciais em projetos que vão crescer ou ter manutenção em equipe. Por isso, dou atenção à estrutura desde o início.",
+                "second-paragraph": "Ferramentas como linters e formatters ajudam a manter o código consistente, algo fundamental em trabalhos em equipe.",
+                "link": "une o melhor de dois mundos"
             }
         }
     },
