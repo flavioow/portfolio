@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import "./cursors.css"
-import { NextIntlClientProvider } from "next-intl"
-import { getMessages } from "next-intl/server"
+import { ReactElement } from "react"
+import { I18nProviderClient } from "@/locales/client"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -60,18 +60,19 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode
-}>) {
-    const messages = await getMessages()
+export default async function RootLayout(
+    { params, children }: {
+        params: Promise<{ locale: string }>,
+        children: ReactElement
+    }
+) {
+    const { locale } = await params
 
     return (
-        <NextIntlClientProvider messages={messages}>
+        <I18nProviderClient locale={locale}>
             <html lang="en">
                 <body className={inter.className}>{children}</body>
             </html>
-        </NextIntlClientProvider>
+        </I18nProviderClient>
     )
 }

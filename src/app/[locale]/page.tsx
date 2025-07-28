@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar"
-import { Link } from "@/navigation"
-import { getTranslations } from "next-intl/server"
+import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
 import { Download, Github } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -15,7 +15,7 @@ import {
 
 
 export default async function Home() {
-    const t = await getTranslations("#Homepage")
+    const t = await getScopedI18n("#home")
 
     return (
         <div>
@@ -66,7 +66,10 @@ export default async function Home() {
                                 <div className="flex gap-2 mt-4">
                                     <Link
                                         href="https://flavioow.vercel.app/assets/cv.pdf"
-                                        target="_blank" rel="noopener noreferrer me author" aria-label={t("about.cv")} itemProp="sameAs">
+                                        target="_blank"
+                                        rel="noopener noreferrer me author"
+                                        aria-label={t("about.cv")}
+                                        itemProp="sameAs">
                                         <Button variant="default">
                                             <Download />
                                             {t("about.cv")}
@@ -75,7 +78,10 @@ export default async function Home() {
 
                                     <Link
                                         href="https://github.com/flavioow"
-                                        target="_blank" rel="noopener noreferrer me author" aria-label="GitHub" itemProp="sameAs">
+                                        target="_blank"
+                                        rel="noopener noreferrer me author"
+                                        aria-label="GitHub"
+                                        itemProp="sameAs">
                                         <Button variant="ghost">
                                             <Github />
                                             GitHub

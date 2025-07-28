@@ -1,8 +1,8 @@
-import { getTranslations } from "next-intl/server"
+import { getScopedI18n } from "@/locales/server"
 import LanguageSwitcherSelect from "./LanguageSwitcherSelect"
 
 export default async function LanguageSwitcher() {
-    const t = await getTranslations("Navbar")
+    const t = await getScopedI18n("navbar")
     const placeholderText = t("lang")
     const switchLangText = t("switch-lang")
 

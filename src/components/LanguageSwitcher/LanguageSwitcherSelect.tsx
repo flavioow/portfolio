@@ -1,6 +1,6 @@
 "use client"
 
-import { usePathname, useRouter } from "@/navigation"
+import { useRouter } from "@/navigation"
 import {
     Select,
     SelectContent,
@@ -15,30 +15,17 @@ type Props = {
 }
 
 export default function LanguageSwitcherSelect({ placeholderText, switchLangText }: Props) {
-    const router = useRouter()
-    const pathname = usePathname()
-
-    const changeLanguage = (lang: "en" | "pt-br") => {
-        const segments = pathname.split("/")
-
-        if (segments[1] === "en" || segments[1] === "pt-br") {
-            segments[1] = lang // altera parte da url para o idioma selecionado
-        } else {
-            segments.unshift(lang) // se não houver idioma na URL é adicionado
-        }
-
-        router.push(segments.join("/")) // redireciona
-    }
+    const { pushLocale } = useRouter()
 
     return (
         <div className="relative">
-            <Select onValueChange={(value) => changeLanguage(value as "en" | "pt-br")}>
+            <Select onValueChange={(value) => pushLocale(value as "en" | "pt-br")}>
                 <SelectTrigger aria-label={switchLangText}>
                     <SelectValue placeholder={placeholderText} />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="pt-br">Português</SelectItem>
+                    <SelectItem value="br">Português</SelectItem>
                 </SelectContent>
             </Select>
         </div>
