@@ -1,26 +1,41 @@
 export default {
-    "#home.about.slogan": "Junior Front-end & Designer",
-    "#home.about.description": "I'm Flávio Henrique, a designer and developer with a passion for creating elegant, intuitive and efficient interfaces. With front-end experience, I strive to transform ideas into striking visual experiences.",
-    "#home.about.cv": "CV",
-
-    "#home.skills.subtitle": "Now that you know me, take a look at my",
-    "#home.skills.title": "Skills",
-    "#home.skills.where": "But where do I apply my knowledge?",
-    "#home.skills.responsive.title": "Responsive development",
-    "#home.skills.responsive.first-paragraph": "In a scenario dominated by mobile traffic, having interfaces that adapt well to any screen size is no longer a differential - it's essential.",
-    "#home.skills.responsive.second-paragraph": "I have experience in developing layouts that maintain aesthetics and usability on both mobile and desktop, ensuring fluid and accessible navigation on any device.",
-    "#home.skills.responsive.link": "of internet access is via mobile",
-    "#home.skills.planning.title": "Planning and scalability",
-    "#home.skills.planning.first-paragraph": "Organization, standardization and predictability are essential in projects that are going to grow or have team maintenance. That's why I pay attention to structure right from the start.",
-    "#home.skills.planning.second-paragraph": "Tools such as linters and formatters help to keep the code consistent, which is essential when working in a team.",
-    "#home.skills.planning.link": "combines the best of both worlds",
-
-    "navbar.about": "About",
-    "navbar.skills": "Skills",
-    "navbar.projects": "Projects",
-    "navbar.contact": "Contact",
-    "navbar.light-theme": "Switch to light theme",
-    "navbar.dark-theme": "Switch to dark theme",
-    "navbar.lang": "English",
-    "navbar.switch-lang": "Switch Lang",
+    home: {
+        about: {
+            slogan: "Junior Front-end & Designer",
+            description:
+                "I'm Flávio Henrique, a designer and developer with a passion for creating elegant, intuitive and efficient interfaces. With front-end experience, I strive to transform ideas into striking visual experiences.",
+            cv: "CV",
+        },
+        skills: {
+            subtitle: "Now that you know me, take a look at my",
+            title: "Skills",
+            where: "But where do I apply my knowledge?",
+            responsive: {
+                title: "Responsive development",
+                firstParagraph:
+                    "In a scenario dominated by mobile traffic, having interfaces that adapt well to any screen size is no longer a differential - it's essential.",
+                secondParagraph:
+                    "I have experience in developing layouts that maintain aesthetics and usability on both mobile and desktop, ensuring fluid and accessible navigation on any device.",
+                link: "of internet access is via mobile",
+            },
+            planning: {
+                title: "Planning and scalability",
+                firstParagraph:
+                    "Organization, standardization and predictability are essential in projects that are going to grow or have team maintenance. That's why I pay attention to structure right from the start.",
+                secondParagraph:
+                    "Tools such as linters and formatters help to keep the code consistent, which is essential when working in a team.",
+                link: "combines the best of both worlds",
+            },
+        },
+    },
+    navbar: {
+        about: "About",
+        skills: "Skills",
+        projects: "Projects",
+        contact: "Contact",
+        lightTheme: "Switch to light theme",
+        darkTheme: "Switch to dark theme",
+        lang: "English",
+        switchLang: "Switch Lang",
+    },
 } as const

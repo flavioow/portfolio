@@ -15,7 +15,7 @@ import {
 
 
 export default async function Home() {
-    const t = await getScopedI18n("#home")
+    const t = await getScopedI18n("home")
 
     return (
         <div>
@@ -137,8 +137,8 @@ export default async function Home() {
                                                 <div>
                                                     <p className="font-bold">{t("skills.where")}</p>
                                                     <h3 className="font-courier">{t("skills.responsive.title")}</h3>
-                                                    <p className="my-2">{t("skills.responsive.first-paragraph")}</p>
-                                                    <p className="my-2">{t("skills.responsive.second-paragraph")}</p>
+                                                    <p className="my-2">{t("skills.responsive.firstParagraph")}</p>
+                                                    <p className="my-2">{t("skills.responsive.secondParagraph")}</p>
                                                 </div>
 
                                                 <div className="flex justify-between flex-wrap items-end">
@@ -183,8 +183,8 @@ export default async function Home() {
                                                 <div>
                                                     <p className="font-bold">{t("skills.where")}</p>
                                                     <h3 className="font-courier">{t("skills.planning.title")}</h3>
-                                                    <p className="my-2">{t("skills.planning.first-paragraph")}</p>
-                                                    <p className="my-2">{t("skills.planning.second-paragraph")}</p>
+                                                    <p className="my-2">{t("skills.planning.firstParagraph")}</p>
+                                                    <p className="my-2">{t("skills.planning.secondParagraph")}</p>
                                                 </div>
 
                                                 <div className="flex justify-between flex-wrap items-end">
