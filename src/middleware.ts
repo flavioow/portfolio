@@ -1,11 +1,15 @@
-import createMiddleware from "next-intl/middleware"
+import { createI18nMiddleware } from 'next-international/middleware'
+import { NextRequest } from 'next/server'
 
-export default createMiddleware({
-    locales: ["en", "pt-br"],
-
+const I18nMiddleware = createI18nMiddleware({
+    locales: ["en", "br"],
     defaultLocale: "en",
 })
 
+export function middleware(req: NextRequest) {
+    return I18nMiddleware(req)
+}
+
 export const config = {
-    matcher: ["/", "/(pt-br|en)/:path*"],
+    matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|_headers).*)"],
 }

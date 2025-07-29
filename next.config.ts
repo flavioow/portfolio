@@ -1,10 +1,8 @@
-import type { NextConfig } from "next"
-import createNextIntlPlugin from "next-intl/plugin"
+// @ts-check
 
-const withNextIntl = createNextIntlPlugin()
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     /* config options here */
 }
 
-export default withNextIntl(nextConfig)
+module.exports = nextConfig

@@ -1,10 +1,10 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 import NavLinks from "@/components/Navbar/NavLinks"
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher"
-import { getTranslations } from "next-intl/server"
+import { getScopedI18n } from "@/locales/server"
 
 export default async function Navbar() {
-    const t = await getTranslations("Navbar")
+    const t = await getScopedI18n("navbar")
 
     const labels = {
         about: t("about"),
