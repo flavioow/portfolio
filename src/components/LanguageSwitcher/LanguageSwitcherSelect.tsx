@@ -8,6 +8,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import type { Locale } from "@/locales/config"
 
 type Props = {
     placeholderText: string
@@ -19,13 +20,13 @@ export default function LanguageSwitcherSelect({ placeholderText, switchLangText
 
     return (
         <div className="relative">
-            <Select onValueChange={(value) => pushLocale(value as "en" | "pt-br")}>
+            <Select onValueChange={(value) => pushLocale(value as Locale)}>
                 <SelectTrigger aria-label={switchLangText}>
                     <SelectValue placeholder={placeholderText} />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="br">Português</SelectItem>
+                    <SelectItem value="pt-br">Português</SelectItem>
                 </SelectContent>
             </Select>
         </div>
