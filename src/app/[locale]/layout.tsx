@@ -13,9 +13,7 @@ export const metadata: Metadata = {
     keywords: "portfolio, personal, flávio henrique, webdesigner",
     authors: [{ name: "Flávio Henrique", url: "https://github.com/flavioow" }],
     robots: "index, follow",
-    manifest: "manifest.webmanifest",
     applicationName: "Flavi.oow",
-    other: { name: "apple-mobile-web-app-title", content: "Flavi.oow" },
     icons: [
         {
             rel: "icon",
@@ -69,7 +67,32 @@ export default async function RootLayout(
     const { locale } = await params
 
     return (
-        <html lang="en">
+        <html lang={locale}>
+            <head>
+                <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
+                <link rel="preload" href="https://use.typekit.net/xyr3fuc.css" as="style" />
+                <link
+                    rel="stylesheet"
+                    href="https://use.typekit.net/xyr3fuc.css"
+                    media="print"
+                />
+                <noscript>
+                    <link rel="stylesheet" href="https://use.typekit.net/xyr3fuc.css" />
+                </noscript>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.addEventListener('load', () => {
+                                const link = document.createElement('link');
+                                link.rel = 'manifest';
+                                link.href = '/manifest.webmanifest';
+                                document.head.appendChild(link);
+                            });
+                        `,
+                    }}
+                />
+            </head>
             <body className={inter.className}>
                 <I18nProviderClient locale={locale}>
                     {children}

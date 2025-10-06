@@ -65,7 +65,7 @@ export default async function Home() {
                                 <p className="text-justify" itemProp="description">{t("about.description")}</p>
                                 <div className="flex gap-2 mt-4">
                                     <Link
-                                        href="https://flavioow.vercel.app/assets/cv.pdf"
+                                        href="/assets/cv.pdf"
                                         target="_blank"
                                         rel="noopener noreferrer me author"
                                         aria-label={t("about.cv")}
@@ -160,18 +160,17 @@ export default async function Home() {
 
                                             <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
                                                 <Image
-                                                    src="/assets/mobile-mokup-low.png"
-                                                    alt="Loading..."
-                                                    fill
-                                                    priority
-                                                    className="object-cover"
-                                                />
-                                                <Image
-                                                    src="/assets/mobile-mokup-high.png"
+                                                    src="/assets/mobile-mokup-high.webp"
                                                     alt="Website in mobile device example"
                                                     fill
                                                     loading="lazy"
-                                                    className="object-cover transition-opacity duration-1000 ease-in-out"
+                                                    className="object-cover transition-opacity duration-1000 ease-in-out high-image"
+                                                />
+                                                <Image
+                                                    src="/assets/mobile-mokup-low.avif"
+                                                    alt="Loading..."
+                                                    fill
+                                                    className="object-cover transition-opacity duration-700 low-image"
                                                 />
                                             </div>
                                         </div>
@@ -206,24 +205,65 @@ export default async function Home() {
 
                                             <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
                                                 <Image
-                                                    src="/assets/vscode-low.png"
-                                                    alt="Loading..."
-                                                    fill
-                                                    priority
-                                                    className="object-cover"
-                                                />
-                                                <Image
-                                                    src="/assets/vscode-high.png"
+                                                    src="/assets/vscode-high.webp"
                                                     alt="Website in mobile device example"
                                                     fill
                                                     loading="lazy"
-                                                    className="object-cover transition-opacity duration-1000 ease-in-out"
+                                                    className="object-cover transition-opacity duration-1000 ease-in-out high-image"
+                                                />
+                                                <Image
+                                                    src="/assets/vscode-low.avif"
+                                                    alt="Loading..."
+                                                    fill
+                                                    className="object-cover transition-opacity duration-700 low-image"
+                                                />
+                                            </div>
+                                        </div>
+                                    </CarouselItem>
+
+                                    <CarouselItem>
+                                        <div className=" flex lg:grid flex-col-reverse py-2 lg:py-4 lg:grid-cols-2 gap-2 lg:justify-between">
+                                            <div className="flex flex-col justify-between">
+                                                <div>
+                                                    <p className="font-bold">{t("skills.where")}</p>
+                                                    <h3 className="font-courier">{t("skills.timing.title")}</h3>
+                                                    <p className="my-2">{t("skills.timing.firstParagraph")}</p>
+                                                    <p className="my-2">{t("skills.timing.secondParagraph")}</p>
+                                                </div>
+
+                                                <div className="flex justify-between flex-wrap items-end">
+                                                    <div className="w-1/4 flex flex-col justify-center">
+                                                        <p className="text-primary text-2xl font-bold text-center">MadeIt</p>
+                                                        <a href="https://www.npmjs.com/package/madeit" target="_blank" rel="noopener noreferrer">
+                                                            <small className="text-primary underline text-center">{t("skills.timing.link")} ↗</small>
+                                                        </a>
+                                                    </div>
+                                                    <div className="flex gap-4">
+                                                        <Icon icon="devicon-plain:nodejs" className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out" aria-label="node" />
+                                                        <Icon icon="devicon-plain:typescript" className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out" aria-label="typescript" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
+                                                <Image
+                                                    src="/assets/madeit-high.webp"
+                                                    alt="Website in mobile device example"
+                                                    fill
+                                                    loading="lazy"
+                                                    className="object-cover transition-opacity duration-1000 ease-in-out high-image"
+                                                />
+                                                <Image
+                                                    src="/assets/madeit-low.avif"
+                                                    alt="Loading..."
+                                                    fill
+                                                    className="object-cover transition-opacity duration-700 low-image"
                                                 />
                                             </div>
                                         </div>
                                     </CarouselItem>
                                 </CarouselContent>
-
 
                                 <CarouselPrevious />
                                 <CarouselNext />

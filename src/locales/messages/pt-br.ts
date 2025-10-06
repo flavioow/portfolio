@@ -13,7 +13,7 @@ export default {
             responsive: {
                 title: "Desenvolvimento responsivo",
                 firstParagraph:
-                    "Num cenário dominado pelo tráfego mobile, possuir interfaces que se adaptam bem a qualquer tamanho de tela deixou de ser diferencial - é essencial.",
+                    "Num cenário dominado pelo tráfego mobile, possuir interfaces que se adaptam bem a qualquer tamanho de tela deixou de ser diferencial, é essencial.",
                 secondParagraph:
                     "Tenho experiência em desenvolver layouts que mantêm a estética e usabilidade tanto no mobile quanto no desktop, garantindo uma navegação fluida e acessível em qualquer dispositivo.",
                 link: "dos acessos à internet são via mobile",
@@ -25,6 +25,12 @@ export default {
                 secondParagraph:
                     "Ferramentas como linters e formatters ajudam a manter o código consistente, algo fundamental em trabalhos em equipe.",
                 link: "une o melhor de dois mundos",
+            },
+            timing: {
+                title: "Economizando tempo",
+                firstParagraph: "No cenário de criação de projetos, a produtividade é fundamental para um time de desenvolvimento. Por essa razão desenvolvi uma ferramenta que permite poupar muito tempo.",
+                secondParagraph: "Através da criação e reutilização de códigos boilerplate, não perco tempo com a inicialização, focando exclusivamente nas funcionalidades e design.",
+                link: "Disponível no NPM"
             },
         },
     },

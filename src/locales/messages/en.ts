@@ -26,6 +26,12 @@ export default {
                     "Tools such as linters and formatters help to keep the code consistent, which is essential when working in a team.",
                 link: "combines the best of both worlds",
             },
+            timing: {
+                title: "Saving time",
+                firstParagraph: "In the project creation scenario, productivity is essential for a development team. For this reason, I developed a tool that saves a lot of time.",
+                secondParagraph: "By creating and reusing boilerplate code, I don't waste time on initialization, focusing exclusively on functionality and design.",
+                link: "Avaliable on NPM"
+            },
         },
     },
     navbar: {
