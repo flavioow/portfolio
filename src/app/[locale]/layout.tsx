@@ -69,10 +69,12 @@ export default async function RootLayout(
     const { locale } = await params
 
     return (
-        <I18nProviderClient locale={locale}>
-            <html lang="en">
-                <body className={inter.className}>{children}</body>
-            </html>
-        </I18nProviderClient>
+        <html lang="en">
+            <body className={inter.className}>
+                <I18nProviderClient locale={locale}>
+                    {children}
+                </I18nProviderClient>
+            </body>
+        </html>
     )
 }

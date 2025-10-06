@@ -31,7 +31,7 @@ export default async function Home() {
                         <div className="absolute -z-1 lg:static aspect-3/4 lg:max-h-[600px] h-[80dvh] lg:h-[60dvh]">
                             <div className="relative w-full h-full">
                                 <Image
-                                    src="/assets/profile-low.png"
+                                    src="/assets/profile-low.avif"
                                     alt="Loading..."
                                     fill
                                     priority
@@ -40,7 +40,7 @@ export default async function Home() {
                                     className="object-cover"
                                 />
                                 <Image
-                                    src="/assets/profile-high.png"
+                                    src="/assets/profile-high.webp"
                                     alt="Profile picture"
                                     fill
                                     loading="lazy"
