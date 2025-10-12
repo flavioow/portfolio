@@ -1,6 +1,6 @@
-import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
-import NavLinks from "@/components/Navbar/NavLinks"
-import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher"
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher/LanguageSwitcher"
+import NavLinks from "@/components/layout/Navbar/NavLinks"
+import ThemeSwitcher from "@/components/layout/ThemeSwitcher/ThemeSwitcher"
 import { getScopedI18n } from "@/locales/server"
 
 export default async function Navbar() {
@@ -14,7 +14,7 @@ export default async function Navbar() {
     }
 
     return (
-        <header className="border-grid border-b bg-background/50 dark:bg-background/50 backdrop-blur-md w-full sticky top-0 z-20">
+        <header className="bg-background/75 dark:bg-background/50 backdrop-blur-md w-full sticky top-0 z-20">
             <div className="container-wrapper">
                 <div className="container flex justify-between lg:justify-center items-center relative h-14 w-full">
                     <NavLinks labels={labels} />

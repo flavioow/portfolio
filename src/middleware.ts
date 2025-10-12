@@ -1,5 +1,5 @@
-import { createI18nMiddleware } from 'next-international/middleware'
-import { NextRequest } from 'next/server'
+import { createI18nMiddleware } from "next-international/middleware"
+import type { NextRequest } from "next/server"
 
 const I18nMiddleware = createI18nMiddleware({
     locales: ["en", "br"],
@@ -11,5 +11,7 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|_headers).*)"],
+    matcher: [
+        "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|_headers).*)",
+    ],
 }

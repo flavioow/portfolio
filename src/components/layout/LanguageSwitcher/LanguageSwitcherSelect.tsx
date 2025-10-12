@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "@/navigation"
 import {
     Select,
     SelectContent,
@@ -9,13 +8,17 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import type { Locale } from "@/locales/config"
+import { useRouter } from "@/navigation"
 
 type Props = {
     placeholderText: string
     switchLangText: string
 }
 
-export default function LanguageSwitcherSelect({ placeholderText, switchLangText }: Props) {
+export default function LanguageSwitcherSelect({
+    placeholderText,
+    switchLangText,
+}: Props) {
     const { pushLocale } = useRouter()
 
     return (

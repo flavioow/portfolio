@@ -1,22 +1,21 @@
 import type { Metadata } from "next"
 import { EB_Garamond, Figtree } from "next/font/google"
-import "./globals.css"
-import "./layout.css"
-import "./fonts.css"
-import "./cursors.css"
-import { ReactElement } from "react"
+import "@/styles/globals.css"
+import "@/styles/layout.css"
+import "@/styles/fonts.css"
+import "@/styles/cursors.css"
 import { I18nProviderClient } from "@/locales/client"
+import type { ReactElement } from "react"
 
 const figtree = Figtree({
     subsets: ["latin"],
-    variable: "--font-primary"
+    variable: "--font-primary",
 })
 const eb_garamond = EB_Garamond({
     subsets: ["latin"],
     variable: "--font-secondary",
 })
-
-export const fonts = {
+const fonts = {
     primary: figtree,
     secondary: eb_garamond,
 }
@@ -72,18 +71,22 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RootLayout(
-    { params, children }: {
-        params: Promise<{ locale: string }>,
-        children: ReactElement
-    }
-) {
+export default async function RootLayout({
+    params,
+    children,
+}: {
+    params: Promise<{ locale: string }>
+    children: ReactElement
+}) {
     const { locale } = await params
 
     return (
         <I18nProviderClient locale={locale}>
             <html lang="en">
-                <body className={`${figtree.variable} ${eb_garamond.variable} ${figtree.className}`}>{children}</body>
+                <body
+                    className={`${figtree.variable} ${eb_garamond.variable} ${figtree.className}`}>
+                    {children}
+                </body>
             </html>
         </I18nProviderClient>
     )

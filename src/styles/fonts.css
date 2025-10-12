@@ -1,0 +1,43 @@
+@layer base {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: var(--font-secondary);
+        font-weight: 700;
+    }
+
+    html {
+        font-size: 100%;
+    }
+
+    h1 {
+        font-size: 4.210rem;
+    }
+
+    h2 {
+        font-size: 2.442rem;
+    }
+
+    h3 {
+        font-size: 1.954rem;
+    }
+
+    h4 {
+        font-size: 1.563rem;
+    }
+
+    h5 {
+        font-size: 1.250rem;
+    }
+
+    small {
+        font-size: 0.800rem;
+    }
+
+    ::selection {
+        background-color: color-mix(in oklch, var(--primary) 25%, transparent);
+    }
+}

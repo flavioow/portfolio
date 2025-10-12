@@ -28,9 +28,11 @@ export default {
             },
             timing: {
                 title: "Economizando tempo",
-                firstParagraph: "No cenário de criação de projetos, a produtividade é fundamental para um time de desenvolvimento. Por essa razão desenvolvi uma ferramenta que permite poupar muito tempo.",
-                secondParagraph: "Através da criação e reutilização de códigos boilerplate, não perco tempo com a inicialização, focando exclusivamente nas funcionalidades e design.",
-                link: "Disponível no NPM"
+                firstParagraph:
+                    "No cenário de criação de projetos, a produtividade é fundamental para um time de desenvolvimento. Por essa razão desenvolvi uma ferramenta que permite poupar muito tempo.",
+                secondParagraph:
+                    "Através da criação e reutilização de códigos boilerplate, não perco tempo com a inicialização, focando exclusivamente nas funcionalidades e design.",
+                link: "Disponível no NPM",
             },
         },
     },

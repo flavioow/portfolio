@@ -28,9 +28,11 @@ export default {
             },
             timing: {
                 title: "Saving time",
-                firstParagraph: "In the project creation scenario, productivity is essential for a development team. For this reason, I developed a tool that saves a lot of time.",
-                secondParagraph: "By creating and reusing boilerplate code, I don't waste time on initialization, focusing exclusively on functionality and design.",
-                link: "Avaliable on NPM"
+                firstParagraph:
+                    "In the project creation scenario, productivity is essential for a development team. For this reason, I developed a tool that saves a lot of time.",
+                secondParagraph:
+                    "By creating and reusing boilerplate code, I don't waste time on initialization, focusing exclusively on functionality and design.",
+                link: "Avaliable on NPM",
             },
         },
     },
