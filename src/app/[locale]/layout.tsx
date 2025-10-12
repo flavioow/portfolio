@@ -1,11 +1,25 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { EB_Garamond, Figtree } from "next/font/google"
 import "./globals.css"
+import "./layout.css"
+import "./fonts.css"
 import "./cursors.css"
 import { ReactElement } from "react"
 import { I18nProviderClient } from "@/locales/client"
 
-const inter = Inter({ subsets: ["latin"] })
+const figtree = Figtree({
+    subsets: ["latin"],
+    variable: "--font-primary"
+})
+const eb_garamond = EB_Garamond({
+    subsets: ["latin"],
+    variable: "--font-secondary",
+})
+
+export const fonts = {
+    primary: figtree,
+    secondary: eb_garamond,
+}
 
 export const metadata: Metadata = {
     title: "Flavi.oow",
@@ -67,37 +81,10 @@ export default async function RootLayout(
     const { locale } = await params
 
     return (
-        <html lang={locale}>
-            <head>
-                <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
-                <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
-                <link rel="preload" href="https://use.typekit.net/xyr3fuc.css" as="style" />
-                <link
-                    rel="stylesheet"
-                    href="https://use.typekit.net/xyr3fuc.css"
-                    media="print"
-                />
-                <noscript>
-                    <link rel="stylesheet" href="https://use.typekit.net/xyr3fuc.css" />
-                </noscript>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            window.addEventListener('load', () => {
-                                const link = document.createElement('link');
-                                link.rel = 'manifest';
-                                link.href = '/manifest.webmanifest';
-                                document.head.appendChild(link);
-                            });
-                        `,
-                    }}
-                />
-            </head>
-            <body className={inter.className}>
-                <I18nProviderClient locale={locale}>
-                    {children}
-                </I18nProviderClient>
-            </body>
-        </html>
+        <I18nProviderClient locale={locale}>
+            <html lang="en">
+                <body className={`${figtree.variable} ${eb_garamond.variable} ${figtree.className}`}>{children}</body>
+            </html>
+        </I18nProviderClient>
     )
 }

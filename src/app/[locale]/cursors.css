@@ -1,175 +1,101 @@
-html,
-body,
-div,
-form {
-    cursor: url("/cursors/default.svg"), auto;
-}
+@layer base {
+    .cursor-default {
+        cursor: url("/cursors/default.svg"), auto;
+    }
 
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-dl,
-dt,
-code,
-blockquote,
-pre,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strong,
-sub,
-sup,
-fieldset,
-details,
-output,
-ruby,
-menu,
-time,
-mark,
-summary,
-label,
-legend,
-hgroup,
-::selection {
-    cursor: url("/cursors/textcursor.svg"), text;
-}
+    .cursor-text {
+        cursor: url("/cursors/textcursor.svg"), text;
+    }
 
-a,
-button,
-input[type="button"],
-input[type="submit"],
-input[type="checkbox"],
-input[type="color"],
-input[type="date"],
-input[type="datetime-local"],
-input[type="file"],
-input[type="month"],
-input[type="radio"],
-input[type="reset"],
-input[type="time"],
-input[type="week"],
-select {
-    * {
+    .cursor-pointer {
         cursor: url("/cursors/handpointing.svg"), pointer;
     }
 
-    cursor: url("/cursors/handpointing.svg"), pointer;
-}
+    .cursor-grab {
+        cursor: url("/cursors/handopen.svg"), grab;
+    }
 
-img,
-figure,
-picture {
-    cursor: url("/cursors/handopen.svg"), grab;
-}
+    .cursor-grabbing {
+        cursor: url("/cursors/handgrabbing.svg"), grabbing;
+    }
 
-img:active,
-figure:active,
-picture:active {
-    cursor: url("/cursors/handgrabbing.svg"), grabbing;
-}
+    .cursor-cell {
+        cursor: url("/cursors/cell.svg"), cell;
+    }
 
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-    cursor: url("/cursors/cell.svg"), cell;
-}
+    .cursor-help {
+        cursor: url("/cursors/help.svg"), help;
+    }
 
-abbr,
-acronym,
-[title] {
-    cursor: url("/cursors/help.svg"), help;
-}
+    .cursor-wait {
+        cursor: url("/cursors/busy.svg"), wait;
+    }
 
-body.waiting,
-.waiting {
-    cursor: url("/cursors/busy.svg"), wait;
-}
+    .cursor-zoom-in {
+        cursor: url("/cursors/zoomin.svg"), zoom-in;
+    }
 
-.zoom-in {
-    cursor: url("/cursors/zoomin.svg"), zoom-in;
-}
+    .cursor-zoom-out {
+        cursor: url("/cursors/zoomout.svg"), zoom-out;
+    }
 
-.zoom-out {
-    cursor: url("/cursors/zoomout.svg"), zoom-out;
-}
+    .cursor-n-resize {
+        cursor: url("/cursors/resizenorth.svg"), n-resize;
+    }
 
-.resize-north {
-    cursor: url("/cursors/resizenorth.svg"), n-resize;
-}
+    .cursor-s-resize {
+        cursor: url("/cursors/resizesouth.svg"), s-resize;
+    }
 
-.resize-south {
-    cursor: url("/cursors/resizesouth.svg"), s-resize;
-}
+    .cursor-e-resize {
+        cursor: url("/cursors/resizeeast.svg"), e-resize;
+    }
 
-.resize-east {
-    cursor: url("/cursors/resizeeast.svg"), e-resize;
-}
+    .cursor-w-resize {
+        cursor: url("/cursors/resizewest.svg"), w-resize;
+    }
 
-.resize-west {
-    cursor: url("/cursors/resizewest.svg"), w-resize;
-}
+    .cursor-ns-resize {
+        cursor: url("/cursors/resizenorthsouth.svg"), ns-resize;
+    }
 
-.resize-northsouth {
-    cursor: url("/cursors/resizenorthsouth.svg"), ns-resize;
-}
+    .cursor-ew-resize {
+        cursor: url("/cursors/resizeleftright.svg"), ew-resize;
+    }
 
-.resize-leftright {
-    cursor: url("/cursors/resizeleftright.svg"), ew-resize;
-}
+    .cursor-nesw-resize {
+        cursor: url("/cursors/resizenortheastsouthwest.svg"), nesw-resize;
+    }
 
-.resize-northeast-southwest {
-    cursor: url("/cursors/resizenortheastsouthwest.svg"), nesw-resize;
-}
+    .cursor-nwse-resize {
+        cursor: url("/cursors/resizenorthwestsoutheast.svg"), nwse-resize;
+    }
 
-.resize-northwest-southeast {
-    cursor: url("/cursors/resizenorthwestsoutheast.svg"), nwse-resize;
-}
+    .cursor-move {
+        cursor: url("/cursors/move.svg"), move;
+    }
 
-[draggable="true"],
-.draggable {
-    cursor: url("/cursors/move.svg"), move;
-}
+    .cursor-not-allowed {
+        cursor: url("/cursors/notallowed.svg"), not-allowed;
+    }
 
-.not-allowed,
-fieldset[disabled],
-input[disabled] {
-    cursor: url("/cursors/notallowed.svg"), not-allowed;
-}
+    .cursor-alias {
+        cursor: url("/cursors/makealias.svg"), alias;
+    }
 
-.add {
-    cursor: url("/cursors/makealias.svg"), alias;
-}
+    .cursor-context-menu {
+        cursor: url("/cursors/contextualmenu.svg"), context-menu;
+    }
 
-.context-menu {
-    cursor: url("/cursors/contextualmenu.svg"), context-menu;
-}
+    .cursor-none {
+        cursor: url("/cursors/poof.svg"), none;
+    }
 
-.delete {
-    cursor: url("/cursors/poof.svg"), none;
-}
+    .cursor-crosshair {
+        cursor: url("/cursors/cross.svg"), crosshair;
+    }
 
-.precision {
-    cursor: url("/cursors/cross.svg"), crosshair;
-}
-
-.loading {
-    cursor: url("/cursors/beachball.svg"), wait;
-}
-
-.copy {
-    cursor: url("/cursors/copy.svg"), copy;
+    .cursor-copy {
+        cursor: url("/cursors/copy.svg"), copy;
+    }
 }

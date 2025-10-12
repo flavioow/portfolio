@@ -54,7 +54,7 @@ export default async function Home() {
 
                         <div className="flex flex-col justify-end lg:justify-center h-full">
                             <div className="flex flex-col justify-end lg:justify-center p-4  mb-8 lg:m-0 rounded-lg bg-gray-50/75 dark:bg-gray-950/75 backdrop-blur-xs border border-dashed lg:border-none">
-                                <h1 className="font-courier">
+                                <h1 className="font-secondary">
                                     <span className="sr-only" itemProp="name">Flávio Henrique Perusin de Souza</span>
                                     <span aria-hidden="true">
                                         Flávi.
