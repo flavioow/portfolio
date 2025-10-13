@@ -6,5 +6,10 @@ export default async function LanguageSwitcher() {
     const placeholderText = t("lang")
     const switchLangText = t("switchLang")
 
-    return <LanguageSwitcherSelect placeholderText={placeholderText} switchLangText={switchLangText} />
+    return (
+        <LanguageSwitcherSelect
+            placeholderText={placeholderText}
+            switchLangText={switchLangText}
+        />
+    )
 }

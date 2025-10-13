@@ -1,0 +1,102 @@
+@layer base {
+
+    .cursor-default {
+        cursor: url("/cursors/default.svg"), auto;
+    }
+
+    .cursor-text {
+        cursor: url("/cursors/textcursor.svg"), text;
+    }
+
+    .cursor-pointer {
+        cursor: url("/cursors/handpointing.svg"), pointer;
+    }
+
+    .cursor-grab {
+        cursor: url("/cursors/handopen.svg"), grab;
+    }
+
+    .cursor-grabbing {
+        cursor: url("/cursors/handgrabbing.svg"), grabbing;
+    }
+
+    .cursor-cell {
+        cursor: url("/cursors/cell.svg"), cell;
+    }
+
+    .cursor-help {
+        cursor: url("/cursors/help.svg"), help;
+    }
+
+    .cursor-wait {
+        cursor: url("/cursors/busy.svg"), wait;
+    }
+
+    .cursor-zoom-in {
+        cursor: url("/cursors/zoomin.svg"), zoom-in;
+    }
+
+    .cursor-zoom-out {
+        cursor: url("/cursors/zoomout.svg"), zoom-out;
+    }
+
+    .cursor-n-resize {
+        cursor: url("/cursors/resizenorth.svg"), n-resize;
+    }
+
+    .cursor-s-resize {
+        cursor: url("/cursors/resizesouth.svg"), s-resize;
+    }
+
+    .cursor-e-resize {
+        cursor: url("/cursors/resizeeast.svg"), e-resize;
+    }
+
+    .cursor-w-resize {
+        cursor: url("/cursors/resizewest.svg"), w-resize;
+    }
+
+    .cursor-ns-resize {
+        cursor: url("/cursors/resizenorthsouth.svg"), ns-resize;
+    }
+
+    .cursor-ew-resize {
+        cursor: url("/cursors/resizeleftright.svg"), ew-resize;
+    }
+
+    .cursor-nesw-resize {
+        cursor: url("/cursors/resizenortheastsouthwest.svg"), nesw-resize;
+    }
+
+    .cursor-nwse-resize {
+        cursor: url("/cursors/resizenorthwestsoutheast.svg"), nwse-resize;
+    }
+
+    .cursor-move {
+        cursor: url("/cursors/move.svg"), move;
+    }
+
+    .cursor-not-allowed {
+        cursor: url("/cursors/notallowed.svg"), not-allowed;
+    }
+
+    .cursor-alias {
+        cursor: url("/cursors/makealias.svg"), alias;
+    }
+
+    .cursor-context-menu {
+        cursor: url("/cursors/contextualmenu.svg"), context-menu;
+    }
+
+    .cursor-none {
+        cursor: url("/cursors/poof.svg"), none;
+    }
+
+    .cursor-crosshair {
+        cursor: url("/cursors/cross.svg"), crosshair;
+    }
+
+    .cursor-copy {
+        cursor: url("/cursors/copy.svg"), copy;
+    }
+}

@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --color-red-*: initial;
+    --color-orange-*: initial;
+    --color-amber-*: initial;
+    --color-yellow-*: initial;
+    --color-lime-*: initial;
+    --color-green-*: initial;
+    --color-emerald-*: initial;
+    --color-teal-*: initial;
+    --color-cyan-*: initial;
+    --color-sky-*: initial;
+    --color-blue-*: initial;
+    --color-indigo-*: initial;
+    --color-violet-*: initial;
+    --color-purple-*: initial;
+    --color-fuchsia-*: initial;
+    --color-pink-*: initial;
+    --color-rose-*: initial;
+
+    --color-slate-*: initial;
+    --color-gray-*: initial;
+    --color-zinc-*: initial;
+    --color-neutral-*: initial;
+
+    --color-gray-50: var(--color-stone-50);
+    --color-gray-100: var(--color-stone-100);
+    --color-gray-200: var(--color-stone-200);
+    --color-gray-300: var(--color-stone-300);
+    --color-gray-400: var(--color-stone-400);
+    --color-gray-500: var(--color-stone-500);
+    --color-gray-600: var(--color-stone-600);
+    --color-gray-700: var(--color-stone-700);
+    --color-gray-800: var(--color-stone-800);
+    --color-gray-900: var(--color-stone-900);
+    --color-gray-950: var(--color-stone-950);
+
+    --animate-infinite-scroll: infiniteScroll 60s linear infinite;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@layer utilities {
+
+    @keyframes infiniteScroll {
+        from {
+            transform: translateX(100vw);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    .high-image {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .high-image[src] {
+        opacity: 1;
+    }
+
+    .high-image[src]+.low-image {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+}
+
+/*
+  ---break---
+*/
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+    --font-serif: var(--font-serif);
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    --shadow-2xs: var(--shadow-2xs);
+    --shadow-xs: var(--shadow-xs);
+    --shadow-sm: var(--shadow-sm);
+    --shadow: var(--shadow);
+    --shadow-md: var(--shadow-md);
+    --shadow-lg: var(--shadow-lg);
+    --shadow-xl: var(--shadow-xl);
+    --shadow-2xl: var(--shadow-2xl);
+}
+
+:root {
+    --background: oklch(0.9952 0.0235 106.8192);
+    --foreground: oklch(0.2178 0 0);
+    --card: oklch(0.9952 0.0235 106.8192);
+    --card-foreground: oklch(0.2178 0 0);
+    --popover: oklch(0.9952 0.0235 106.8192);
+    --popover-foreground: oklch(0.2178 0 0);
+    --primary: oklch(0.8249 0.1125 70.7191);
+    --primary-foreground: oklch(0.3045 0.0210 95.6725);
+    --secondary: oklch(0.5025 0.0779 140.4409);
+    --secondary-foreground: oklch(1.0000 0 0);
+    --muted: oklch(0.9551 0 0);
+    --muted-foreground: oklch(0.5103 0 0);
+    --accent: oklch(0.9551 0 0);
+    --accent-foreground: oklch(0.2178 0 0);
+    --destructive: oklch(0.6368 0.2078 25.3313);
+    --destructive-foreground: oklch(1.0000 0 0);
+    --border: oklch(0.9067 0 0);
+    --input: oklch(0.9067 0 0);
+    --ring: oklch(0.5020 0.1010 69.9168);
+    --chart-1: oklch(0.5020 0.1010 69.9168);
+    --chart-2: oklch(0.5025 0.0779 140.4409);
+    --chart-3: oklch(0.5757 0.1062 66.1119);
+    --chart-4: oklch(0.5883 0.0999 138.9799);
+    --chart-5: oklch(0.7280 0.1014 68.4652);
+    --sidebar: oklch(0 0 0);
+    --sidebar-foreground: oklch(1.0000 0 0);
+    --sidebar-primary: oklch(0.5020 0.1010 69.9168);
+    --sidebar-primary-foreground: oklch(0.9819 0.0045 34.3097);
+    --sidebar-accent: oklch(0.2931 0 0);
+    --sidebar-accent-foreground: oklch(1.0000 0 0);
+    --sidebar-border: oklch(0.3867 0 0);
+    --sidebar-ring: oklch(0.5020 0.1010 69.9168);
+    --font-sans: Figtree, sans-serif;
+    --font-serif: EB Garamond, serif;
+    --font-mono: JetBrains Mono, ui-monospace, monospace;
+    --radius: 0.8rem;
+    --shadow-x: 0rem;
+    --shadow-y: 0rem;
+    --shadow-blur: 0rem;
+    --shadow-spread: 0rem;
+    --shadow-opacity: 0;
+    --shadow-color: #000000;
+    --shadow-2xs: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+    --shadow-xs: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+    --shadow-sm: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 1px 2px -1px hsl(0 0% 0% / 0.00);
+    --shadow: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 1px 2px -1px hsl(0 0% 0% / 0.00);
+    --shadow-md: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 2px 4px -1px hsl(0 0% 0% / 0.00);
+    --shadow-lg: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 4px 6px -1px hsl(0 0% 0% / 0.00);
+    --shadow-xl: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 8px 10px -1px hsl(0 0% 0% / 0.00);
+    --shadow-2xl: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+    --tracking-normal: 0em;
+    --spacing: 0.28rem;
+}
+
+.dark {
+    --background: oklch(0.2178 0 0);
+    --foreground: oklch(0.9952 0.0235 106.8192);
+    --card: oklch(0.2178 0 0);
+    --card-foreground: oklch(0.9952 0.0235 106.8192);
+    --popover: oklch(0.2178 0 0);
+    --popover-foreground: oklch(0.9952 0.0235 106.8192);
+    --primary: oklch(0.5020 0.1010 69.9168);
+    --primary-foreground: oklch(0.9819 0.0045 34.3097);
+    --secondary: oklch(0.3892 0.0524 180.4151);
+    --secondary-foreground: oklch(0.9952 0.0235 106.8192);
+    --muted: oklch(0.2931 0 0);
+    --muted-foreground: oklch(0.6830 0 0);
+    --accent: oklch(0.2931 0 0);
+    --accent-foreground: oklch(0.9067 0 0);
+    --destructive: oklch(0.6368 0.2078 25.3313);
+    --destructive-foreground: oklch(1.0000 0 0);
+    --border: oklch(0.3211 0 0);
+    --input: oklch(0.2931 0 0);
+    --ring: oklch(0.5020 0.1010 69.9168);
+    --chart-1: oklch(0.5020 0.1010 69.9168);
+    --chart-2: oklch(0.5025 0.0779 140.4409);
+    --chart-3: oklch(0.5757 0.1062 66.1119);
+    --chart-4: oklch(0.5883 0.0999 138.9799);
+    --chart-5: oklch(0.7280 0.1014 68.4652);
+    --sidebar: oklch(0 0 0);
+    --sidebar-foreground: oklch(0.9067 0 0);
+    --sidebar-primary: oklch(0.5020 0.1010 69.9168);
+    --sidebar-primary-foreground: oklch(0.9819 0.0045 34.3097);
+    --sidebar-accent: oklch(0.2393 0 0);
+    --sidebar-accent-foreground: oklch(0.9067 0 0);
+    --sidebar-border: oklch(0.3867 0 0);
+    --sidebar-ring: oklch(0.5020 0.1010 69.9168);
+    --font-sans: Figtree, sans-serif;
+    --font-serif: EB Garamond, serif;
+    --font-mono: JetBrains Mono, ui-monospace, monospace;
+    --radius: 0.8rem;
+    --shadow-x: 0rem;
+    --shadow-y: 0rem;
+    --shadow-blur: 0rem;
+    --shadow-spread: 0rem;
+    --shadow-opacity: 0;
+    --shadow-color: #000000;
+    --shadow-2xs: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+    --shadow-xs: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+    --shadow-sm: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 1px 2px -1px hsl(0 0% 0% / 0.00);
+    --shadow: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 1px 2px -1px hsl(0 0% 0% / 0.00);
+    --shadow-md: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 2px 4px -1px hsl(0 0% 0% / 0.00);
+    --shadow-lg: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 4px 6px -1px hsl(0 0% 0% / 0.00);
+    --shadow-xl: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00), 0rem 8px 10px -1px hsl(0 0% 0% / 0.00);
+    --shadow-2xl: 0rem 0rem 0rem 0rem hsl(0 0% 0% / 0.00);
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        scroll-behavior: smooth;
+        font-weight: 400;
+        scroll-padding-top: 3.5rem;
+    }
+
+    button,
+    input,
+    img,
+    svg {
+        user-select: none;
+    }
+
+    .border-grid {
+        border-style: dashed !important;
+        border-color: color-mix(in oklch, var(--border) 50%, transparent);
+    }
+
+    .border-grid:is(.dark *) {
+        border-color: var(--border);
+    }
+}

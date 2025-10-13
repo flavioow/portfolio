@@ -1,14 +1,24 @@
 "use client"
 
-import { usePathname as useNextPathname, useRouter as useNextRouter } from "next/navigation"
+import {
+    type Locale,
+    type LocaleParam,
+    keyToLocale,
+    localeToKey,
+    locales,
+} from "@/locales/config"
+import {
+    usePathname as useNextPathname,
+    useRouter as useNextRouter,
+} from "next/navigation"
 import { useCallback } from "react"
-import { locales, keyToLocale, localeToKey, Locale, LocaleParam } from "@/locales/config"
 
 export function useLocaleFromPathname(pathname: string): LocaleParam | null {
     const segments = pathname.split("/")
     const rawKey = segments[1] as LocaleParam
 
-    if (rawKey in keyToLocale) return keyToLocale[rawKey as keyof typeof keyToLocale]
+    if (rawKey in keyToLocale)
+        return keyToLocale[rawKey as keyof typeof keyToLocale]
 
     return null
 }
@@ -29,7 +39,7 @@ export function useRouter() {
             const newPath = segments.join("/") || "/"
             router.push(newPath)
         },
-        [pathname, router]
+        [pathname, router],
     )
 
     return { ...router, pushLocale }

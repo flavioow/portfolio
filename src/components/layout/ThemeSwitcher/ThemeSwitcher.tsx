@@ -6,5 +6,10 @@ export default async function ThemeSwitcher() {
     const lightThemeText = t("lightTheme")
     const darkThemeText = t("darkTheme")
 
-    return <ThemeSwitcherButton lightThemeText={lightThemeText} darkThemeText={darkThemeText} />
+    return (
+        <ThemeSwitcherButton
+            lightThemeText={lightThemeText}
+            darkThemeText={darkThemeText}
+        />
+    )
 }
