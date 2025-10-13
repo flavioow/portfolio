@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import TextPressure from "@/components/ui/TextPressure"
 import { getScopedI18n } from "@/locales/server"
 import { ArrowDown, Code2, Download, Github, Linkedin, Mail, Printer } from "lucide-react"
 import Image from "next/image"
@@ -96,7 +95,7 @@ export async function Hero() {
         //     />
         // </section>
         <div
-            className="min-h-[85dvh]"
+            className="min-h-[80dvh]"
             id="about"
             itemScope
             itemType="http://schema.org/Person">
@@ -106,24 +105,29 @@ export async function Hero() {
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <Badge variant="secondary" className="font-mono text-xs">
-                            DESENVOLVEDOR • DESIGNER
+                            {t("about.slogan")}
                         </Badge>
                         <h1 className="text-5xl lg:text-7xl font-serif font-light tracking-tight text-balance">
-                            Crio experiências
-                            <span className="block mt-2 font-normal">digitais únicas</span>
+                            {t("about.title")}
                         </h1>
                     </div>
 
                     <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                        Sou <strong>Flávio Henrique</strong>, desenvolvedor full-stack especializado em criar interfaces elegantes e funcionais. Transformo ideias em
-                        produtos digitais que as pessoas adoram usar.
+                        {t("about.description")}
                     </p>
 
                     <div className="flex flex-wrap gap-3 pt-4">
-                        <Button size="lg" className="gap-2">
-                            Explore meu portfólio
-                            <ArrowDown className="h-4 w-4" />
-                        </Button>
+                        <Link
+                            href="https://github.com/flavioow"
+                            target="_blank"
+                            rel="noopener noreferrer me author"
+                            aria-label="GitHub"
+                            itemProp="sameAs">
+                            <Button size="lg" className="gap-2">
+                                {t("about.github")}
+                                <Github className="h-4 w-4" />
+                            </Button>
+                        </Link>
                         <Link
                             href="/assets/cv.pdf"
                             target="_blank"
@@ -132,29 +136,40 @@ export async function Hero() {
                             itemProp="sameAs">
                             <Button size="lg" variant="outline" className="gap-2 bg-transparent cursor-pointer">
                                 <Printer className="h-4 w-4" />
-                                Ver meu currículo
+                                {t("about.cv")}
                             </Button>
                         </Link>
                     </div>
                 </div>
 
                 {/* Right */}
-                <div className="relative space-y-8">
+                <div className="space-y-8 flex justify-end">
+                    <div className="-z-1 lg:static aspect-3/4 lg:max-h-[600px] h-[80dvh] lg:h-[60dvh]">
+                        <div className="relative w-full h-full scale-x-[-1]">
+                            <Image
+                                src="/assets/profile-low.avif"
+                                alt="Loading..."
+                                fill
+                                priority
+                                fetchPriority="high"
+                                aria-hidden
+                                className="object-cover"
+                            />
+                            <Image
+                                src="/assets/profile-high.webp"
+                                alt="Profile picture"
+                                fill
+                                loading="lazy"
+                                decoding="async"
+                                className="object-cover transition-opacity duration-1000 ease-in-out"
+                                fetchPriority="high"
+                                itemProp="image"
+                            />
+                        </div>
+                    </div>
 
                     {/* Flavi.oow */}
-                    <div className="h-fit opacity-50 pointer-events-none absolute bottom-0 left-0 w-full">
-                        <TextPressure
-                            text="Flavi.oow"
-                            flex={true}
-                            alpha={false}
-                            stroke={false}
-                            width={true}
-                            weight={true}
-                            italic={true}
-                            textColor="var(--color-muted-foreground)"
-                            minFontSize={36}
-                            className="w-full"
-                        />
+                    <div className="h-fit pointer-events-none absolute bottom-8 left-0 w-full bg-background/75 backdrop-blur-md m-2 px-8 rounded-lg">
                     </div>
                 </div>
 

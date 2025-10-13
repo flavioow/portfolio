@@ -1,6 +1,7 @@
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher/LanguageSwitcher"
 import NavLinks from "@/components/layout/Navbar/NavLinks"
 import ThemeSwitcher from "@/components/layout/ThemeSwitcher/ThemeSwitcher"
+import { Button } from "@/components/ui/button"
 import { getScopedI18n } from "@/locales/server"
 
 export default async function Navbar() {
@@ -14,14 +15,18 @@ export default async function Navbar() {
     }
 
     return (
-        <header className="bg-background/75 dark:bg-background/50 backdrop-blur-md w-full sticky top-0 z-20">
-            <div className="container-wrapper">
-                <div className="container flex justify-between lg:justify-center items-center relative h-14 w-full">
-                    <NavLinks labels={labels} />
-                    <div className="static lg:absolute lg:right-0 flex gap-2 lg:mr-8">
-                        <LanguageSwitcher />
-                        <ThemeSwitcher />
-                    </div>
+        <header className="container-wrapper">
+            <div className="grid grid-cols-3 items-center py-4">
+                <div className="flex items-center justify-start gap-2">
+                    <div className="h-8 w-8 rounded-full bg-primary" />
+                    <span className="font-mono text-sm font-medium">portfolio</span>
+                </div>
+
+                <NavLinks labels={labels} />
+
+                <div className="flex items-center justify-end">
+                    <LanguageSwitcher />
+                    <ThemeSwitcher />
                 </div>
             </div>
         </header>

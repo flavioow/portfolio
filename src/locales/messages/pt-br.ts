@@ -1,10 +1,12 @@
 export default {
     home: {
         about: {
-            slogan: "Front-end Júnior & Designer",
+            slogan: "DESENVOLVEDOR • DESIGNER",
+            title: "Crio experiências digitais únicas",
             description:
-                "Sou Flávio Henrique, designer e desenvolvedor apaixonado em criar interfaces elegantes, intuitivas e eficientes. Com experiência em front-end, busco transformar ideias em experiências visuais marcantes.",
-            cv: "Currículo",
+                "Sou Flávio Henrique, desenvolvedor front-end especializado em criar interfaces elegantes e funcionais. Transformo ideias em produtos digitais que as pessoas adoram usar.",
+            github: "Explore meu GitHub",
+            cv: "Ver meu currículo",
         },
         skills: {
             subtitle: "Agora que você já me conhece, dê uma olhada nas minhas",
@@ -37,7 +39,7 @@ export default {
         },
     },
     navbar: {
-        about: "Sobre mim",
+        about: "Sobre",
         skills: "Habilidades",
         projects: "Projetos",
         contact: "Contato",

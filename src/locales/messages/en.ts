@@ -1,10 +1,12 @@
 export default {
     home: {
         about: {
-            slogan: "Junior Front-end & Designer",
+            slogan: "DEVELOPER • DESIGNER",
+            title: "I create unique digital experiences",
             description:
-                "I'm Flávio Henrique, a designer and developer with a passion for creating elegant, intuitive and efficient interfaces. With front-end experience, I strive to transform ideas into striking visual experiences.",
-            cv: "CV",
+                "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+            github: "Explore my GitHub",
+            cv: "View my resume",
         },
         skills: {
             subtitle: "Now that you know me, take a look at my",
