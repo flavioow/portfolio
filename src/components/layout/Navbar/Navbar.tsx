@@ -1,8 +1,9 @@
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher/LanguageSwitcher"
 import NavLinks from "@/components/layout/Navbar/NavLinks"
 import ThemeSwitcher from "@/components/layout/ThemeSwitcher/ThemeSwitcher"
-import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/layout/Logo/Logo"
 import { getScopedI18n } from "@/locales/server"
+import Link from "next/link"
 
 export default async function Navbar() {
     const t = await getScopedI18n("navbar")
@@ -15,16 +16,17 @@ export default async function Navbar() {
     }
 
     return (
-        <header className="container-wrapper">
-            <div className="grid grid-cols-3 items-center py-4">
+        <header className="container-wrapper sticky top-0 bg-background/50 backdrop-blur-lg z-10">
+            <div className="flex justify-between lg:grid grid-cols-3 items-center py-4">
                 <div className="flex items-center justify-start gap-2">
-                    <div className="h-8 w-8 rounded-full bg-primary" />
-                    <span className="font-mono text-sm font-medium">portfolio</span>
+                    <Link href="/">
+                        <Logo />
+                    </Link>
                 </div>
 
                 <NavLinks labels={labels} />
 
-                <div className="flex items-center justify-end">
+                <div className="flex items-center justify-end gap-2">
                     <LanguageSwitcher />
                     <ThemeSwitcher />
                 </div>

@@ -95,12 +95,12 @@ export async function Hero() {
         //     />
         // </section>
         <div
-            className="min-h-[80dvh]"
+            className="min-h-[85dvh]"
             id="about"
             itemScope
             itemType="http://schema.org/Person">
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-full">
+            <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-full">
                 {/* Left content */}
                 <div className="space-y-8">
                     <div className="space-y-4">
@@ -143,7 +143,7 @@ export async function Hero() {
                 </div>
 
                 {/* Right */}
-                <div className="space-y-8 flex justify-end">
+                <div className="space-y-8 lg:flex justify-end hidden">
                     <div className="-z-1 lg:static aspect-3/4 lg:max-h-[600px] h-[80dvh] lg:h-[60dvh]">
                         <div className="relative w-full h-full scale-x-[-1]">
                             <Image
@@ -167,9 +167,12 @@ export async function Hero() {
                             />
                         </div>
                     </div>
+                </div>
 
-                    {/* Flavi.oow */}
-                    <div className="h-fit pointer-events-none absolute bottom-8 left-0 w-full bg-background/75 backdrop-blur-md m-2 px-8 rounded-lg">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                        <span className="text-xs font-mono">SCROLL</span>
+                        <ArrowDown className="h-4 w-4" />
                     </div>
                 </div>
 
