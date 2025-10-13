@@ -169,7 +169,7 @@ export async function Hero() {
                     </div>
                 </div>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce select-none pointer-events-none">
                     <div className="flex flex-col items-center gap-2 text-muted-foreground">
                         <span className="text-xs font-mono">SCROLL</span>
                         <ArrowDown className="h-4 w-4" />

@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar/Navbar"
 import { Hero } from "./hero"
 import { Skills } from "./skills"
 import GradualBlurMemo from "@/components/ui/GradualBlur"
+import { TechStack } from "./techstack"
 
 export default function Home() {
     return (
@@ -10,6 +11,7 @@ export default function Home() {
                 <Navbar />
                 <div className="container-wrapper">
                     <Hero />
+                    <TechStack />
                     <Skills />
                 </div>
             </div>

@@ -16,7 +16,7 @@ export default async function Navbar() {
     }
 
     return (
-        <header className="container-wrapper sticky top-0 bg-background/50 backdrop-blur-lg z-10">
+        <header className="container-wrapper sticky top-0 bg-background/50 backdrop-blur-lg z-50">
             <div className="flex justify-between lg:grid grid-cols-3 items-center py-4">
                 <div className="flex items-center justify-start gap-2">
                     <Link href="/">

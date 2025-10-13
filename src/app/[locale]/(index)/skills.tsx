@@ -1,353 +1,118 @@
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel"
 import { getScopedI18n } from "@/locales/server"
 import { Icon } from "@iconify/react"
-import Image from "next/image"
+import Link from "next/link"
+import { ExternalLink } from "lucide-react"
+
+const techIcons: Record<string, string> = {
+    HTML: "devicon-plain:html5-wordmark",
+    CSS: "devicon-plain:css3-wordmark",
+    JavaScript: "devicon-plain:javascript",
+    TypeScript: "devicon-plain:typescript",
+    Figma: "devicon-plain:figma",
+    Node: "devicon-plain:nodejs",
+    "Node.js": "devicon-plain:nodejs",
+    Next: "devicon-plain:nextjs",
+    "Next.js": "devicon-plain:nextjs",
+    TailwindCSS: "file-icons:tailwind",
+    "Biome.js": "devicon-plain:biome-wordmark",
+    Python: "devicon-plain:python",
+    Git: "devicon-plain:git",
+    GitHub: "devicon-plain:githubcodespaces",
+    Bun: "devicon-plain:bun",
+    MySQL: "devicon-plain:mysql-wordmark",
+}
+
+const links = {
+    responsive: "https://datareportal.com/reports/digital-2024-global-overview-report",
+    planning: "https://vinniciusgomes.dev/articles/biome-js-um-novo-lint-e-formatter-para-javascript-e-typescript",
+    timing: "https://www.npmjs.com/package/madeit",
+}
 
 export async function Skills() {
     const t = await getScopedI18n("home")
 
-    return (
-        <section>
-            <div className="border-grid border-b bg-primary" id="skills">
-                <div className="container-wrapper">
-                    <div className="container py-3 lg:py-6">
-                        <p className="text-gray-100 font-bold">
-                            {t("skills.subtitle")}
-                        </p>
-                        <h2 className="text-gray-100">{t("skills.title")}</h2>
+    const skillsApplications = [
+        {
+            title: t("skills.responsive.title"),
+            description: t("skills.responsive.firstParagraph"),
+            detail: t("skills.responsive.secondParagraph"),
+            link: links.responsive,
+            tools: ["HTML", "CSS", "TailwindCSS", "Figma"],
+            image: "/assets/mobile-mokup-high.webp",
+            stat: "69.4%",
+            statLabel: t("skills.responsive.statLabel"),
+        },
+        {
+            title: t("skills.planning.title"),
+            description: t("skills.planning.firstParagraph"),
+            detail: t("skills.planning.secondParagraph"),
+            link: links.planning,
+            tools: ["Biome.js", "Git", "Node", "Bun"],
+            image: "/assets/vscode-high.webp",
+            stat: "Biome.js",
+            statLabel: t("skills.planning.statLabel"),
+        },
+        {
+            title: t("skills.timing.title"),
+            description: t("skills.timing.firstParagraph"),
+            detail: t("skills.timing.secondParagraph"),
+            link: links.timing,
+            tools: ["Node", "TypeScript"],
+            image: "/assets/madeit-high.webp",
+            stat: "MadeIt",
+            statLabel: t("skills.timing.statLabel"),
+        },
+    ]
 
-                        <div className="flex gap-8 mt-4 flex-wrap">
-                            <Icon
-                                icon="devicon-plain:html5-wordmark"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="html"
-                            />
-                            <Icon
-                                icon="devicon-plain:css3-wordmark"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="css"
-                            />
-                            <Icon
-                                icon="devicon-plain:javascript"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="javascript"
-                            />
-                            <Icon
-                                icon="devicon-plain:typescript"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="typescript"
-                            />
-                            <Icon
-                                icon="devicon-plain:figma"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="figma"
-                            />
-                            <Icon
-                                icon="devicon-plain:nodejs"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="node"
-                            />
-                            <Icon
-                                icon="devicon-plain:nextjs"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="next"
-                            />
-                            <Icon
-                                icon="file-icons:tailwind"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="tailwind"
-                            />
-                            <Icon
-                                icon="devicon-plain:biome-wordmark"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="biome"
-                            />
-                            <Icon
-                                icon="devicon-plain:python"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="python"
-                            />
-                            <Icon
-                                icon="devicon-plain:git"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="git"
-                            />
-                            <Icon
-                                icon="devicon-plain:githubcodespaces"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="github"
-                            />
-                            <Icon
-                                icon="devicon-plain:bun"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="bun"
-                            />
-                            <Icon
-                                icon="devicon-plain:mysql-wordmark"
-                                className="size-[3rem] text-gray-100 transition-colors duration-200 ease-in-out"
-                                aria-label="mysql"
-                            />
+    return (
+        <section id="skills" className="my-24">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-5xl font-serif font-light mb-4 text-balance">
+                    {t("skills.where")}
+                </h2>
+            </div>
+
+            {skillsApplications.map((skill, index) => (
+                <div
+                    key={skill.title}
+                    className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-background">
+
+                    {/* Text content */}
+                    <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                        <div>
+                            <h3 className="text-2xl lg:text-3xl font-serif font-light mb-4">{skill.title}</h3>
+                            <p className="text-muted-foreground leading-relaxed mb-4">{skill.description}</p>
+                            <p className="text-muted-foreground leading-relaxed"> {skill.detail}</p>
+                        </div>
+
+                        {/* Stat */}
+                        {skill.stat && (
+                            <Link href={skill.link} className="inline-flex items-baseline gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-border">
+                                <span className="text-3xl font-bold text-primary">{skill.stat}</span>
+                                <span className="text-sm text-muted-foreground"> {skill.statLabel}</span>
+                                <ExternalLink className="h-3 w-3 text-muted-foreground ml-1" />
+                            </Link>
+                        )}
+
+                        {/* Tools (techLabel) */}
+                        <div className="flex flex-wrap gap-3 mt-4">
+                            {skill.tools.map((tool) => (
+                                <div key={tool} className="flex items-center gap-2">
+                                    <Icon icon={techIcons[tool] || "mdi:code-tags"} className="size-[1.5rem] text-muted-foreground" />
+                                    <span className="text-sm text-muted-foreground font-mono">{tool}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Image */}
+                    <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
+                        <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-accent/5 border border-border shadow-xl">
+                            <img src={skill.image || "/placeholder.svg"} alt={skill.title} className="w-full h-full object-cover" />
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="border-grid border-b">
-                <div className="container-wrapper">
-                    <div className="container">
-                        <Carousel>
-                            <CarouselContent>
-                                <CarouselItem>
-                                    <div className="flex lg:grid flex-col-reverse py-2 lg:py-4 lg:grid-cols-2 gap-2 lg:justify-between">
-                                        <div className="flex flex-col justify-between">
-                                            <div>
-                                                <p className="font-bold">
-                                                    {t("skills.where")}
-                                                </p>
-                                                <h3 className="font-courier">
-                                                    {t(
-                                                        "skills.responsive.title",
-                                                    )}
-                                                </h3>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.responsive.firstParagraph",
-                                                    )}
-                                                </p>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.responsive.secondParagraph",
-                                                    )}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex justify-between flex-wrap items-end">
-                                                <div className="w-1/4 flex flex-col justify-center">
-                                                    <p className="text-primary text-2xl font-bold text-center">
-                                                        69.4%
-                                                    </p>
-                                                    <a
-                                                        href="https://datareportal.com/reports/digital-2024-global-overview-report"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer">
-                                                        <small className="text-primary underline text-center">
-                                                            {t(
-                                                                "skills.responsive.link",
-                                                            )}{" "}
-                                                            ↗
-                                                        </small>
-                                                    </a>
-                                                </div>
-                                                <div className="flex gap-4">
-                                                    <Icon
-                                                        icon="devicon-plain:html5-wordmark"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="html"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:css3-wordmark"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="css"
-                                                    />
-                                                    <Icon
-                                                        icon="file-icons:tailwind"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="tailwind"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:figma"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="figma"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
-                                            <Image
-                                                src="/assets/mobile-mokup-high.webp"
-                                                alt="Website in mobile device example"
-                                                fill
-                                                loading="lazy"
-                                                className="object-cover transition-opacity duration-1000 ease-in-out high-image"
-                                            />
-                                            <Image
-                                                src="/assets/mobile-mokup-low.avif"
-                                                alt="Loading..."
-                                                fill
-                                                className="object-cover transition-opacity duration-700 low-image"
-                                            />
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-
-                                <CarouselItem>
-                                    <div className=" flex lg:grid flex-col-reverse py-2 lg:py-4 lg:grid-cols-2 gap-2 lg:justify-between">
-                                        <div className="flex flex-col justify-between">
-                                            <div>
-                                                <p className="font-bold">
-                                                    {t("skills.where")}
-                                                </p>
-                                                <h3 className="font-courier">
-                                                    {t("skills.planning.title")}
-                                                </h3>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.planning.firstParagraph",
-                                                    )}
-                                                </p>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.planning.secondParagraph",
-                                                    )}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex justify-between flex-wrap items-end">
-                                                <div className="w-1/4 flex flex-col justify-center">
-                                                    <p className="text-primary text-2xl font-bold text-center">
-                                                        Biome.js
-                                                    </p>
-                                                    <a
-                                                        href="https://vinniciusgomes.dev/articles/biome-js-um-novo-lint-e-formatter-para-javascript-e-typescript"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer">
-                                                        <small className="text-primary underline text-center">
-                                                            {t(
-                                                                "skills.planning.link",
-                                                            )}{" "}
-                                                            ↗
-                                                        </small>
-                                                    </a>
-                                                </div>
-                                                <div className="flex gap-4">
-                                                    <Icon
-                                                        icon="devicon-plain:biome-wordmark"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="biome"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:git"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="git"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:nodejs"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="node"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:bun"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="bun"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
-                                            <Image
-                                                src="/assets/vscode-high.webp"
-                                                alt="Website in mobile device example"
-                                                fill
-                                                loading="lazy"
-                                                className="object-cover transition-opacity duration-1000 ease-in-out high-image"
-                                            />
-                                            <Image
-                                                src="/assets/vscode-low.avif"
-                                                alt="Loading..."
-                                                fill
-                                                className="object-cover transition-opacity duration-700 low-image"
-                                            />
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-
-                                <CarouselItem>
-                                    <div className=" flex lg:grid flex-col-reverse py-2 lg:py-4 lg:grid-cols-2 gap-2 lg:justify-between">
-                                        <div className="flex flex-col justify-between">
-                                            <div>
-                                                <p className="font-bold">
-                                                    {t("skills.where")}
-                                                </p>
-                                                <h3 className="font-courier">
-                                                    {t("skills.timing.title")}
-                                                </h3>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.timing.firstParagraph",
-                                                    )}
-                                                </p>
-                                                <p className="my-2">
-                                                    {t(
-                                                        "skills.timing.secondParagraph",
-                                                    )}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex justify-between flex-wrap items-end">
-                                                <div className="w-1/4 flex flex-col justify-center">
-                                                    <p className="text-primary text-2xl font-bold text-center">
-                                                        MadeIt
-                                                    </p>
-                                                    <a
-                                                        href="https://www.npmjs.com/package/madeit"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer">
-                                                        <small className="text-primary underline text-center">
-                                                            {t(
-                                                                "skills.timing.link",
-                                                            )}{" "}
-                                                            ↗
-                                                        </small>
-                                                    </a>
-                                                </div>
-                                                <div className="flex gap-4">
-                                                    <Icon
-                                                        icon="devicon-plain:nodejs"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="node"
-                                                    />
-                                                    <Icon
-                                                        icon="devicon-plain:typescript"
-                                                        className="size-[2rem] text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200 ease-in-out"
-                                                        aria-label="typescript"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="relative aspect-5/4 w-full max-w-md self-center lg:ml-auto">
-                                            <Image
-                                                src="/assets/madeit-high.webp"
-                                                alt="Website in mobile device example"
-                                                fill
-                                                loading="lazy"
-                                                className="object-cover transition-opacity duration-1000 ease-in-out high-image"
-                                            />
-                                            <Image
-                                                src="/assets/madeit-low.avif"
-                                                alt="Loading..."
-                                                fill
-                                                className="object-cover transition-opacity duration-700 low-image"
-                                            />
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-                            </CarouselContent>
-
-                            <CarouselPrevious />
-                            <CarouselNext />
-                        </Carousel>
-                    </div>
-                </div>
-            </div>
+            ))}
         </section>
     )
 }
