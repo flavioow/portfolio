@@ -2,6 +2,13 @@ import { getScopedI18n } from "@/locales/server"
 import { Icon } from "@iconify/react"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const techIcons: Record<string, string> = {
     HTML: "devicon-plain:html5-wordmark",
@@ -65,54 +72,62 @@ export async function Skills() {
     ]
 
     return (
-        <section id="skills" className="my-24">
+        <section id="skills" className="container-wrapper my-24">
             <div className="text-center mb-16">
                 <h2 className="text-3xl lg:text-5xl font-serif font-light mb-4 text-balance">
                     {t("skills.where")}
                 </h2>
             </div>
 
-            {skillsApplications.map((skill, index) => (
-                <div
-                    key={skill.title}
-                    className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-background">
+            <Carousel>
+                <CarouselContent>
+                    {skillsApplications.map((skill, index) => (
+                        <CarouselItem>
+                            <div
+                                key={skill.title}
+                                className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center bg-background">
+                                {/* Text content */}
+                                <div className="grid gap-4">
+                                    <div>
+                                        <h3 className="text-2xl lg:text-3xl font-serif font-light mb-4">{skill.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed mb-4">{skill.description}</p>
+                                        <p className="text-muted-foreground leading-relaxed"> {skill.detail}</p>
+                                    </div>
 
-                    {/* Text content */}
-                    <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                        <div>
-                            <h3 className="text-2xl lg:text-3xl font-serif font-light mb-4">{skill.title}</h3>
-                            <p className="text-muted-foreground leading-relaxed mb-4">{skill.description}</p>
-                            <p className="text-muted-foreground leading-relaxed"> {skill.detail}</p>
-                        </div>
+                                    {/* Stat */}
+                                    {skill.stat && (
+                                        <Link href={skill.link} className="inline-flex items-baseline gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-border">
+                                            <span className="text-3xl font-bold text-primary">{skill.stat}</span>
+                                            <span className="text-sm text-muted-foreground"> {skill.statLabel}</span>
+                                            <ExternalLink className="h-3 w-3 text-muted-foreground ml-1" />
+                                        </Link>
+                                    )}
 
-                        {/* Stat */}
-                        {skill.stat && (
-                            <Link href={skill.link} className="inline-flex items-baseline gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-border">
-                                <span className="text-3xl font-bold text-primary">{skill.stat}</span>
-                                <span className="text-sm text-muted-foreground"> {skill.statLabel}</span>
-                                <ExternalLink className="h-3 w-3 text-muted-foreground ml-1" />
-                            </Link>
-                        )}
-
-                        {/* Tools (techLabel) */}
-                        <div className="flex flex-wrap gap-3 mt-4">
-                            {skill.tools.map((tool) => (
-                                <div key={tool} className="flex items-center gap-2">
-                                    <Icon icon={techIcons[tool] || "mdi:code-tags"} className="size-[1.5rem] text-muted-foreground" />
-                                    <span className="text-sm text-muted-foreground font-mono">{tool}</span>
+                                    {/* Tools (techLabel) */}
+                                    <div className="flex flex-wrap gap-3 mt-4">
+                                        {skill.tools.map((tool) => (
+                                            <div key={tool} className="flex items-center gap-2">
+                                                <Icon icon={techIcons[tool] || "mdi:code-tags"} className="size-[1.5rem] text-muted-foreground" />
+                                                <span className="text-sm text-muted-foreground font-mono">{tool}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
 
-                    {/* Image */}
-                    <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
-                        <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-accent/5 border border-border shadow-xl">
-                            <img src={skill.image || "/placeholder.svg"} alt={skill.title} className="w-full h-full object-cover" />
-                        </div>
-                    </div>
-                </div>
-            ))}
+                                {/* Image */}
+                                <div>
+                                    <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-accent/5 border border-border shadow-xl max-h-[300px] lg:min-h-[300px]">
+                                        <img src={skill.image || "/placeholder.svg"} alt={skill.title} className="w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
         </section>
     )
 }
