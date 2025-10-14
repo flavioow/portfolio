@@ -84,33 +84,6 @@ export default async function RootLayout({
     return (
         <I18nProviderClient locale={locale}>
             <html lang="en">
-                <head>
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                "@context": "https://schema.org",
-                                "@type": "Person",
-                                name: "Flávio Henrique Perusin de Souza",
-                                alternateName: "Flavi.oow",
-                                url: "https://flavioow.vercel.app/",
-                                image: "https://flavioow.vercel.app/assets/opengraph.png",
-                                sameAs: [
-                                    "https://github.com/flavioow",
-                                    "https://www.linkedin.com/in/flavioow/"
-                                ],
-                                jobTitle: "Frontend Developer",
-                                knowsAbout: [
-                                    "HTML",
-                                    "CSS",
-                                    "JavaScript",
-                                    "Next.js",
-                                    "UI/UX Design"
-                                ],
-                            }),
-                        }}
-                    />
-                </head>
                 <body
                     className={`${figtree.variable} ${eb_garamond.variable} ${figtree.className}`}>
                     {children}
