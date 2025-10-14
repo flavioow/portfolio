@@ -16,7 +16,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* <GradualBlurMemo
+            <GradualBlurMemo
                 target="parent"
                 position="bottom"
                 height="6rem"
@@ -25,7 +25,7 @@ export default function Home() {
                 curve="bezier"
                 exponential={true}
                 opacity={1}
-            /> */}
+            />
         </div>
     )
 }
