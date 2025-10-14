@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     authors: [{ name: "Flávio Henrique", url: "https://github.com/flavioow" }],
     robots: "index, follow",
     applicationName: "Flavi.oow",
+    other: { "google-site-verification": "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM" },
     icons: [
         {
             rel: "icon",
