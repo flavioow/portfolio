@@ -3,6 +3,7 @@ import { Hero } from "./hero"
 import { Skills } from "./skills"
 import GradualBlurMemo from "@/components/ui/GradualBlur"
 import { TechStack } from "./techstack"
+import Footer from "@/components/layout/Footer"
 
 export default function Home() {
     return (
@@ -14,12 +15,13 @@ export default function Home() {
                     <TechStack />
                     <Skills />
                 </div>
+                <Footer />
             </div>
 
             <GradualBlurMemo
                 target="parent"
                 position="bottom"
-                height="6rem"
+                height="4rem"
                 strength={2}
                 divCount={5}
                 curve="bezier"

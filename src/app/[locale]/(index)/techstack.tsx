@@ -80,7 +80,7 @@ export function TechStack() {
                                     >
                                         <Icon
                                             icon={tech.icon}
-                                            className="size-[3rem] text-secondary/50 hover:text-secondary dark:text-primary/50 dark:hover:text-primary"
+                                            className="size-[3rem] text-secondary/75 hover:text-secondary dark:text-primary/50 dark:hover:text-primary"
                                             aria-label={tech.name.toLowerCase()}
                                         />
                                     </div>

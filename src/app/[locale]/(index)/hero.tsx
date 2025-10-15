@@ -97,6 +97,11 @@ export async function Hero() {
                     itemProp="knowsAbout"
                     content="HTML, CSS, JavaScript, NextJS, Design, SEO" />
             </div>
+            <meta itemProp="name" content="Flávio Henrique Perusin de Souza" />
+            <meta itemProp="alternateName" content="Flavi.oow" />
+            <meta itemProp="url" content="https://flavioow.vercel.app" />
+            <meta itemProp="sameAs" content="https://github.com/flavioow" />
+            <meta itemProp="sameAs" content="https://www.linkedin.com/in/flaviohenriqueperusin" />
         </div>
     )
 }

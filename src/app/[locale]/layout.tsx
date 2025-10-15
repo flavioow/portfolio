@@ -23,8 +23,10 @@ const fonts = {
 export const metadata: Metadata = {
     title: "Flavi.oow",
     description: "This is a little demonstration of who I am",
-    keywords: "portfolio, personal, flávio henrique, webdesigner",
-    authors: [{ name: "Flávio Henrique", url: "https://github.com/flavioow" }],
+    keywords: ["portfolio", "personal", "flávio henrique", "flávio henrique perusin de souza", "flavioow", "webdesigner"],
+    authors: [
+        { name: "Flávio Henrique Perusin de Souza", url: "https://github.com/flavioow" }
+    ],
     robots: "index, follow",
     applicationName: "Flavi.oow",
     other: { "google-site-verification": "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM" },
