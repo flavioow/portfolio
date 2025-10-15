@@ -21,7 +21,7 @@ const fonts = {
 }
 
 export const metadata: Metadata = {
-    title: "Flavi.oow",
+    title: "Flavi.oow - Portfólio Flávio Henrique Perusin de Souza",
     description: "This is a little demonstration of who I am",
     keywords: ["portfolio", "personal", "flávio henrique", "flávio henrique perusin de souza", "flavioow", "webdesigner"],
     authors: [
