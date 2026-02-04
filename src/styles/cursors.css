@@ -1,5 +1,4 @@
 @layer base {
-
     .cursor-default {
         cursor: url("/cursors/default.svg"), auto;
     }

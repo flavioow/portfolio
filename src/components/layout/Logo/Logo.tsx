@@ -10,8 +10,7 @@ export const Logo = () => {
                 viewBox="0 0 400 600"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="Logo !size-8"
-            >
+                className="Logo !size-8">
                 <defs>
                     <mask id="mask">
                         <rect

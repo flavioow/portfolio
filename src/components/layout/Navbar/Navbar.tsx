@@ -1,7 +1,7 @@
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher/LanguageSwitcher"
+import { Logo } from "@/components/layout/Logo/Logo"
 import NavLinks from "@/components/layout/Navbar/NavLinks"
 import ThemeSwitcher from "@/components/layout/ThemeSwitcher/ThemeSwitcher"
-import { Logo } from "@/components/layout/Logo/Logo"
 import { getScopedI18n } from "@/locales/server"
 import Link from "next/link"
 

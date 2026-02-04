@@ -21,15 +21,31 @@ const fonts = {
 }
 
 export const metadata: Metadata = {
-  title: "Flavi.oow - Portfólio Flávio Henrique Perusin de Souza",
-  description: "This is a little demonstration of who I am",
-  keywords: ["portfolio", "personal", "dev front-end", "desenvolvedor front-end", "programador de interfaces", "flávio henrique", "flávio henrique perusin de souza", "flavioow", "webdesigner"],
+  title: "Flavi.oow - Flávio Henrique Perusin de Souza's Portfolio - Front-end Developer & Designer",
+  description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+  keywords: [
+    "portfolio",
+    "personal",
+    "dev front-end",
+    "desenvolvedor front-end",
+    "programador de interfaces",
+    "flávio henrique",
+    "flávio henrique perusin de souza",
+    "flavioow",
+    "webdesigner",
+  ],
   authors: [
-    { name: "Flávio Henrique Perusin de Souza", url: "https://github.com/flavioow" }
+    {
+      name: "Flávio Henrique Perusin de Souza",
+      url: "https://github.com/flavioow",
+    },
   ],
   robots: "index, follow",
   applicationName: "Flavi.oow",
-  other: { "google-site-verification": "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM" },
+  other: {
+    "google-site-verification":
+      "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM",
+  },
   icons: [
     {
       rel: "icon",
@@ -54,7 +70,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Flavi.oow",
-    description: "This is a little demonstration of who I am",
+    description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
     images: [
       {
         url: "https://flavioow.vercel.app/assets/opengraph.png",
@@ -69,7 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Flavi.oow",
-    description: "This is a little demonstration of who I am",
+    description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
     images: ["https://flavioow.vercel.app/assets/opengraph.png"],
   },
 }

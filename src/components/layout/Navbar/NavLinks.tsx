@@ -49,5 +49,4 @@ export default function NavLinks({ labels }: NavLinksProps) {
             </a>
         </nav>
     )
-
 }
