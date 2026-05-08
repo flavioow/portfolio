@@ -1,43 +1,84 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-    "organizeImports": {
-        "enabled": true
-    },
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "recommended": true
-        }
-    },
-    "formatter": {
-        "enabled": true,
-        "formatWithErrors": true,
-        "ignore": [],
-        "attributePosition": "auto",
-        "indentStyle": "space",
-        "indentWidth": 4,
-        "lineEnding": "lf",
-        "lineWidth": 80
-    },
-    "javascript": {
-        "formatter": {
-            "enabled": true,
-            "arrowParentheses": "always",
-            "bracketSameLine": true,
-            "bracketSpacing": true,
-            "jsxQuoteStyle": "double",
-            "quoteProperties": "asNeeded",
-            "semicolons": "asNeeded",
-            "indentWidth": 4,
-            "quoteStyle": "double",
-            "indentStyle": "space",
-            "trailingCommas": "all"
-        }
-    },
-    "json": {
-        "formatter": {
-            "enabled": true,
-            "trailingCommas": "none"
-        }
+  "$schema": "https://biomejs.dev/schemas/2.4.14/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!node_modules",
+      "!.next",
+      "!.vscode",
+      "!dist",
+      "!build",
+      "!src/components/ui"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "attributePosition": "multiline"
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "jsxQuoteStyle": "double",
+      "semicolons": "asNeeded",
+      "indentStyle": "space",
+      "bracketSameLine": true,
+      "arrowParentheses": "always"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noUnknownAtRules": "off",
+        "noExplicitAny": "warn",
+        "noDuplicateObjectKeys": "on"
+      },
+      "complexity": {
+        "noEmptyTypeParameters": "on",
+        "noImportantStyles": "info"
+      },
+      "style": {
+        "useConst": "on",
+        "useTemplate": "on"
+      },
+      "correctness": {
+        "noUnknownProperty": "on",
+        "noUnknownPseudoClass": "off",
+        "noUnknownTypeSelector": "off",
+        "noMissingVarFunction": "on"
+      },
+      "a11y": {
+        "useAltText": "on",
+        "useButtonType": "on",
+        "noAriaHiddenOnFocusable": "on",
+        "useHeadingContent": "on"
+      }
+    },
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  }
 }
