@@ -1,0 +1,43 @@
+{
+  "short_name": "Flavi.oow",
+  "name": "Flavi.oow",
+  "description": "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+  "start_url": ".",
+  "scope": ".",
+  "id": "/",
+  "lang": "en",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "categories": [
+    "portfolio",
+    "personal",
+    "webdesigner"
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+portfolio",
+      "url": "/?url=%s"
+    }
+  ]
+}
