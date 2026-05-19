@@ -1,5 +1,15 @@
 {
   "home": {
-    "header": "Projeto pronto!"
+    "hero": {
+      "title": "Prazer, eu sou",
+      "roles": {
+        "developer": "programador front-end",
+        "designer": "designer",
+        "keyboardist": "tecladista",
+        "artist": "artista",
+        "brazilian": "brasileiro (olha a tabelaaa)",
+        "handsome": "muuuito bonito 🫦"
+      }
+    }
   }
 }

@@ -7,6 +7,6 @@ export const routing = defineRouting({
     mode: "always",
     prefixes: {
       "pt-BR": "/br",
-    }
-  }
+    },
+  },
 })

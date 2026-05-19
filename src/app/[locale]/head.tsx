@@ -1,8 +1,10 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Flavi.oow - Flávio Henrique Perusin de Souza's Portfolio - Front-end Developer & Designer",
-  description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+  title:
+    "Flavi.oow - Flávio Henrique Perusin de Souza's Portfolio - Front-end Developer & Designer",
+  description:
+    "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
   keywords: [
     "developer",
     "front-end",
@@ -27,12 +29,12 @@ export const metadata: Metadata = {
   applicationName: "Flavi.oow",
   manifest: "https://flavioow.vercel.app/manifest.webmanifest",
   other: {
-    "google-site-verification":
-      "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM",
+    "google-site-verification": "MnOwS6_u35_3-3fShEOrsnUt17uLEEEA2UWCraW_mCM",
   },
   openGraph: {
     title: "Flavi.oow",
-    description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+    description:
+      "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
     images: [
       {
         url: "https://flavioow.vercel.app/assets/opengraph.png",
@@ -47,7 +49,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Flavi.oow",
-    description: "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+    description:
+      "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
     images: ["https://flavioow.vercel.app/assets/opengraph.png"],
   },
 }
@@ -119,11 +122,9 @@ export default function Head() {
   ]
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
   )
 }

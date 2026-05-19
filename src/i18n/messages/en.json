@@ -1,5 +1,15 @@
 {
   "home": {
-    "header": "Project ready!"
+    "hero": {
+      "title": "Welcome, I'm",
+      "roles": {
+        "developer": "front-end developer",
+        "designer": "designer",
+        "keyboardist": "keyboardist",
+        "artist": "artist",
+        "brazilian": "brazilian (olha a tabelaaa)",
+        "handsome": "sooo handsome 🫦"
+      }
+    }
   }
 }

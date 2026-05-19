@@ -1,22 +1,40 @@
-import { NextIntlClientProvider, hasLocale } from "next-intl"
-import { Figtree, Geist_Mono } from "next/font/google"
-
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils"
-import { routing } from "@/i18n/routing"
+import {
+  Calligraffitti,
+  EB_Garamond,
+  Geist,
+  Geist_Mono,
+} from "next/font/google"
+import { hasLocale, NextIntlClientProvider } from "next-intl"
+import "@/styles/globals.css"
 import { notFound } from "next/navigation"
+import { ThemeProvider } from "@/components/theme-provider"
+import { routing } from "@/i18n/routing"
+import { cn } from "@/lib/utils"
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" })
-
-const fontMono = Geist_Mono({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-geist",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-eb-garamond",
+})
+
+const calligraffitti = Calligraffitti({
+  subsets: ["latin"],
+  variable: "--font-calligraffitti",
+  weight: ["400"],
 })
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: Readonly<{
   children: React.ReactNode
   params: Promise<{ locale: string }>
@@ -31,15 +49,14 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={cn(
         "antialiased",
-        fontMono.variable,
-        "font-sans",
-        figtree.variable,
+        geist.variable,
+        geistMono.variable,
+        ebGaramond.variable,
+        calligraffitti.variable,
       )}>
       <body>
         <ThemeProvider>
-          <NextIntlClientProvider>
-            {children}
-          </NextIntlClientProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

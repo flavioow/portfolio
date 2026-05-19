@@ -1,5 +1,15 @@
 {
   "home": {
-    "header": "Tutto pronto!"
+    "hero": {
+      "title": "Piacere, sono",
+      "roles": {
+        "developer": "programmatore front-end",
+        "designer": "designer",
+        "keyboardist": "tastierista",
+        "artist": "artista",
+        "brazilian": "brasiliano (olha a tabelaaa)",
+        "handsome": "mooolto bello 🫦"
+      }
+    }
   }
 }

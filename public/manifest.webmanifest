@@ -25,15 +25,8 @@
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "standalone",
-  "display_override": [
-    "window-controls-overlay",
-    "standalone"
-  ],
-  "categories": [
-    "portfolio",
-    "personal",
-    "webdesigner"
-  ],
+  "display_override": ["window-controls-overlay", "standalone"],
+  "categories": ["portfolio", "personal", "webdesigner"],
   "protocol_handlers": [
     {
       "protocol": "web+portfolio",
