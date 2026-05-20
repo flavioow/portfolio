@@ -3,6 +3,12 @@
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 import * as React from "react"
 
+const themeTransitionStyleId = "skiper-theme-transition-styles"
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (callback: () => void) => void
+}
+
 function ThemeProvider({
   children,
   ...props
@@ -36,6 +42,31 @@ function isTypingTarget(target: EventTarget | null) {
 function ThemeHotkey() {
   const { resolvedTheme, setTheme } = useTheme()
 
+  const toggleTheme = React.useCallback(() => {
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
+
+    if (
+      typeof window === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setTheme(nextTheme)
+      return
+    }
+
+    applySkiperThemeTransitionStyles()
+
+    const viewTransitionDocument = document as ViewTransitionDocument
+
+    if (!viewTransitionDocument.startViewTransition) {
+      setTheme(nextTheme)
+      return
+    }
+
+    viewTransitionDocument.startViewTransition(() => {
+      setTheme(nextTheme)
+    })
+  }, [resolvedTheme, setTheme])
+
   React.useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.repeat) {
@@ -54,7 +85,7 @@ function ThemeHotkey() {
         return
       }
 
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      toggleTheme()
     }
 
     window.addEventListener("keydown", onKeyDown)
@@ -62,9 +93,76 @@ function ThemeHotkey() {
     return () => {
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [resolvedTheme, setTheme])
+  }, [toggleTheme])
 
   return null
+}
+
+function applySkiperThemeTransitionStyles() {
+  let styleElement = document.getElementById(
+    themeTransitionStyleId,
+  ) as HTMLStyleElement | null
+
+  if (!styleElement) {
+    styleElement = document.createElement("style")
+    styleElement.id = themeTransitionStyleId
+    document.head.appendChild(styleElement)
+  }
+
+  styleElement.textContent = `
+    ::view-transition-group(root) {
+      animation-duration: 0.7s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    ::view-transition-new(root) {
+      animation-name: skiper-reveal-light-blur;
+      filter: blur(2px);
+    }
+
+    ::view-transition-old(root),
+    .dark::view-transition-old(root) {
+      animation: none;
+      z-index: -1;
+    }
+
+    .dark::view-transition-new(root) {
+      animation-name: skiper-reveal-dark-blur;
+      filter: blur(2px);
+    }
+
+    @keyframes skiper-reveal-dark-blur {
+      from {
+        clip-path: circle(0% at 50% 50%);
+        filter: blur(8px);
+      }
+
+      50% {
+        filter: blur(4px);
+      }
+
+      to {
+        clip-path: circle(100% at 50% 50%);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes skiper-reveal-light-blur {
+      from {
+        clip-path: circle(0% at 50% 50%);
+        filter: blur(8px);
+      }
+
+      50% {
+        filter: blur(4px);
+      }
+
+      to {
+        clip-path: circle(100% at 50% 50%);
+        filter: blur(0);
+      }
+    }
+  `
 }
 
 export { ThemeProvider }
