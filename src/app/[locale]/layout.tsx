@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { routing } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geist = Geist({
   subsets: ["latin"],
@@ -112,7 +113,10 @@ export default async function RootLayout({
       )}>
       <body>
         <ThemeProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <SpeedInsights />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

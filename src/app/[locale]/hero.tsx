@@ -21,7 +21,7 @@ export default function Hero() {
       <HeroEffect />
 
       <div className="container-wrapper h-full content-end pb-8 pointer-events-none select-none text-background dark:text-foreground mix-blend-difference">
-        <h1 className="z-2 text-[clamp(4rem,26vw,26rem)] leading-[0.9] tracking-tighter font-title text-center absolute left-1/2 top-1/2 -translate-1/2">
+        <h1 className="z-2 text-[clamp(4rem,26vw,26rem)] leading-[0.9] tracking-tighter font-title text-center absolute left-1/2 top-1/2 -translate-1/2 -rotate-3 skew-x-3">
           Flavi.<span className="font-cursive">oow</span>
         </h1>
 
