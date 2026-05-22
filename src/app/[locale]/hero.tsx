@@ -11,6 +11,7 @@ export default function Hero() {
     t("roles.brazilian"),
     t("roles.handsome"),
     t("roles.artist"),
+    t("roles.formula"),
   ]
 
   return (
@@ -21,11 +22,11 @@ export default function Hero() {
       <HeroEffect />
 
       <div className="container-wrapper h-full content-end pb-8 pointer-events-none select-none text-background dark:text-foreground mix-blend-difference">
-        <h1 className="z-2 text-[clamp(4rem,26vw,26rem)] leading-[0.9] tracking-tighter font-title text-center absolute left-1/2 top-1/2 -translate-1/2 -rotate-3 skew-x-3">
+        <h1 className="z-2 text-[clamp(4rem,24vw,24rem)] leading-[0.9] tracking-tighter text-center absolute left-1/2 top-1/2 -translate-1/2 -rotate-3 skew-x-6">
           Flavi.<span className="font-cursive">oow</span>
         </h1>
 
-        <p className="container-breakout z-2 text-muted-foreground dark:text-foreground text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,3vw,3rem)]">
+        <p className="z-2 text-muted-foreground dark:text-foreground text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,3vw,3rem)]">
           <span>{t("title")}&nbsp;</span>
           <RotatingText
             texts={roles}

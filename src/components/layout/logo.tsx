@@ -2,6 +2,8 @@ export const Logo = () => {
   return (
     <div className="grid place-items-center transition-all duration-300 ease-in-out group">
       <svg
+        aria-hidden="true"
+        focusable="false"
         width="400"
         height="600"
         viewBox="0 0 400 600"

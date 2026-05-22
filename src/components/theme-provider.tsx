@@ -40,32 +40,7 @@ function isTypingTarget(target: EventTarget | null) {
 }
 
 function ThemeHotkey() {
-  const { resolvedTheme, setTheme } = useTheme()
-
-  const toggleTheme = React.useCallback(() => {
-    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
-
-    if (
-      typeof window === "undefined" ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setTheme(nextTheme)
-      return
-    }
-
-    applySkiperThemeTransitionStyles()
-
-    const viewTransitionDocument = document as ViewTransitionDocument
-
-    if (!viewTransitionDocument.startViewTransition) {
-      setTheme(nextTheme)
-      return
-    }
-
-    viewTransitionDocument.startViewTransition(() => {
-      setTheme(nextTheme)
-    })
-  }, [resolvedTheme, setTheme])
+  const { toggleTheme } = useSkiperThemeToggle()
 
   React.useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -96,6 +71,43 @@ function ThemeHotkey() {
   }, [toggleTheme])
 
   return null
+}
+
+function useSkiperThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
+
+  const isDark = resolvedTheme === "dark"
+
+  const toggleTheme = React.useCallback(() => {
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
+
+    startSkiperThemeTransition(() => {
+      setTheme(nextTheme)
+    })
+  }, [resolvedTheme, setTheme])
+
+  return { isDark, toggleTheme }
+}
+
+function startSkiperThemeTransition(updateTheme: () => void) {
+  if (
+    typeof window === "undefined" ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    updateTheme()
+    return
+  }
+
+  applySkiperThemeTransitionStyles()
+
+  const viewTransitionDocument = document as ViewTransitionDocument
+
+  if (!viewTransitionDocument.startViewTransition) {
+    updateTheme()
+    return
+  }
+
+  viewTransitionDocument.startViewTransition(updateTheme)
 }
 
 function applySkiperThemeTransitionStyles() {
@@ -165,4 +177,4 @@ function applySkiperThemeTransitionStyles() {
   `
 }
 
-export { ThemeProvider }
+export { ThemeProvider, useSkiperThemeToggle }

@@ -54,6 +54,7 @@ export function HeroCanvas({ containerRef }: HeroCanvasProps) {
 
   return (
     <Canvas
+      aria-hidden="true"
       camera={{ fov: 25, near: 0.1, far: 100, position: [0, 0, 100] }}
       className="h-full w-full"
       dpr={[1, 2]}

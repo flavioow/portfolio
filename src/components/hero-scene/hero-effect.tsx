@@ -18,6 +18,7 @@ export function HeroEffect({ className = "" }: HeroEffectProps) {
 
   return (
     <div
+      aria-hidden="true"
       className={`overflow-hidden absolute inset-0 h-full w-full ${className}`}
       ref={containerRef}>
       <HeroCanvas containerRef={containerRef} />

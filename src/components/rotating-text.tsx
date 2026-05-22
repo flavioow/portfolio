@@ -80,38 +80,60 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
 
     const [currentTextIndex, setCurrentTextIndex] = useState<number>(0)
 
-    const splitIntoCharacters = (text: string): string[] => {
+    const splitIntoCharacters = useCallback((text: string): string[] => {
       if (typeof Intl !== "undefined" && Intl.Segmenter) {
         const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" })
         return Array.from(segmenter.segment(text), (segment) => segment.segment)
       }
       return Array.from(text)
-    }
+    }, [])
 
     const elements = useMemo(() => {
       const currentText: string = texts[currentTextIndex]
       if (splitBy === "characters") {
         const words = currentText.split(" ")
         return words.map((word, i) => ({
-          characters: splitIntoCharacters(word),
+          characters: splitIntoCharacters(word).map((character, j) => ({
+            key: `${currentTextIndex}-${word}-${i}-${character}-${j}`,
+            value: character,
+          })),
+          key: `${currentTextIndex}-${word}-${i}`,
           needsSpace: i !== words.length - 1,
         }))
       }
       if (splitBy === "words") {
         return currentText.split(" ").map((word, i, arr) => ({
-          characters: [word],
+          characters: [
+            {
+              key: `${currentTextIndex}-${word}-${i}`,
+              value: word,
+            },
+          ],
+          key: `${currentTextIndex}-${word}-${i}`,
           needsSpace: i !== arr.length - 1,
         }))
       }
       if (splitBy === "lines") {
         return currentText.split("\n").map((line, i, arr) => ({
-          characters: [line],
+          characters: [
+            {
+              key: `${currentTextIndex}-${line}-${i}`,
+              value: line,
+            },
+          ],
+          key: `${currentTextIndex}-${line}-${i}`,
           needsSpace: i !== arr.length - 1,
         }))
       }
 
       return currentText.split(splitBy).map((part, i, arr) => ({
-        characters: [part],
+        characters: [
+          {
+            key: `${currentTextIndex}-${part}-${i}`,
+            value: part,
+          },
+        ],
+        key: `${currentTextIndex}-${part}-${i}`,
         needsSpace: i !== arr.length - 1,
       }))
     }, [texts, currentTextIndex, splitBy, splitIntoCharacters])
@@ -222,11 +244,11 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
                 .reduce((sum, word) => sum + word.characters.length, 0)
               return (
                 <span
-                  key={wordIndex}
+                  key={wordObj.key}
                   className={cn("text-rotate-word", splitLevelClassName)}>
                   {wordObj.characters.map((char, charIndex) => (
                     <motion.span
-                      key={charIndex}
+                      key={char.key}
                       initial={initial}
                       animate={animate}
                       exit={exit}
@@ -244,7 +266,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
                         "text-rotate-element",
                         elementLevelClassName,
                       )}>
-                      {char}
+                      {char.value}
                     </motion.span>
                   ))}
                   {wordObj.needsSpace && (

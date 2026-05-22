@@ -6,6 +6,7 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react"
+import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import CountUp from "@/components/count-up"
 import { useIsFullyLoaded } from "@/hooks/use-loading-store"
@@ -13,6 +14,7 @@ import { useIsFullyLoaded } from "@/hooks/use-loading-store"
 export function LoaderOverlay() {
   const isReady = useIsFullyLoaded()
   const [canExit, setCanExit] = useState(false)
+  const t = useTranslations("accessibility.components.loader")
 
   const motionValue = useMotionValue(0)
   const springValue = useSpring(motionValue, {
@@ -40,6 +42,9 @@ export function LoaderOverlay() {
       {!canExit && (
         <motion.div
           key="loader"
+          aria-label={t("label")}
+          aria-live="polite"
+          role="status"
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{
@@ -47,7 +52,9 @@ export function LoaderOverlay() {
             ease: [0.76, 0, 0.24, 1],
           }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-background/75 backdrop-blur-2xl">
+          <span className="sr-only">{t("label")}</span>
           <motion.div
+            aria-hidden="true"
             animate={{ scale: [1, 1, 1.12, 0.96, 1] }}
             transition={{
               duration: 0.35,

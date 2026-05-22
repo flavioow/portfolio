@@ -1,4 +1,74 @@
 {
+  "metadata": {
+    "site": {
+      "name": "Flavi.oow",
+      "titleTemplate": "%s | Flavi.oow",
+      "defaultTitle": "Flavi.oow",
+      "description": "Eu sou Flávio Perusin, desenvolvedor front-end especializado em criar interfaces elegantes e funcionais. Transformo ideias em produtos digitais que as pessoas gostam de usar.",
+      "keywords": [
+        "desenvolvedor",
+        "front-end",
+        "portfólio",
+        "seo",
+        "acessibilidade",
+        "responsividade",
+        "typescript",
+        "node",
+        "react",
+        "nextjs",
+        "tailwindcss",
+        "prisma",
+        "postgresql"
+      ],
+      "openGraphImageAlt": "Prévia do site de portfólio Flavi.oow",
+      "author": {
+        "name": "Flávio Henrique Perusin de Souza",
+        "url": "https://github.com/flavioow"
+      },
+      "jsonLd": {
+        "alternateName": "Flavi.oow",
+        "websiteAlternateName": "Portfólio de Flávio Perusin",
+        "jobTitle": "Desenvolvedor Front-end & Designer",
+        "occupationName": "Desenvolvedor Front-end & Designer",
+        "occupationDescription": "Cria interfaces web modernas com foco em performance e experiência do usuario",
+        "organizationName": "Flavi.oow",
+        "skills": [
+          "JavaScript",
+          "TypeScript",
+          "Next.js",
+          "UI/UX Design",
+          "Performance web",
+          "Acessibilidade",
+          "Design systems"
+        ],
+        "knowsAbout": [
+          "Desenvolvimento front-end",
+          "Design de interfaces",
+          "Performance web",
+          "Acessibilidade",
+          "Design systems",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Next.js"
+        ],
+        "sameAs": [
+          "https://github.com/flavioow",
+          "https://www.linkedin.com/in/flavioow/",
+          "https://www.instagram.com/flavi.oow/"
+        ]
+      }
+    },
+    "routes": {
+      "home": {
+        "title": "Portfólio de Flávio Perusin - Desenvolvedor Front-end & Designer",
+        "description": "Eu sou Flávio Perusin, desenvolvedor front-end especializado em criar interfaces elegantes e funcionais. Transformo ideias em produtos digitais que as pessoas gostam de usar.",
+        "canonicalPath": "/",
+        "openGraphTitle": "Flavi.oow - Desenvolvedor Front-end & Designer",
+        "openGraphDescription": "Conheca o portfólio de Flávio Perusin, com foco em desenvolvimento front-end, design de interfaces, performance e experiências digitais acessiveis."
+      }
+    }
+  },
   "routes": {
     "home": {
       "hero": {
@@ -7,9 +77,10 @@
           "developer": "programador front-end",
           "designer": "designer",
           "keyboardist": "tecladista",
-          "artist": "artista",
-          "brazilian": "brasileiro (olha a tabelaaa)",
-          "handsome": "muuuito bonito 🫦"
+          "artist": "um artista",
+          "brazilian": "brasileiro",
+          "handsome": "muuuito bonito",
+          "formula": "fã de Formula 1"
         }
       }
     },
@@ -22,10 +93,35 @@
       "blog": "Blog",
       "demos": "Demonstrações"
     },
+    "locales": {
+      "en": "Inglês",
+      "pt-BR": "Português",
+      "it": "Italiano"
+    },
     "footer": {},
     "buttons": {}
   },
-  "metadata": {},
-  "accessibility": {},
+  "accessibility": {
+    "components": {
+      "languageToggle": {
+        "label": "Alterar idioma",
+        "current": "Idioma atual: {locale}"
+      },
+      "themeToggle": {
+        "toLight": "Alternar para o tema claro",
+        "toDark": "Alternar para o tema escuro"
+      },
+      "navbar": {
+        "mainNavigation": "Navegação principal",
+        "homeLink": "Ir para a página inicial"
+      },
+      "hero": {
+        "scene": "Plano de fundo interativo decorativo da apresentação"
+      },
+      "loader": {
+        "label": "Carregando portfólio"
+      }
+    }
+  },
   "forms": {}
 }

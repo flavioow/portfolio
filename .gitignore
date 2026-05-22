@@ -37,4 +37,4 @@ next-env.d.ts
 
 # ia
 .codex*
-.agents*
+!.agents/i18n-seo-a11y-guide.md
