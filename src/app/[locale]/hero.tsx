@@ -3,7 +3,7 @@ import { HeroEffect } from "@/components/hero-scene/hero-effect"
 import RotatingText from "@/components/rotating-text"
 
 export default function Hero() {
-  const t = useTranslations("home.hero")
+  const t = useTranslations("routes.home.hero")
   const roles = [
     t("roles.keyboardist"),
     t("roles.designer"),
@@ -17,7 +17,7 @@ export default function Hero() {
     <section
       itemScope
       itemType="http://schema.org/Person"
-      className="relative isolate h-dvh w-dvw overflow-hidden bg-radial from-background dark:from-muted from-28% to-muted-foreground dark:to-background">
+      className="relative isolate h-dvh w-dvw overflow-hidden bg-radial from-background dark:from-muted from-28% to-muted-foreground/50 dark:to-background">
       <HeroEffect />
 
       <div className="container-wrapper h-full content-end pb-8 pointer-events-none select-none text-background dark:text-foreground mix-blend-difference">

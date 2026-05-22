@@ -46,7 +46,7 @@ export function LoaderOverlay() {
             duration: 0.9,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-primary">
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/75 backdrop-blur-2xl">
           <motion.div
             animate={{ scale: [1, 1, 1.12, 0.96, 1] }}
             transition={{
@@ -60,7 +60,7 @@ export function LoaderOverlay() {
               duration={1.5}
               startWhen={isReady}
               delay={0}
-              className="font-bold text-background dark:text-foreground tracking-[-0.08em] tabular-nums text-7xl md:text-9xl"
+              className="font-bold text-foreground tracking-[-0.08em] tabular-nums text-7xl md:text-9xl"
             />
           </motion.div>
         </motion.div>

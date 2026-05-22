@@ -1,15 +1,31 @@
 {
-  "home": {
-    "hero": {
-      "title": "Prazer, eu sou",
-      "roles": {
-        "developer": "programador front-end",
-        "designer": "designer",
-        "keyboardist": "tecladista",
-        "artist": "artista",
-        "brazilian": "brasileiro (olha a tabelaaa)",
-        "handsome": "muuuito bonito 🫦"
+  "routes": {
+    "home": {
+      "hero": {
+        "title": "Prazer, eu sou",
+        "roles": {
+          "developer": "programador front-end",
+          "designer": "designer",
+          "keyboardist": "tecladista",
+          "artist": "artista",
+          "brazilian": "brasileiro (olha a tabelaaa)",
+          "handsome": "muuuito bonito 🫦"
+        }
       }
-    }
-  }
+    },
+    "projects": {},
+    "blog": {}
+  },
+  "shared": {
+    "navbar": {
+      "projects": "Projetos",
+      "blog": "Blog",
+      "demos": "Demonstrações"
+    },
+    "footer": {},
+    "buttons": {}
+  },
+  "metadata": {},
+  "accessibility": {},
+  "forms": {}
 }

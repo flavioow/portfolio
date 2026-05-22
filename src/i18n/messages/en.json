@@ -1,15 +1,31 @@
 {
-  "home": {
-    "hero": {
-      "title": "Welcome, I'm",
-      "roles": {
-        "developer": "front-end developer",
-        "designer": "designer",
-        "keyboardist": "keyboardist",
-        "artist": "artist",
-        "brazilian": "brazilian (olha a tabelaaa)",
-        "handsome": "sooo handsome 🫦"
+  "routes": {
+    "home": {
+      "hero": {
+        "title": "Welcome, I'm",
+        "roles": {
+          "developer": "front-end developer",
+          "designer": "designer",
+          "keyboardist": "keyboardist",
+          "artist": "artist",
+          "brazilian": "brazilian (olha a tabelaaa)",
+          "handsome": "sooo handsome 🫦"
+        }
       }
-    }
-  }
+    },
+    "projects": {},
+    "blog": {}
+  },
+  "shared": {
+    "navbar": {
+      "projects": "Projects",
+      "blog": "Blog",
+      "demos": "Demos"
+    },
+    "footer": {},
+    "buttons": {}
+  },
+  "metadata": {},
+  "accessibility": {},
+  "forms": {}
 }

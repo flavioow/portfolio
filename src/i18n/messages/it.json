@@ -1,15 +1,31 @@
 {
-  "home": {
-    "hero": {
-      "title": "Piacere, sono",
-      "roles": {
-        "developer": "programmatore front-end",
-        "designer": "designer",
-        "keyboardist": "tastierista",
-        "artist": "artista",
-        "brazilian": "brasiliano (olha a tabelaaa)",
-        "handsome": "mooolto bello 🫦"
+  "routes": {
+    "home": {
+      "hero": {
+        "title": "Piacere, sono",
+        "roles": {
+          "developer": "programmatore front-end",
+          "designer": "designer",
+          "keyboardist": "tastierista",
+          "artist": "artista",
+          "brazilian": "brasiliano (olha a tabelaaa)",
+          "handsome": "mooolto bello 🫦"
+        }
       }
-    }
-  }
+    },
+    "projects": {},
+    "blog": {}
+  },
+  "shared": {
+    "navbar": {
+      "projects": "Progetti",
+      "blog": "Blog",
+      "demos": "Demo"
+    },
+    "footer": {},
+    "buttons": {}
+  },
+  "metadata": {},
+  "accessibility": {},
+  "forms": {}
 }

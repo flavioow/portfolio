@@ -12,6 +12,7 @@ import { routing } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Navbar from "@/components/layout/navbar"
 
 const geist = Geist({
   subsets: ["latin"],
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
       "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
     images: [
       {
-        url: "https://flavioow.vercel.app/assets/opengraph.png",
+        url: "/assets/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Preview",
@@ -85,7 +86,7 @@ export const metadata: Metadata = {
     title: "Flavi.oow",
     description:
       "I'm Flávio Henrique, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
-    images: ["https://flavioow.vercel.app/assets/opengraph.png"],
+    images: ["/assets/opengraph.png"],
   },
 }
 
@@ -114,6 +115,7 @@ export default async function RootLayout({
       <body>
         <ThemeProvider>
           <NextIntlClientProvider>
+            <Navbar />
             {children}
             <SpeedInsights />
           </NextIntlClientProvider>
