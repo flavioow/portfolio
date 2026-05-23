@@ -13,11 +13,7 @@ type ThemeToggleProps = Omit<
   "children" | "size" | "variant"
 >
 
-function ThemeToggle({
-  className,
-  onClick,
-  ...props
-}: ThemeToggleProps) {
+function ThemeToggle({ className, onClick, ...props }: ThemeToggleProps) {
   const { isDark, toggleTheme } = useSkiperThemeToggle()
   const t = useTranslations("accessibility.components.themeToggle")
   const label = isDark ? t("toLight") : t("toDark")
@@ -28,7 +24,10 @@ function ThemeToggle({
       variant="ghost"
       size="icon"
       aria-label={label}
-      className={cn("relative pointer-events-auto bg-input/20 hover:bg-input/20 dark:hover:bg-input/50 text-muted-foreground hover:text-background dark:hover:text-foreground transition-all duration-300", className)}
+      className={cn(
+        "relative pointer-events-auto bg-input/20 hover:bg-input/20 dark:hover:bg-input/50 text-muted-foreground hover:text-background dark:hover:text-foreground transition-all duration-300",
+        className,
+      )}
       onClick={(event) => {
         onClick?.(event)
 
