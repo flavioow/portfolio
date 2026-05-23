@@ -46,7 +46,7 @@ export function horizontalLoop(
 
       xPercents[i] = snap(
         (parseFloat(gsap.getProperty(el, "x", "px") as string) / w) * 100 +
-          Number(gsap.getProperty(el, "xPercent")),
+        Number(gsap.getProperty(el, "xPercent")),
       )
 
       return xPercents[i]
@@ -60,7 +60,7 @@ export function horizontalLoop(
     (xPercents[length - 1] / 100) * widths[length - 1] -
     startX +
     items[length - 1].offsetWidth *
-      Number(gsap.getProperty(items[length - 1], "scaleX")) +
+    Number(gsap.getProperty(items[length - 1], "scaleX")) +
     (config.paddingRight || 0)
 
   for (let i = 0; i < length; i++) {
@@ -134,13 +134,11 @@ export function horizontalLoop(
   // @ts-expect-error
   tl.previous = (vars) => toIndex(curIndex - 1, vars)
 
-  // @ts-expect-error
   tl.current = () => curIndex
 
   // @ts-expect-error
   tl.toIndex = (index, vars) => toIndex(index, vars)
 
-  // @ts-expect-error
   tl.times = times
 
   tl.progress(1, true).progress(0, true)
