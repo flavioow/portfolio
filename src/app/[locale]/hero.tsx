@@ -12,6 +12,8 @@ export default function Hero() {
     t("roles.handsome"),
     t("roles.artist"),
     t("roles.formula"),
+    t("roles.science"), // todo: translate to "en" and "it"
+    t("roles.creative"), // todo: translate to "en" and "it"
   ]
 
   return (

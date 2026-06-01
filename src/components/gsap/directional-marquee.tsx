@@ -39,7 +39,7 @@ export function DirectionalMarquee({ items }: DirectionalMarqueeProps) {
           gsap
             .timeline()
             .to(loop, {
-              timeScale: direction * 2.5,
+              timeScale: direction * 2,
               duration: 0.1,
               ease: "power2.out",
               overwrite: true,
@@ -65,9 +65,9 @@ export function DirectionalMarquee({ items }: DirectionalMarqueeProps) {
   const repeatedItems = [...items, ...items, ...items]
 
   return (
-    <section
+    <article
       ref={rootRef}
-      className="overflow-hidden border-y border-border/10 bg-background py-6 select-none">
+      className="overflow-hidden select-none">
       <div className="flex items-center mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         {repeatedItems.map((item, index) => (
           <p
@@ -77,6 +77,6 @@ export function DirectionalMarquee({ items }: DirectionalMarqueeProps) {
           </p>
         ))}
       </div>
-    </section>
+    </article>
   )
 }

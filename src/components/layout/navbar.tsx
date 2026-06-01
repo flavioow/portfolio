@@ -11,7 +11,7 @@ export default function Navbar() {
   const tA11y = useTranslations("accessibility.components.navbar")
 
   return (
-    <header className="fixed top-0 w-full z-50 pointer-events-none mix-blend-difference">
+    <header className="fixed top-0 w-full z-50 pointer-events-none mix-blend-difference select-none">
       <div className="container-wrapper">
         <div className="flex justify-between lg:grid grid-cols-3 items-center py-4">
           <div className="flex items-center justify-start gap-2">

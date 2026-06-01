@@ -40,7 +40,7 @@ export default function LanguageToggle() {
         aria-label={`${tA11y("label")}. ${tA11y("current", {
           locale: currentLocaleLabel,
         })}`}
-        className="pointer-events-auto dark:hover:text-foreground border-0 text-sm text-muted-foreground hover:text-background transition-colors duration-300">
+        className="pointer-events-auto bg-input/20 hover:bg-input/20 dark:hover:bg-input/50 dark:hover:text-foreground border-0 text-sm text-muted-foreground hover:text-background transition-colors duration-300">
         <SelectValue />
       </SelectTrigger>
 
