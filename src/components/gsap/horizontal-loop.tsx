@@ -40,9 +40,9 @@ export function horizontalLoop(
 
   gsap.set(items, {
     xPercent: (i, el) => {
-      const w = (widths[i] = parseFloat(
-        gsap.getProperty(el, "width", "px") as string,
-      ))
+      const w = parseFloat(gsap.getProperty(el, "width", "px") as string)
+
+      widths[i] = w
 
       xPercents[i] = snap(
         (parseFloat(gsap.getProperty(el, "x", "px") as string) / w) * 100 +

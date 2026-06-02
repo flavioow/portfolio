@@ -45,10 +45,12 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const text = typeof children === "string" ? children : ""
     return text.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word
+      const key = `${word}-${index}`
+
       return (
         <span
           className="word"
-          key={index}>
+          key={key}>
           {word}
         </span>
       )
@@ -118,7 +120,9 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill()
+      })
     }
   }, [
     scrollContainerRef,

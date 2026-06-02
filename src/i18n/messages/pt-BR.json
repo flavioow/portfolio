@@ -9,6 +9,8 @@
         "desenvolvedor",
         "front-end",
         "portfólio",
+        "desenvolvedor criativo",
+        "creative coding",
         "seo",
         "acessibilidade",
         "responsividade",
@@ -62,10 +64,10 @@
     "routes": {
       "home": {
         "title": "Portfólio de Flávio Perusin - Desenvolvedor Front-end & Designer",
-        "description": "Eu sou Flávio Perusin, desenvolvedor front-end especializado em criar interfaces elegantes e funcionais. Transformo ideias em produtos digitais que as pessoas gostam de usar.",
+        "description": "Eu sou Flávio Perusin, desenvolvedor front-end especializado em criar interfaces elegantes, funcionais e criativas. Transformo ideias em produtos digitais que as pessoas gostam de usar.",
         "canonicalPath": "/",
         "openGraphTitle": "Flavi.oow - Desenvolvedor Front-end & Designer",
-        "openGraphDescription": "Conheca o portfólio de Flávio Perusin, com foco em desenvolvimento front-end, design de interfaces, performance e experiências digitais acessiveis."
+        "openGraphDescription": "Conheça o portfólio de Flávio Perusin, com foco em desenvolvimento front-end, design de interfaces, performance, acessibilidade e ideias criativas."
       }
     }
   },
@@ -83,6 +85,19 @@
           "formula": "fã de Formula 1",
           "science": "apaixonado por ciências",
           "creative": "muito criativo"
+        }
+      },
+      "about": {
+        "description": "Eu adoro transformar as ideias mais malucas em projetos reais que dão inveja a qualquer um! Ainda não acredita? Então por que você não",
+        "connector": "e",
+        "actions": {
+          "github": {
+            "label": "Explora meu GitHub"
+          },
+          "cv": {
+            "label": "Vê meu currículo",
+            "href": "/assets/dev-general-br.pdf"
+          }
         }
       }
     },
@@ -110,6 +125,7 @@
         "current": "Idioma atual: {locale}"
       },
       "themeToggle": {
+        "toggle": "Alternar tema",
         "toLight": "Alternar para o tema claro",
         "toDark": "Alternar para o tema escuro"
       },
@@ -122,6 +138,14 @@
       },
       "loader": {
         "label": "Carregando portfólio"
+      }
+    },
+    "routes": {
+      "home": {
+        "about": {
+          "github": "Abrir o perfil de GitHub de Flávio Perusin em uma nova aba",
+          "cv": "Abrir o currículo em PDF de Flávio Perusin em uma nova aba"
+        }
       }
     }
   },

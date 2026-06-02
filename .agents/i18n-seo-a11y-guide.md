@@ -27,6 +27,8 @@ locale names, footer text, and common button text.
 
 `accessibility` stores non-visible assistive text, such as `aria-label`,
 screen-reader-only text, live region labels, and labels that include state.
+Use `accessibility.components` for reusable components and
+`accessibility.routes` for route-specific controls or landmarks.
 
 `forms` is reserved for form labels, helper text, validation messages, and submit
 states.

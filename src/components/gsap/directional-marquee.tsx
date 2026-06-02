@@ -62,18 +62,23 @@ export function DirectionalMarquee({ items }: DirectionalMarqueeProps) {
     }
   }, [])
 
-  const repeatedItems = [...items, ...items, ...items]
+  const repeatedItems = items.flatMap((item, itemIndex) =>
+    Array.from({ length: 3 }, (_, repeatIndex) => ({
+      id: `${item}-${itemIndex}-${repeatIndex}`,
+      label: item,
+    })),
+  )
 
   return (
     <article
       ref={rootRef}
       className="overflow-hidden select-none">
       <div className="flex items-center mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        {repeatedItems.map((item, index) => (
+        {repeatedItems.map((item) => (
           <p
-            key={`${item}-${index}`}
+            key={item.id}
             className="marquee-item mr-6 whitespace-nowrap text-3xl font-black leading-none tracking-tight text-foreground md:text-5xl">
-            {item}
+            {item.label}
           </p>
         ))}
       </div>

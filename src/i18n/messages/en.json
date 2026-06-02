@@ -9,6 +9,8 @@
         "developer",
         "front-end",
         "portfolio",
+        "creative developer",
+        "creative coding",
         "seo",
         "accessibility",
         "responsiveness",
@@ -62,10 +64,10 @@
     "routes": {
       "home": {
         "title": "Flávio Perusin's Portfolio - Front-end Developer & Designer",
-        "description": "I'm Flávio Perusin, a front-end developer specializing in creating elegant and functional interfaces. I turn ideas into digital products that people love to use.",
+        "description": "I'm Flávio Perusin, a front-end developer specializing in elegant, functional, and creative interfaces. I turn unusual ideas into digital products that people love to use.",
         "canonicalPath": "/",
         "openGraphTitle": "Flavi.oow - Front-end Developer & Designer",
-        "openGraphDescription": "Explore Flávio Perusin's portfolio, focused on front-end development, interface design, performance, and accessible digital experiences."
+        "openGraphDescription": "Explore Flávio Perusin's portfolio, focused on front-end development, interface design, performance, accessibility, and creative ideas."
       }
     }
   },
@@ -80,7 +82,22 @@
           "artist": "an artist",
           "brazilian": "brazilian (olha a tabelaaa)",
           "handsome": "sooo handsome",
-          "formula": "a Formula 1 fan"
+          "formula": "a Formula 1 fan",
+          "science": "passionate about science",
+          "creative": "very creative"
+        }
+      },
+      "about": {
+        "description": "I love turning the wildest ideas into real projects that make people stop and look twice. Still not convinced? Then why don't you",
+        "connector": "and",
+        "actions": {
+          "github": {
+            "label": "Explore my GitHub"
+          },
+          "cv": {
+            "label": "View my resume",
+            "href": "/assets/dev-general-en.pdf"
+          }
         }
       }
     },
@@ -108,6 +125,7 @@
         "current": "Current language: {locale}"
       },
       "themeToggle": {
+        "toggle": "Toggle theme",
         "toLight": "Switch to light theme",
         "toDark": "Switch to dark theme"
       },
@@ -120,6 +138,14 @@
       },
       "loader": {
         "label": "Loading portfolio"
+      }
+    },
+    "routes": {
+      "home": {
+        "about": {
+          "github": "Open Flavio Perusin's GitHub profile in a new tab",
+          "cv": "Open Flavio Perusin's resume PDF in a new tab"
+        }
       }
     }
   },

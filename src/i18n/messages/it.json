@@ -9,6 +9,8 @@
         "sviluppatore",
         "front-end",
         "portfolio",
+        "sviluppatore creativo",
+        "creative coding",
         "seo",
         "accessibilita",
         "responsivita",
@@ -62,10 +64,10 @@
     "routes": {
       "home": {
         "title": "Portfolio di Flávio Perusin - Sviluppatore Front-end & Designer",
-        "description": "Sono Flávio Perusin, sviluppatore front-end specializzato nella creazione di interfacce eleganti e funzionali. Trasformo idee in prodotti digitali che le persone amano usare.",
+        "description": "Sono Flávio Perusin, sviluppatore front-end specializzato in interfacce eleganti, funzionali e creative. Trasformo idee insolite in prodotti digitali che le persone amano usare.",
         "canonicalPath": "/",
         "openGraphTitle": "Flavi.oow - Sviluppatore Front-end & Designer",
-        "openGraphDescription": "Esplora il portfolio di Flávio Perusin, focalizzato su sviluppo front-end, design di interfacce, performance ed esperienze digitali accessibili."
+        "openGraphDescription": "Esplora il portfolio di Flávio Perusin, focalizzato su sviluppo front-end, design di interfacce, performance, accessibilità e idee creative."
       }
     }
   },
@@ -80,7 +82,22 @@
           "artist": "artista",
           "brazilian": "brasiliano (olha a tabelaaa)",
           "handsome": "mooolto bello",
-          "formula": "un appassionato di Formula 1"
+          "formula": "un appassionato di Formula 1",
+          "science": "appassionato di scienza",
+          "creative": "molto creativo"
+        }
+      },
+      "about": {
+        "description": "Adoro trasformare le idee più assurde in progetti reali capaci di far voltare la testa. Non ci credi ancora? Allora perché non",
+        "connector": "e",
+        "actions": {
+          "github": {
+            "label": "Esplora il mio GitHub"
+          },
+          "cv": {
+            "label": "Guarda il mio CV",
+            "href": "/assets/dev-general-en.pdf"
+          }
         }
       }
     },
@@ -108,6 +125,7 @@
         "current": "Lingua corrente: {locale}"
       },
       "themeToggle": {
+        "toggle": "Cambia tema",
         "toLight": "Passa al tema chiaro",
         "toDark": "Passa al tema scuro"
       },
@@ -120,6 +138,14 @@
       },
       "loader": {
         "label": "Caricamento portfolio"
+      }
+    },
+    "routes": {
+      "home": {
+        "about": {
+          "github": "Apri il profilo GitHub di Flávio Perusin in una nuova scheda",
+          "cv": "Apri il CV PDF di Flávio Perusin in una nuova scheda"
+        }
       }
     }
   },

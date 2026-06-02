@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react"
 import { useTranslations } from "next-intl"
 import type * as React from "react"
+import { useEffect, useState } from "react"
 
 import { useSkiperThemeToggle } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button"
@@ -16,7 +17,12 @@ type ThemeToggleProps = Omit<
 function ThemeToggle({ className, onClick, ...props }: ThemeToggleProps) {
   const { isDark, toggleTheme } = useSkiperThemeToggle()
   const t = useTranslations("accessibility.components.themeToggle")
-  const label = isDark ? t("toLight") : t("toDark")
+  const [isMounted, setIsMounted] = useState(false)
+  const label = !isMounted ? t("toggle") : isDark ? t("toLight") : t("toDark")
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <Button
