@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { useTranslations } from "next-intl"
+import { TextRoll } from "../ui/skiper-ui/text-roll-navigation"
 import LanguageToggle from "./language-toggle"
 import { Logo } from "./logo"
 import { ThemeToggle } from "./theme-toggle"
@@ -30,8 +31,8 @@ export default function Navbar() {
               <Link
                 key={link}
                 href={`/${link}`}
-                className="pointer-events-auto text-sm text-muted-foreground hover:text-background dark:hover:text-foreground transition-colors duration-300">
-                {t(link)}
+                className="pointer-events-auto uppercase text-sm text-muted-foreground hover:text-background dark:hover:text-foreground transition-colors duration-300">
+                <TextRoll>{t(link)}</TextRoll>
               </Link>
             ))}
           </nav>
