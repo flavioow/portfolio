@@ -55,7 +55,7 @@ export default function Navbar() {
           </div>
 
           <Sheet>
-            <SheetTrigger className="md:hidden pointer-events-auto">
+            <SheetTrigger className="md:hidden pointer-events-auto" asChild>
               <Button size="icon" className="pointer-events-auto bg-input/20 hover:bg-input/20 dark:hover:bg-input/50 text-muted-foreground hover:text-background dark:hover:text-foreground transition-all duration-300">
                 <Menu
                   aria-hidden="true"
