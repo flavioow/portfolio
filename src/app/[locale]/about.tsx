@@ -14,10 +14,9 @@ export default function About() {
       <ScrollReveal
         baseOpacity={0.1}
         enableBlur
-        baseRotation={-4}
+        baseRotation={0}
         blurStrength={8}
         textClassName="text-justify text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,3vw,3rem)]"
-        rotationEnd="top top"
         wordAnimationEnd="top top">
         {t("description")}
       </ScrollReveal>

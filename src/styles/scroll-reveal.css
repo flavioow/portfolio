@@ -4,4 +4,6 @@
 
 .word {
   display: inline-block;
+  opacity: 0.1;
+  filter: blur(8px);
 }
