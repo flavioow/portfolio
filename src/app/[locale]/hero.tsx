@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl"
 import { HeroEffect } from "@/components/hero-scene/hero-effect"
 import RotatingText from "@/components/rotating-text"
+import DarkVeil from "@/components/dark-veil"
 
 export default function Hero() {
     const t = useTranslations("routes.home.hero")
@@ -21,6 +22,20 @@ export default function Hero() {
             itemScope
             itemType="http://schema.org/Person"
             className="relative isolate h-dvh w-dvw overflow-hidden bg-radial from-background dark:from-muted from-28% to-muted-foreground/50 dark:to-background">
+            <DarkVeil
+                hueShift={244}
+                noiseIntensity={0.005}
+                scanlineIntensity={0.5}
+                speed={0.3}
+                scanlineFrequency={5}
+                alphaThreshold={0}
+                alphaSoftness={0.03}
+                warpAmount={1}
+                patternScale={1.12}
+                pointerInfluence={1}
+                colorA="#768585"
+                colorB="#768585"
+            />
             <HeroEffect />
 
             <div className="container-wrapper h-full content-end pb-8 pointer-events-none select-none text-background dark:text-foreground mix-blend-difference -z-10">
