@@ -39,27 +39,29 @@ export default function Hero() {
             <HeroEffect />
 
             <div className="container-wrapper h-full content-end pb-8 pointer-events-none select-none text-background dark:text-foreground mix-blend-difference -z-10">
-                <h1 className="text-[clamp(4rem,7.5vw,7.5rem)] leading-[0.9] tracking-tighter -rotate-3 skew-x-6">
-                    Flavi.<span className="font-cursive">oow</span>
-                </h1>
-                <p className="text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,3vw,3rem)]">
-                    <span>{t("title")}&nbsp;</span>
-                    <RotatingText
-                        texts={roles}
-                        mainClassName="overflow-hidden"
-                        staggerFrom="last"
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "-120%" }}
-                        staggerDuration={0.02}
-                        splitLevelClassName="overflow-hidden"
-                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                        rotationInterval={3000}
-                        splitBy="characters"
-                        auto
-                        loop
-                    />
-                </p>
+                <div className="container-breakout">
+                    <h1 className="text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter -rotate-2 skew-x-6 mb-2">
+                        Flavi.<span className="font-cursive">oow</span>
+                    </h1>
+                    <p className="text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,2.4vw,2.4rem)]">
+                        <span>{t("title")}&nbsp;</span>
+                        <RotatingText
+                            texts={roles}
+                            mainClassName="overflow-hidden"
+                            staggerFrom="last"
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            exit={{ y: "-120%" }}
+                            staggerDuration={0.02}
+                            splitLevelClassName="overflow-hidden"
+                            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                            rotationInterval={3000}
+                            splitBy="characters"
+                            auto
+                            loop
+                        />
+                    </p>
+                </div>
             </div>
         </section>
     )
