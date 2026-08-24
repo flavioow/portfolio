@@ -43,7 +43,7 @@ export default function Hero() {
                 <div className="container-breakout">
                     <div className="flex justify-between items-end">
                         <div>
-                            <h1 className="text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter -rotate-2 skew-x-6 mb-2">
+                            <h1 data-loader-title className="text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter -rotate-2 skew-x-6 mb-2">
                                 Flavi.<span className="font-cursive">oow</span>
                             </h1>
                             <p className="text-[clamp(1.4rem,2vw,2rem)] md:text-[clamp(1.6rem,2.4vw,2.4rem)]">
