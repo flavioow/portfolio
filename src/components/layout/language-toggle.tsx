@@ -2,57 +2,45 @@
 
 import { useLocale, useTranslations } from "next-intl"
 
-import { usePathname, useRouter } from "@/i18n/navigation"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select"
+import { Link, usePathname } from "@/i18n/navigation"
 
 const locales = [
-  { value: "en", labelKey: "en" },
-  { value: "pt-BR", labelKey: "pt-BR" },
-  { value: "it", labelKey: "it" },
+    { value: "en", label: "EN", translationKey: "en" },
+    { value: "pt-BR", label: "PT", translationKey: "pt-BR" },
+    { value: "it", label: "IT", translationKey: "it" },
 ] as const
 
 export default function LanguageToggle() {
-  const router = useRouter()
-  const pathname = usePathname()
-  const locale = useLocale()
-  const tLocales = useTranslations("shared.locales")
-  const tA11y = useTranslations("accessibility.components.languageToggle")
-  const currentLocale = locales.find((item) => item.value === locale)
-  const currentLocaleLabel = currentLocale
-    ? tLocales(currentLocale.labelKey)
-    : locale
+    const locale = useLocale()
+    const pathname = usePathname()
 
-  function onSelectChange(nextLocale: string) {
-    router.replace(pathname, { locale: nextLocale })
-  }
+    const tLocales = useTranslations("shared.locales")
+    const tA11y = useTranslations("accessibility.components.languageToggle")
 
-  return (
-    <Select
-      value={locale}
-      onValueChange={onSelectChange}>
-      <SelectTrigger
-        aria-label={`${tA11y("label")}. ${tA11y("current", {
-          locale: currentLocaleLabel,
-        })}`}
-        className="pointer-events-auto pointer border-0 bg-input/10 hover:bg-input/30 dark:bg-input/30 dark:hover:bg-input/50 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-        <SelectValue />
-      </SelectTrigger>
+    return (
+        <div className="flex gap-4">
+            {locales.map((item) => {
+                const isActive = item.value === locale
+                const languageName = tLocales(item.translationKey)
 
-      <SelectContent>
-        {locales.map((locale) => (
-          <SelectItem
-            key={locale.value}
-            value={locale.value}>
-            {tLocales(locale.labelKey)}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  )
+                return (
+                    <Link
+                        key={item.value}
+                        href={pathname}
+                        locale={item.value}
+                        aria-label={tA11y("changeTo", {
+                            locale: languageName,
+                        })}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`pointer pointer-events-auto text-[clamp(1.2rem,1.6vw,1.6rem)] text-background dark:text-foreground mix-blend-difference transition-opacity duration-300 ${isActive
+                            ? "opacity-100"
+                            : "opacity-50 hover:opacity-100"
+                            }`}
+                    >
+                        {item.label}
+                    </Link>
+                )
+            })}
+        </div>
+    )
 }

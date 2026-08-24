@@ -1,153 +1,154 @@
 {
-  "metadata": {
-    "site": {
-      "name": "Flavi.oow",
-      "titleTemplate": "%s | Flavi.oow",
-      "defaultTitle": "Flavi.oow",
-      "description": "Sono Flávio Perusin, sviluppatore front-end specializzato nella creazione di interfacce eleganti e funzionali. Trasformo idee in prodotti digitali che le persone amano usare.",
-      "keywords": [
-        "sviluppatore",
-        "front-end",
-        "portfolio",
-        "sviluppatore creativo",
-        "creative coding",
-        "seo",
-        "accessibilita",
-        "responsivita",
-        "typescript",
-        "node",
-        "react",
-        "nextjs",
-        "tailwindcss",
-        "prisma",
-        "postgresql"
-      ],
-      "openGraphImageAlt": "Anteprima del sito portfolio Flavi.oow",
-      "author": {
-        "name": "Flávio Henrique Perusin de Souza",
-        "url": "https://github.com/flavioow"
-      },
-      "jsonLd": {
-        "alternateName": "Flavi.oow",
-        "websiteAlternateName": "Portfolio di Flávio Perusin",
-        "jobTitle": "Sviluppatore Front-end & Designer",
-        "occupationName": "Sviluppatore Front-end & Designer",
-        "occupationDescription": "Crea interfacce web moderne con attenzione a performance ed esperienza utente",
-        "organizationName": "Flavi.oow",
-        "skills": [
-          "JavaScript",
-          "TypeScript",
-          "Next.js",
-          "UI/UX Design",
-          "Performance web",
-          "Accessibilita",
-          "Design systems"
-        ],
-        "knowsAbout": [
-          "Sviluppo front-end",
-          "Design di interfacce",
-          "Performance web",
-          "Accessibilita",
-          "Design systems",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Next.js"
-        ],
-        "sameAs": [
-          "https://github.com/flavioow",
-          "https://www.linkedin.com/in/flavioow/",
-          "https://www.instagram.com/flavi.oow/"
-        ]
-      }
+    "metadata": {
+        "site": {
+            "name": "Flavi.oow",
+            "titleTemplate": "%s | Flavi.oow",
+            "defaultTitle": "Flavi.oow",
+            "description": "Sono Flávio Perusin, sviluppatore front-end specializzato nella creazione di interfacce eleganti e funzionali. Trasformo idee in prodotti digitali che le persone amano usare.",
+            "keywords": [
+                "sviluppatore",
+                "front-end",
+                "portfolio",
+                "sviluppatore creativo",
+                "creative coding",
+                "seo",
+                "accessibilita",
+                "responsivita",
+                "typescript",
+                "node",
+                "react",
+                "nextjs",
+                "tailwindcss",
+                "prisma",
+                "postgresql"
+            ],
+            "openGraphImageAlt": "Anteprima del sito portfolio Flavi.oow",
+            "author": {
+                "name": "Flávio Henrique Perusin de Souza",
+                "url": "https://github.com/flavioow"
+            },
+            "jsonLd": {
+                "alternateName": "Flavi.oow",
+                "websiteAlternateName": "Portfolio di Flávio Perusin",
+                "jobTitle": "Sviluppatore Front-end & Designer",
+                "occupationName": "Sviluppatore Front-end & Designer",
+                "occupationDescription": "Crea interfacce web moderne con attenzione a performance ed esperienza utente",
+                "organizationName": "Flavi.oow",
+                "skills": [
+                    "JavaScript",
+                    "TypeScript",
+                    "Next.js",
+                    "UI/UX Design",
+                    "Performance web",
+                    "Accessibilita",
+                    "Design systems"
+                ],
+                "knowsAbout": [
+                    "Sviluppo front-end",
+                    "Design di interfacce",
+                    "Performance web",
+                    "Accessibilita",
+                    "Design systems",
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "Next.js"
+                ],
+                "sameAs": [
+                    "https://github.com/flavioow",
+                    "https://www.linkedin.com/in/flavioow/",
+                    "https://www.instagram.com/flavi.oow/"
+                ]
+            }
+        },
+        "routes": {
+            "home": {
+                "title": "Portfolio di Flávio Perusin - Sviluppatore Front-end & Designer",
+                "description": "Sono Flávio Perusin, sviluppatore front-end specializzato in interfacce eleganti, funzionali e creative. Trasformo idee insolite in prodotti digitali che le persone amano usare.",
+                "canonicalPath": "/",
+                "openGraphTitle": "Flavi.oow - Sviluppatore Front-end & Designer",
+                "openGraphDescription": "Esplora il portfolio di Flávio Perusin, focalizzato su sviluppo front-end, design di interfacce, performance, accessibilità e idee creative."
+            }
+        }
     },
     "routes": {
-      "home": {
-        "title": "Portfolio di Flávio Perusin - Sviluppatore Front-end & Designer",
-        "description": "Sono Flávio Perusin, sviluppatore front-end specializzato in interfacce eleganti, funzionali e creative. Trasformo idee insolite in prodotti digitali che le persone amano usare.",
-        "canonicalPath": "/",
-        "openGraphTitle": "Flavi.oow - Sviluppatore Front-end & Designer",
-        "openGraphDescription": "Esplora il portfolio di Flávio Perusin, focalizzato su sviluppo front-end, design di interfacce, performance, accessibilità e idee creative."
-      }
-    }
-  },
-  "routes": {
-    "home": {
-      "hero": {
-        "title": "Piacere, sono",
-        "roles": {
-          "developer": "programmatore front-end",
-          "designer": "designer",
-          "keyboardist": "tastierista",
-          "artist": "artista",
-          "brazilian": "brasiliano (olha a tabelaaa)",
-          "handsome": "mooolto bello",
-          "formula": "un appassionato di Formula 1",
-          "science": "appassionato di scienza",
-          "creative": "molto creativo"
+        "home": {
+            "hero": {
+                "title": "Piacere, sono",
+                "roles": {
+                    "developer": "programmatore front-end",
+                    "designer": "designer",
+                    "keyboardist": "tastierista",
+                    "artist": "artista",
+                    "brazilian": "brasiliano (olha a tabelaaa)",
+                    "handsome": "mooolto bello",
+                    "formula": "un appassionato di Formula 1",
+                    "science": "appassionato di scienza",
+                    "creative": "molto creativo"
+                }
+            },
+            "about": {
+                "description": "Adoro trasformare le idee più assurde in progetti reali capaci di far voltare la testa. Non ci credi ancora? Allora perché non",
+                "connector": "e",
+                "actions": {
+                    "github": {
+                        "label": "Esplora il mio GitHub"
+                    },
+                    "cv": {
+                        "label": "Guarda il mio CV",
+                        "href": "/assets/dev-general-en.pdf"
+                    }
+                }
+            }
+        },
+        "projects": {},
+        "blog": {}
+    },
+    "shared": {
+        "navbar": {
+            "projects": "Progetti",
+            "blog": "Blog",
+            "demos": "Demo"
+        },
+        "locales": {
+            "en": "Inglese",
+            "pt-BR": "Portoghese",
+            "it": "Italiano"
+        },
+        "footer": {},
+        "buttons": {}
+    },
+    "accessibility": {
+        "components": {
+            "languageToggle": {
+                "label": "Cambia lingua",
+                "current": "Lingua corrente: {locale}",
+                "changeTo": "Cambia lingua in {locale}"
+            },
+            "themeToggle": {
+                "toggle": "Cambia tema",
+                "toLight": "Passa al tema chiaro",
+                "toDark": "Passa al tema scuro"
+            },
+            "navbar": {
+                "mainNavigation": "Navigazione principale",
+                "homeLink": "Vai alla pagina iniziale"
+            },
+            "hero": {
+                "scene": "Sfondo interattivo decorativo della presentazione"
+            },
+            "loader": {
+                "label": "Caricamento portfolio"
+            }
+        },
+        "routes": {
+            "home": {
+                "about": {
+                    "github": "Apri il profilo GitHub di Flávio Perusin in una nuova scheda",
+                    "cv": "Apri il CV PDF di Flávio Perusin in una nuova scheda"
+                }
+            }
         }
-      },
-      "about": {
-        "description": "Adoro trasformare le idee più assurde in progetti reali capaci di far voltare la testa. Non ci credi ancora? Allora perché non",
-        "connector": "e",
-        "actions": {
-          "github": {
-            "label": "Esplora il mio GitHub"
-          },
-          "cv": {
-            "label": "Guarda il mio CV",
-            "href": "/assets/dev-general-en.pdf"
-          }
-        }
-      }
     },
-    "projects": {},
-    "blog": {}
-  },
-  "shared": {
-    "navbar": {
-      "projects": "Progetti",
-      "blog": "Blog",
-      "demos": "Demo"
-    },
-    "locales": {
-      "en": "Inglese",
-      "pt-BR": "Portoghese",
-      "it": "Italiano"
-    },
-    "footer": {},
-    "buttons": {}
-  },
-  "accessibility": {
-    "components": {
-      "languageToggle": {
-        "label": "Cambia lingua",
-        "current": "Lingua corrente: {locale}"
-      },
-      "themeToggle": {
-        "toggle": "Cambia tema",
-        "toLight": "Passa al tema chiaro",
-        "toDark": "Passa al tema scuro"
-      },
-      "navbar": {
-        "mainNavigation": "Navigazione principale",
-        "homeLink": "Vai alla pagina iniziale"
-      },
-      "hero": {
-        "scene": "Sfondo interattivo decorativo della presentazione"
-      },
-      "loader": {
-        "label": "Caricamento portfolio"
-      }
-    },
-    "routes": {
-      "home": {
-        "about": {
-          "github": "Apri il profilo GitHub di Flávio Perusin in una nuova scheda",
-          "cv": "Apri il CV PDF di Flávio Perusin in una nuova scheda"
-        }
-      }
-    }
-  },
-  "forms": {}
+    "forms": {}
 }
