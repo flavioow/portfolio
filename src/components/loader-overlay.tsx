@@ -87,7 +87,7 @@ export function LoaderOverlay() {
                         duration: 0.45,
                         ease: [0.76, 0, 0.24, 1],
                     }}
-                    className="fixed inset-0 z-50 flex items-center justify-center select-none bg-background/90 backdrop-blur-2xl">
+                    className="fixed inset-0 z-50 flex items-center justify-center select-none bg-background/50 dark:bg-background/90 backdrop-blur-2xl">
                     <span className="sr-only">{t("label")}</span>
                     <motion.div
                         aria-hidden="true"
