@@ -1,32 +1,36 @@
 "use client"
 
-import { useRef, useEffect } from 'react';
-import { Renderer, Program, Mesh, Triangle, Vec2, Vec3 } from 'ogl';
+import { Mesh, Program, Renderer, Triangle, Vec2, Vec3 } from "ogl"
+import { useEffect, useRef } from "react"
 
-type Rgb = [number, number, number];
+type Rgb = [number, number, number]
 
-const DEFAULT_COLOR_A: Rgb = [0.23, 0.51, 0.96];
-const DEFAULT_COLOR_B: Rgb = [0.66, 0.33, 0.97];
+const DEFAULT_COLOR_A: Rgb = [0.23, 0.51, 0.96]
+const DEFAULT_COLOR_B: Rgb = [0.66, 0.33, 0.97]
 
 function hexToRgb(color: string, fallback: Rgb): Rgb {
-    const value = color.trim().replace(/^#/, '');
-    const hex = value.length === 3
-        ? value.split('').map((part) => part + part).join('')
-        : value.slice(0, 6);
+  const value = color.trim().replace(/^#/, "")
+  const hex =
+    value.length === 3
+      ? value
+          .split("")
+          .map((part) => part + part)
+          .join("")
+      : value.slice(0, 6)
 
-    if (!/^[0-9a-f]{6}$/i.test(hex)) return fallback;
+  if (!/^[0-9a-f]{6}$/i.test(hex)) return fallback
 
-    return [
-        parseInt(hex.slice(0, 2), 16) / 255,
-        parseInt(hex.slice(2, 4), 16) / 255,
-        parseInt(hex.slice(4, 6), 16) / 255
-    ];
+  return [
+    parseInt(hex.slice(0, 2), 16) / 255,
+    parseInt(hex.slice(2, 4), 16) / 255,
+    parseInt(hex.slice(4, 6), 16) / 255,
+  ]
 }
 
 const vertex = `
 attribute vec2 position;
 void main(){gl_Position=vec4(position,0.0,1.0);}
-`;
+`
 
 const fragment = `
 #ifdef GL_ES
@@ -113,143 +117,163 @@ void main(){
     vec3 effectColor=mix(uColorA,uColorB,smoothstep(0.1,0.9,colorMix));
     gl_FragColor=vec4(effectColor,alpha);
 }
-`;
+`
 
 type Props = {
-    hueShift?: number;
-    noiseIntensity?: number;
-    scanlineIntensity?: number;
-    speed?: number;
-    scanlineFrequency?: number;
-    warpAmount?: number;
-    resolutionScale?: number;
-    /** Brightness below which the shader becomes fully transparent. */
-    alphaThreshold?: number;
-    /** Width of the soft transition from transparent to opaque. */
-    alphaSoftness?: number;
-    /** First color of the shader element, as a 3- or 6-digit hex color. */
-    colorA?: string;
-    /** Second color of the shader element, as a 3- or 6-digit hex color. */
-    colorB?: string;
-    /** Visual scale of the generated pattern. Values above 1 make it larger. */
-    patternScale?: number;
-    /** Strength of the local pointer distortion. Set to 0 to disable it. */
-    pointerInfluence?: number;
-    className?: string;
-};
+  hueShift?: number
+  noiseIntensity?: number
+  scanlineIntensity?: number
+  speed?: number
+  scanlineFrequency?: number
+  warpAmount?: number
+  resolutionScale?: number
+  /** Brightness below which the shader becomes fully transparent. */
+  alphaThreshold?: number
+  /** Width of the soft transition from transparent to opaque. */
+  alphaSoftness?: number
+  /** First color of the shader element, as a 3- or 6-digit hex color. */
+  colorA?: string
+  /** Second color of the shader element, as a 3- or 6-digit hex color. */
+  colorB?: string
+  /** Visual scale of the generated pattern. Values above 1 make it larger. */
+  patternScale?: number
+  /** Strength of the local pointer distortion. Set to 0 to disable it. */
+  pointerInfluence?: number
+  className?: string
+}
 
 export default function DarkVeil({
-    hueShift = 0,
-    noiseIntensity = 0,
-    scanlineIntensity = 0,
-    speed = 0.5,
-    scanlineFrequency = 0,
-    warpAmount = 0,
-    resolutionScale = 1,
-    alphaThreshold = 0.12,
-    alphaSoftness = 0.12,
-    colorA = '#3b82f6',
-    colorB = '#a855f7',
-    patternScale = 1.12,
-    pointerInfluence = 0.35,
-    className = ''
+  hueShift = 0,
+  noiseIntensity = 0,
+  scanlineIntensity = 0,
+  speed = 0.5,
+  scanlineFrequency = 0,
+  warpAmount = 0,
+  resolutionScale = 1,
+  alphaThreshold = 0.12,
+  alphaSoftness = 0.12,
+  colorA = "#3b82f6",
+  colorB = "#a855f7",
+  patternScale = 1.12,
+  pointerInfluence = 0.35,
+  className = "",
 }: Props) {
-    const ref = useRef<HTMLCanvasElement>(null);
+  const ref = useRef<HTMLCanvasElement>(null)
 
-    useEffect(() => {
-        const canvas = ref.current as HTMLCanvasElement;
-        const parent = canvas.parentElement as HTMLElement;
+  useEffect(() => {
+    const canvas = ref.current as HTMLCanvasElement
+    const parent = canvas.parentElement as HTMLElement
 
-        const renderer = new Renderer({
-            dpr: Math.min(window.devicePixelRatio, 2),
-            canvas,
-            alpha: true,
-            depth: false,
-            premultipliedAlpha: false
-        });
+    const renderer = new Renderer({
+      dpr: Math.min(window.devicePixelRatio, 2),
+      canvas,
+      alpha: true,
+      depth: false,
+      premultipliedAlpha: false,
+    })
 
-        const gl = renderer.gl;
-        gl.clearColor(0, 0, 0, 0);
-        const geometry = new Triangle(gl);
-        const pointer = new Vec2();
-        const pointerTarget = new Vec2();
-        const [redA, greenA, blueA] = hexToRgb(colorA, DEFAULT_COLOR_A);
-        const [redB, greenB, blueB] = hexToRgb(colorB, DEFAULT_COLOR_B);
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    const geometry = new Triangle(gl)
+    const pointer = new Vec2()
+    const pointerTarget = new Vec2()
+    const [redA, greenA, blueA] = hexToRgb(colorA, DEFAULT_COLOR_A)
+    const [redB, greenB, blueB] = hexToRgb(colorB, DEFAULT_COLOR_B)
 
-        const program = new Program(gl, {
-            vertex,
-            fragment,
-            uniforms: {
-                uTime: { value: 0 },
-                uResolution: { value: new Vec2() },
-                uHueShift: { value: hueShift },
-                uNoise: { value: noiseIntensity },
-                uScan: { value: scanlineIntensity },
-                uScanFreq: { value: scanlineFrequency },
-                uWarp: { value: warpAmount },
-                uAlphaThreshold: { value: alphaThreshold },
-                uAlphaSoftness: { value: alphaSoftness },
-                uPointer: { value: pointer },
-                uPointerInfluence: { value: pointerInfluence },
-                uPatternScale: { value: patternScale },
-                uColorA: { value: new Vec3(redA, greenA, blueA) },
-                uColorB: { value: new Vec3(redB, greenB, blueB) }
-            }
-        });
+    const program = new Program(gl, {
+      vertex,
+      fragment,
+      uniforms: {
+        uTime: { value: 0 },
+        uResolution: { value: new Vec2() },
+        uHueShift: { value: hueShift },
+        uNoise: { value: noiseIntensity },
+        uScan: { value: scanlineIntensity },
+        uScanFreq: { value: scanlineFrequency },
+        uWarp: { value: warpAmount },
+        uAlphaThreshold: { value: alphaThreshold },
+        uAlphaSoftness: { value: alphaSoftness },
+        uPointer: { value: pointer },
+        uPointerInfluence: { value: pointerInfluence },
+        uPatternScale: { value: patternScale },
+        uColorA: { value: new Vec3(redA, greenA, blueA) },
+        uColorB: { value: new Vec3(redB, greenB, blueB) },
+      },
+    })
 
-        const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
-        const resize = () => {
-            const w = parent.clientWidth,
-                h = parent.clientHeight;
-            renderer.setSize(w * resolutionScale, h * resolutionScale);
-            program.uniforms.uResolution.value.set(w, h);
-        };
+    const resize = () => {
+      const w = parent.clientWidth,
+        h = parent.clientHeight
+      renderer.setSize(w * resolutionScale, h * resolutionScale)
+      program.uniforms.uResolution.value.set(w, h)
+    }
 
-        const onPointerMove = (event: PointerEvent) => {
-            const bounds = parent.getBoundingClientRect();
-            pointerTarget.set(
-                ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
-                ((event.clientY - bounds.top) / bounds.height) * 2 - 1
-            );
-        };
+    const onPointerMove = (event: PointerEvent) => {
+      const bounds = parent.getBoundingClientRect()
+      pointerTarget.set(
+        ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+        ((event.clientY - bounds.top) / bounds.height) * 2 - 1,
+      )
+    }
 
-        const onPointerLeave = () => pointerTarget.set(0, 0);
+    const onPointerLeave = () => pointerTarget.set(0, 0)
 
-        window.addEventListener('resize', resize);
-        parent.addEventListener('pointermove', onPointerMove);
-        parent.addEventListener('pointerleave', onPointerLeave);
-        resize();
+    window.addEventListener("resize", resize)
+    parent.addEventListener("pointermove", onPointerMove)
+    parent.addEventListener("pointerleave", onPointerLeave)
+    resize()
 
-        const start = performance.now();
-        let frame = 0;
+    const start = performance.now()
+    let frame = 0
 
-        const loop = () => {
-            program.uniforms.uTime.value = ((performance.now() - start) / 1000) * speed;
-            pointer.x += (pointerTarget.x - pointer.x) * 0.08;
-            pointer.y += (pointerTarget.y - pointer.y) * 0.08;
-            program.uniforms.uHueShift.value = hueShift;
-            program.uniforms.uNoise.value = noiseIntensity;
-            program.uniforms.uScan.value = scanlineIntensity;
-            program.uniforms.uScanFreq.value = scanlineFrequency;
-            program.uniforms.uWarp.value = warpAmount;
-            program.uniforms.uAlphaThreshold.value = alphaThreshold;
-            program.uniforms.uAlphaSoftness.value = alphaSoftness;
-            program.uniforms.uPointerInfluence.value = pointerInfluence;
-            program.uniforms.uPatternScale.value = patternScale;
-            renderer.render({ scene: mesh });
-            frame = requestAnimationFrame(loop);
-        };
+    const loop = () => {
+      program.uniforms.uTime.value =
+        ((performance.now() - start) / 1000) * speed
+      pointer.x += (pointerTarget.x - pointer.x) * 0.08
+      pointer.y += (pointerTarget.y - pointer.y) * 0.08
+      program.uniforms.uHueShift.value = hueShift
+      program.uniforms.uNoise.value = noiseIntensity
+      program.uniforms.uScan.value = scanlineIntensity
+      program.uniforms.uScanFreq.value = scanlineFrequency
+      program.uniforms.uWarp.value = warpAmount
+      program.uniforms.uAlphaThreshold.value = alphaThreshold
+      program.uniforms.uAlphaSoftness.value = alphaSoftness
+      program.uniforms.uPointerInfluence.value = pointerInfluence
+      program.uniforms.uPatternScale.value = patternScale
+      renderer.render({ scene: mesh })
+      frame = requestAnimationFrame(loop)
+    }
 
-        loop();
+    loop()
 
-        return () => {
-            cancelAnimationFrame(frame);
-            window.removeEventListener('resize', resize);
-            parent.removeEventListener('pointermove', onPointerMove);
-            parent.removeEventListener('pointerleave', onPointerLeave);
-        };
-    }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, alphaThreshold, alphaSoftness, colorA, colorB, patternScale, pointerInfluence]);
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("resize", resize)
+      parent.removeEventListener("pointermove", onPointerMove)
+      parent.removeEventListener("pointerleave", onPointerLeave)
+    }
+  }, [
+    hueShift,
+    noiseIntensity,
+    scanlineIntensity,
+    speed,
+    scanlineFrequency,
+    warpAmount,
+    resolutionScale,
+    alphaThreshold,
+    alphaSoftness,
+    colorA,
+    colorB,
+    patternScale,
+    pointerInfluence,
+  ])
 
-    return <canvas aria-hidden="true" ref={ref} className={`pointer-events-none absolute inset-0 block h-full w-full ${className}`} />;
+  return (
+    <canvas
+      ref={ref}
+      className={`pointer-events-none absolute inset-0 block h-full w-full ${className}`}
+    />
+  )
 }

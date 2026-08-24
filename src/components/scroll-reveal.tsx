@@ -51,8 +51,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       return (
         <span
           key={`${word}-${index}`}
-          className="word"
-        >
+          className="word">
           {word}
         </span>
       )
@@ -67,14 +66,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const scroller = scrollContainerRef?.current || window
 
     const ctx = gsap.context(() => {
-      const wordElements =
-        el.querySelectorAll<HTMLElement>(".word")
+      const wordElements = el.querySelectorAll<HTMLElement>(".word")
 
       gsap.set(wordElements, {
         opacity: baseOpacity,
-        filter: enableBlur
-          ? `blur(${blurStrength}px)`
-          : "blur(0px)",
+        filter: enableBlur ? `blur(${blurStrength}px)` : "blur(0px)",
         willChange: "opacity, filter",
       })
 
@@ -128,11 +124,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   return (
     <h2
       ref={containerRef}
-      className={`scroll-reveal ${containerClassName}`}
-    >
-      <p className={`scroll-reveal-text ${textClassName}`}>
-        {splitText}
-      </p>
+      className={`scroll-reveal ${containerClassName}`}>
+      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
     </h2>
   )
 }
