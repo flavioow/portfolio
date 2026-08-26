@@ -8,25 +8,25 @@ import { useEffect } from "react"
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 interface Props {
-  children: React.ReactNode
+    children: React.ReactNode
 }
 
 export function SmoothScrolling({ children }: Props) {
-  useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      smooth: 1.2,
-      effects: true,
-      smoothTouch: 0.1,
-    })
+    useEffect(() => {
+        const smoother = ScrollSmoother.create({
+            smooth: 1.2,
+            effects: true,
+            smoothTouch: 0.1,
+        })
 
-    return () => {
-      smoother.kill()
-    }
-  }, [])
+        return () => {
+            smoother.kill()
+        }
+    }, [])
 
-  return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">{children}</div>
-    </div>
-  )
+    return (
+        <div id="smooth-wrapper">
+            <div id="smooth-content">{children}</div>
+        </div>
+    )
 }

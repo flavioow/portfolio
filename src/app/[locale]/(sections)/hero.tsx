@@ -25,18 +25,18 @@ export default function Hero() {
             itemType="http://schema.org/Person"
             className="relative isolate h-dvh w-dvw overflow-hidden bg-radial from-background dark:from-muted from-28% to-ring dark:to-background">
             <DarkVeil
-                hueShift={244}
-                noiseIntensity={0.005}
-                scanlineIntensity={0.5}
-                speed={0.3}
-                scanlineFrequency={5}
-                alphaThreshold={0}
-                alphaSoftness={0.03}
-                warpAmount={1}
+                animationSpeed={0.3}
+                autoRotationSpeed={0.3}
+                colorA="#93969e"
+                colorB="#787c87"
+                colorC="#646975"
+                colorBlendIntensity={2}
+                pointerParallaxEffect={3}
+                pointerRotationEffect={0.5}
+                depthIntensity={0.8}
                 patternScale={1.12}
-                pointerInfluence={1}
-                colorA="#96683E"
-                colorB="#96683E"
+                alphaThreshold={0}
+                alphaSoftness={0.02}
             />
             <HeroEffect />
 

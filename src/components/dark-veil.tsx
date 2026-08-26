@@ -7,24 +7,25 @@ type Rgb = [number, number, number]
 
 const DEFAULT_COLOR_A: Rgb = [0.23, 0.51, 0.96]
 const DEFAULT_COLOR_B: Rgb = [0.66, 0.33, 0.97]
+const DEFAULT_COLOR_C: Rgb = [0.96, 0.44, 0.51]
 
 function hexToRgb(color: string, fallback: Rgb): Rgb {
-  const value = color.trim().replace(/^#/, "")
-  const hex =
-    value.length === 3
-      ? value
-          .split("")
-          .map((part) => part + part)
-          .join("")
-      : value.slice(0, 6)
+    const value = color.trim().replace(/^#/, "")
+    const hex =
+        value.length === 3
+            ? value
+                .split("")
+                .map((part) => part + part)
+                .join("")
+            : value.slice(0, 6)
 
-  if (!/^[0-9a-f]{6}$/i.test(hex)) return fallback
+    if (!/^[0-9a-f]{6}$/i.test(hex)) return fallback
 
-  return [
-    parseInt(hex.slice(0, 2), 16) / 255,
-    parseInt(hex.slice(2, 4), 16) / 255,
-    parseInt(hex.slice(4, 6), 16) / 255,
-  ]
+    return [
+        parseInt(hex.slice(0, 2), 16) / 255,
+        parseInt(hex.slice(2, 4), 16) / 255,
+        parseInt(hex.slice(4, 6), 16) / 255,
+    ]
 }
 
 const vertex = `
@@ -37,21 +38,22 @@ const fragment = `
 precision lowp float;
 #endif
 uniform vec2 uResolution;
-uniform float uTime;
-uniform float uHueShift;
-uniform float uNoise;
-uniform float uScan;
-uniform float uScanFreq;
-uniform float uWarp;
+uniform float uAnimationSpeed;
+uniform float uAutoRotationSpeed;
+uniform float uPointerParallaxEffect;
+uniform float uPointerRotationEffect;
+uniform float uDepthIntensity;
+uniform float uPatternScale;
+uniform float uGlitchIntensity;
 uniform float uAlphaThreshold;
 uniform float uAlphaSoftness;
 uniform vec2 uPointer;
-uniform float uPointerInfluence;
-uniform float uPatternScale;
 uniform vec3 uColorA;
 uniform vec3 uColorB;
-#define iTime uTime
-#define iResolution uResolution
+uniform vec3 uColorC;
+uniform float uColorBlendIntensity;
+
+#define PI 3.14159265359
 
 vec4 buf[8];
 float rand(vec2 c){return fract(sin(dot(c,vec2(12.9898,78.233)))*43758.5453);}
@@ -68,6 +70,30 @@ vec3 hueShiftRGB(vec3 col,float deg){
 }
 
 vec4 sigmoid(vec4 x){return 1./(1.+exp(-x));}
+
+// ===== PARALLAX DEPTH 3D =====
+// Simula o objeto rotacionando no seu próprio eixo
+// Mantém a posição, mas varia profundidade
+vec2 applyDepthParallax(vec2 uv, float rotationAngle, float intensity) {
+    // Criar um "mapa de profundidade" implícito baseado em seno
+    // Isso simula como diferentes pontos da esfera têm diferentes profundidades
+
+    // Aplicar rotação no eixo Y (horizontal)
+    float cosRot = cos(rotationAngle);
+    float sinRot = sin(rotationAngle);
+
+    // Transformar UV considerando rotação no eixo Y
+    float depthMap = cos(uv.x * PI + rotationAngle) * 0.5 + 0.5;
+
+    // Deslocar as UVs baseado na profundidade e ângulo
+    // Pixels "mais próximos" (depthMap > 0.5) se deslocam mais
+    vec2 parallaxDisplacement = vec2(
+        sin(uv.y * PI) * (depthMap - 0.5) * intensity,
+        cos(uv.x * PI) * (depthMap - 0.5) * intensity * 0.5
+    );
+
+    return uv + parallaxDisplacement;
+}
 
 vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
     buf[6]=vec4(coordinate.x,coordinate.y,0.3948333106474662+in0,0.36+in1);
@@ -89,191 +115,252 @@ vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
     return vec4(buf[0].x,buf[0].y,buf[0].z,1.);
 }
 
-void mainImage(out vec4 fragColor,in vec2 fragCoord){
-    vec2 uv=fragCoord/uResolution.xy*2.-1.;
-    uv.x*=uResolution.x/uResolution.y;
-    uv.y*=-1.;
-    uv/=max(uPatternScale,0.01);
-    float pointerFalloff=exp(-3.5*dot(uv-uPointer,uv-uPointer));
-    uv+=(uPointer-uv)*pointerFalloff*uPointerInfluence*0.08;
-    uv+=uPointer*uPointerInfluence*0.035;
-    uv+=uWarp*vec2(sin(uv.y*6.283+uTime*0.5),cos(uv.x*6.283+uTime*0.5))*0.05;
-    fragColor=cppn_fn(uv,0.1*sin(0.3*uTime),0.1*sin(0.69*uTime),0.1*sin(0.44*uTime));
+void mainImage(out vec4 fragColor, in vec2 fragCoord){
+    vec2 uv = fragCoord / uResolution.xy * 2.0 - 1.0;
+    uv.x *= uResolution.x / uResolution.y;
+    uv.y *= -1.0;
+    uv /= max(uPatternScale, 0.01);
+
+    // ===== ROTAÇÃO 3D AXIAL =====
+    // O objeto rotaciona no seu próprio eixo (eixo Y)
+    float baseRotation = uAnimationSpeed * uAutoRotationSpeed;
+
+    // Cursor afeta ligeiramente a rotação (muito discreto)
+    float cursorRotationInfluence = length(uPointer) * uPointerRotationEffect * 0.5;
+    float totalRotation = baseRotation + cursorRotationInfluence;
+
+    // Aplicar parallax 3D (mantém posição, varia profundidade)
+    vec2 depthUv = applyDepthParallax(uv, totalRotation, uDepthIntensity);
+
+    // ===== PARALLAX DO CURSOR =====
+    float pointerFalloff = exp(-3.5 * dot(depthUv - uPointer, depthUv - uPointer));
+    depthUv += (uPointer - depthUv) * pointerFalloff * uPointerParallaxEffect * 0.08;
+    depthUv += uPointer * uPointerParallaxEffect * 0.035;
+
+    // ===== GLITCH/WARP =====
+    depthUv += uGlitchIntensity * vec2(
+        sin(depthUv.y * 6.283 + uAnimationSpeed * 0.5),
+        cos(depthUv.x * 6.283 + uAnimationSpeed * 0.5)
+    ) * 0.05;
+
+    fragColor = cppn_fn(
+        depthUv,
+        0.1 * sin(0.3 * uAnimationSpeed),
+        0.1 * sin(0.69 * uAnimationSpeed),
+        0.1 * sin(0.44 * uAnimationSpeed)
+    );
 }
 
 void main(){
-    vec4 col;mainImage(col,gl_FragCoord.xy);
-    col.rgb=hueShiftRGB(col.rgb,uHueShift);
-    float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
-    col.rgb*=1.-(scanline_val*scanline_val)*uScan;
-    col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
-    col.rgb=clamp(col.rgb,0.0,1.0);
+    vec4 col;
+    mainImage(col, gl_FragCoord.xy);
 
-    // Black belongs to the original CPPN background, not to the visual layer.
-    // Making it transparent exposes the Hero section's theme-aware gradient.
-    float brightness=max(max(col.r,col.g),col.b);
-    float alpha=smoothstep(uAlphaThreshold,uAlphaThreshold+max(uAlphaSoftness,0.0001),brightness);
-    float colorMix=dot(col.rgb,vec3(0.299,0.587,0.114));
-    vec3 effectColor=mix(uColorA,uColorB,smoothstep(0.1,0.9,colorMix));
-    gl_FragColor=vec4(effectColor,alpha);
+    col.rgb = clamp(col.rgb, 0.0, 1.0);
+
+    // ===== BLENDING DE 3 CORES =====
+    float brightness = max(max(col.r, col.g), col.b);
+    float alpha = smoothstep(
+        uAlphaThreshold,
+        uAlphaThreshold + max(uAlphaSoftness, 0.0001),
+        brightness
+    );
+
+    float colorMix = brightness * uColorBlendIntensity;
+    vec3 color1to2 = mix(uColorA, uColorB, smoothstep(0.0, 0.5, colorMix));
+    vec3 color2to3 = mix(uColorB, uColorC, smoothstep(0.5, 1.0, colorMix));
+    vec3 effectColor = mix(color1to2, color2to3, step(0.5, colorMix));
+
+    gl_FragColor = vec4(effectColor, alpha);
 }
 `
 
 type Props = {
-  hueShift?: number
-  noiseIntensity?: number
-  scanlineIntensity?: number
-  speed?: number
-  scanlineFrequency?: number
-  warpAmount?: number
-  resolutionScale?: number
-  /** Brightness below which the shader becomes fully transparent. */
-  alphaThreshold?: number
-  /** Width of the soft transition from transparent to opaque. */
-  alphaSoftness?: number
-  /** First color of the shader element, as a 3- or 6-digit hex color. */
-  colorA?: string
-  /** Second color of the shader element, as a 3- or 6-digit hex color. */
-  colorB?: string
-  /** Visual scale of the generated pattern. Values above 1 make it larger. */
-  patternScale?: number
-  /** Strength of the local pointer distortion. Set to 0 to disable it. */
-  pointerInfluence?: number
-  className?: string
+    // === ANIMATION ===
+    /** Velocidade da animação do padrão (0-2, default: 0.5) */
+    animationSpeed?: number
+
+    /** Velocidade da rotação automática (0-1, default: 0.3) */
+    autoRotationSpeed?: number
+
+    // === COLORS ===
+    /** Primeira cor (hex) */
+    colorA?: string
+
+    /** Segunda cor (hex) */
+    colorB?: string
+
+    /** Terceira cor (hex) */
+    colorC?: string
+
+    /** Intensidade do blending entre cores (0-2, default: 1.0) */
+    colorBlendIntensity?: number
+
+    // === INTERACTION ===
+    /** Quanto o cursor afeta o parallax visual (0-1, default: 0.35) */
+    pointerParallaxEffect?: number
+
+    /** Quanto o cursor afeta a rotação 3D (0-1, default: 0.01) */
+    pointerRotationEffect?: number
+
+    // === 3D DEPTH ===
+    /** Intensidade da profundidade 3D (0-2, default: 1.0) */
+    depthIntensity?: number
+
+    // === PATTERN ===
+    /** Escala do padrão (0.5-3, default: 1.12) */
+    patternScale?: number
+
+    // === EFFECTS ===
+    /** Intensidade da distorção/glitch (0-1, default: 0) */
+    glitchIntensity?: number
+
+    // === ALPHA ===
+    /** Ponto em que o padrão começa a ficar visível (default: 0.12) */
+    alphaThreshold?: number
+
+    /** Suavidade da transição do alpha (default: 0.02) */
+    alphaSoftness?: number
+
+    className?: string
 }
 
 export default function DarkVeil({
-  hueShift = 0,
-  noiseIntensity = 0,
-  scanlineIntensity = 0,
-  speed = 0.5,
-  scanlineFrequency = 0,
-  warpAmount = 0,
-  resolutionScale = 1,
-  alphaThreshold = 0.12,
-  alphaSoftness = 0.12,
-  colorA = "#3b82f6",
-  colorB = "#a855f7",
-  patternScale = 1.12,
-  pointerInfluence = 0.35,
-  className = "",
+    animationSpeed = 0.5,
+    autoRotationSpeed = 0.3,
+    colorA = "#3b82f6",
+    colorB = "#a855f7",
+    colorC = "#f43b68",
+    colorBlendIntensity = 1.0,
+    pointerParallaxEffect = 0.35,
+    pointerRotationEffect = 0.01,
+    depthIntensity = 1.0,
+    patternScale = 1.12,
+    glitchIntensity = 0,
+    alphaThreshold = 0.12,
+    alphaSoftness = 0.02,
+    className = "",
 }: Props) {
-  const ref = useRef<HTMLCanvasElement>(null)
+    const ref = useRef<HTMLCanvasElement>(null)
 
-  useEffect(() => {
-    const canvas = ref.current as HTMLCanvasElement
-    const parent = canvas.parentElement as HTMLElement
+    useEffect(() => {
+        const canvas = ref.current as HTMLCanvasElement
+        const parent = canvas.parentElement as HTMLElement
 
-    const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
-      canvas,
-      alpha: true,
-      depth: false,
-      premultipliedAlpha: false,
-    })
+        const renderer = new Renderer({
+            dpr: Math.min(window.devicePixelRatio, 2),
+            canvas,
+            alpha: true,
+            depth: false,
+            premultipliedAlpha: false,
+        })
 
-    const gl = renderer.gl
-    gl.clearColor(0, 0, 0, 0)
-    const geometry = new Triangle(gl)
-    const pointer = new Vec2()
-    const pointerTarget = new Vec2()
-    const [redA, greenA, blueA] = hexToRgb(colorA, DEFAULT_COLOR_A)
-    const [redB, greenB, blueB] = hexToRgb(colorB, DEFAULT_COLOR_B)
+        const gl = renderer.gl
+        gl.clearColor(0, 0, 0, 0)
+        const geometry = new Triangle(gl)
+        const pointer = new Vec2()
+        const pointerTarget = new Vec2()
+        const [redA, greenA, blueA] = hexToRgb(colorA, DEFAULT_COLOR_A)
+        const [redB, greenB, blueB] = hexToRgb(colorB, DEFAULT_COLOR_B)
+        const [redC, greenC, blueC] = hexToRgb(colorC, DEFAULT_COLOR_C)
 
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        uTime: { value: 0 },
-        uResolution: { value: new Vec2() },
-        uHueShift: { value: hueShift },
-        uNoise: { value: noiseIntensity },
-        uScan: { value: scanlineIntensity },
-        uScanFreq: { value: scanlineFrequency },
-        uWarp: { value: warpAmount },
-        uAlphaThreshold: { value: alphaThreshold },
-        uAlphaSoftness: { value: alphaSoftness },
-        uPointer: { value: pointer },
-        uPointerInfluence: { value: pointerInfluence },
-        uPatternScale: { value: patternScale },
-        uColorA: { value: new Vec3(redA, greenA, blueA) },
-        uColorB: { value: new Vec3(redB, greenB, blueB) },
-      },
-    })
+        const program = new Program(gl, {
+            vertex,
+            fragment,
+            uniforms: {
+                uAnimationSpeed: { value: 0 },
+                uAutoRotationSpeed: { value: autoRotationSpeed },
+                uPointerParallaxEffect: { value: pointerParallaxEffect },
+                uPointerRotationEffect: { value: pointerRotationEffect },
+                uDepthIntensity: { value: depthIntensity },
+                uPatternScale: { value: patternScale },
+                uGlitchIntensity: { value: glitchIntensity },
+                uAlphaThreshold: { value: alphaThreshold },
+                uAlphaSoftness: { value: alphaSoftness },
+                uResolution: { value: new Vec2() },
+                uPointer: { value: pointer },
+                uColorA: { value: new Vec3(redA, greenA, blueA) },
+                uColorB: { value: new Vec3(redB, greenB, blueB) },
+                uColorC: { value: new Vec3(redC, greenC, blueC) },
+                uColorBlendIntensity: { value: colorBlendIntensity },
+            },
+        })
 
-    const mesh = new Mesh(gl, { geometry, program })
+        const mesh = new Mesh(gl, { geometry, program })
 
-    const resize = () => {
-      const w = parent.clientWidth,
-        h = parent.clientHeight
-      renderer.setSize(w * resolutionScale, h * resolutionScale)
-      program.uniforms.uResolution.value.set(w, h)
-    }
+        const resize = () => {
+            const w = parent.clientWidth
+            const h = parent.clientHeight
+            renderer.setSize(w, h)
+            program.uniforms.uResolution.value.set(w, h)
+        }
 
-    const onPointerMove = (event: PointerEvent) => {
-      const bounds = parent.getBoundingClientRect()
-      pointerTarget.set(
-        ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
-        ((event.clientY - bounds.top) / bounds.height) * 2 - 1,
-      )
-    }
+        const onPointerMove = (event: PointerEvent) => {
+            const bounds = parent.getBoundingClientRect()
+            pointerTarget.set(
+                ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+                ((event.clientY - bounds.top) / bounds.height) * 2 - 1
+            )
+        }
 
-    const onPointerLeave = () => pointerTarget.set(0, 0)
+        const onPointerLeave = () => pointerTarget.set(0, 0)
 
-    window.addEventListener("resize", resize)
-    parent.addEventListener("pointermove", onPointerMove)
-    parent.addEventListener("pointerleave", onPointerLeave)
-    resize()
+        window.addEventListener("resize", resize)
+        parent.addEventListener("pointermove", onPointerMove)
+        parent.addEventListener("pointerleave", onPointerLeave)
+        resize()
 
-    const start = performance.now()
-    let frame = 0
+        const start = performance.now()
+        let frame = 0
 
-    const loop = () => {
-      program.uniforms.uTime.value =
-        ((performance.now() - start) / 1000) * speed
-      pointer.x += (pointerTarget.x - pointer.x) * 0.08
-      pointer.y += (pointerTarget.y - pointer.y) * 0.08
-      program.uniforms.uHueShift.value = hueShift
-      program.uniforms.uNoise.value = noiseIntensity
-      program.uniforms.uScan.value = scanlineIntensity
-      program.uniforms.uScanFreq.value = scanlineFrequency
-      program.uniforms.uWarp.value = warpAmount
-      program.uniforms.uAlphaThreshold.value = alphaThreshold
-      program.uniforms.uAlphaSoftness.value = alphaSoftness
-      program.uniforms.uPointerInfluence.value = pointerInfluence
-      program.uniforms.uPatternScale.value = patternScale
-      renderer.render({ scene: mesh })
-      frame = requestAnimationFrame(loop)
-    }
+        const loop = () => {
+            const elapsed = (performance.now() - start) / 1000
+            program.uniforms.uAnimationSpeed.value = elapsed * animationSpeed
 
-    loop()
+            pointer.x += (pointerTarget.x - pointer.x) * 0.08
+            pointer.y += (pointerTarget.y - pointer.y) * 0.08
 
-    return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener("resize", resize)
-      parent.removeEventListener("pointermove", onPointerMove)
-      parent.removeEventListener("pointerleave", onPointerLeave)
-    }
-  }, [
-    hueShift,
-    noiseIntensity,
-    scanlineIntensity,
-    speed,
-    scanlineFrequency,
-    warpAmount,
-    resolutionScale,
-    alphaThreshold,
-    alphaSoftness,
-    colorA,
-    colorB,
-    patternScale,
-    pointerInfluence,
-  ])
+            program.uniforms.uAutoRotationSpeed.value = autoRotationSpeed
+            program.uniforms.uPointerParallaxEffect.value = pointerParallaxEffect
+            program.uniforms.uPointerRotationEffect.value = pointerRotationEffect
+            program.uniforms.uDepthIntensity.value = depthIntensity
+            program.uniforms.uPatternScale.value = patternScale
+            program.uniforms.uGlitchIntensity.value = glitchIntensity
+            program.uniforms.uAlphaThreshold.value = alphaThreshold
+            program.uniforms.uAlphaSoftness.value = alphaSoftness
+            program.uniforms.uColorBlendIntensity.value = colorBlendIntensity
 
-  return (
-    <canvas
-      ref={ref}
-      className={`pointer-events-none absolute inset-0 block h-full w-full ${className}`}
-    />
-  )
+            renderer.render({ scene: mesh })
+            frame = requestAnimationFrame(loop)
+        }
+
+        loop()
+
+        return () => {
+            cancelAnimationFrame(frame)
+            window.removeEventListener("resize", resize)
+            parent.removeEventListener("pointermove", onPointerMove)
+            parent.removeEventListener("pointerleave", onPointerLeave)
+        }
+    }, [
+        animationSpeed,
+        autoRotationSpeed,
+        colorA,
+        colorB,
+        colorC,
+        colorBlendIntensity,
+        pointerParallaxEffect,
+        pointerRotationEffect,
+        depthIntensity,
+        patternScale,
+        glitchIntensity,
+        alphaThreshold,
+        alphaSoftness,
+    ])
+
+    return (
+        <canvas
+            ref={ref}
+            className={`pointer-events-none absolute inset-0 block h-full w-full ${className}`}
+        />
+    )
 }

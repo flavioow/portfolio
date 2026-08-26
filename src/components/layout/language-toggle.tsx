@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl"
 
 import { Link, usePathname } from "@/i18n/navigation"
+import { TextRoll } from "../ui/skiper-ui/text-roll-navigation"
 
 const locales = [
     { value: "en", label: "EN", translationKey: "en" },
@@ -34,10 +35,10 @@ export default function LanguageToggle() {
                         aria-current={isActive ? "page" : undefined}
                         className={`pointer pointer-events-auto text-[clamp(1.2rem,1.6vw,1.6rem)] text-background dark:text-foreground mix-blend-difference transition-opacity duration-300 ${isActive
                             ? "opacity-100"
-                            : "opacity-50 hover:opacity-100"
+                            : "opacity-50"
                             }`}
                     >
-                        {item.label}
+                        <TextRoll>{item.label}</TextRoll>
                     </Link>
                 )
             })}
